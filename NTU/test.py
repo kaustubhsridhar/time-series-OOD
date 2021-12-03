@@ -78,7 +78,7 @@ frame_lens = {'train': [148, 130, 130, 148, 130, 148, 130, 130, 148, 130, 130, 1
 bi3dof_simple_test_in = {
     "model_file" : "bi3dof-simple-600epoch-6seq.pt", # "model/nuscenes-mini/bi3dof-simple-600epoch.pt",
     "network" : "simple",   
-    "test_clips": "../NTU_features/in.test", # "data/nuscenes-v1.0-mini.test",      
+    "test_clips": "../NTU_features_all/in.test", # "data/nuscenes-v1.0-mini.test",      
     "frames_per_clip": frame_lens['in']
 }
 
@@ -141,5 +141,5 @@ def run(type_of_OOD):
 	print('Average detection delay for OOD traces: ', det_delay)
 	print('TNR: ', TNR)
 
-for type_of_OOD in ['out_rainy']: # ['out_snowy', 'out_foggy', 'out_night']:
+for type_of_OOD in ['out_snowy', 'out_foggy', 'out_night', 'out_rainy']:
 	run(type_of_OOD)
