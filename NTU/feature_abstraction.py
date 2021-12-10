@@ -32,7 +32,7 @@ class FeatureAbstraction:
 		train_folders = [6, 20, 17, 7, 30, 8, 13, 27, 5, 26, 31, 21, 32, 3, 10, 19, 1, 24, 4, 2]
 		frame_lens = {}
 
-		for phase in ["train", "in", "out_foggy", "out_night", "out_snowy", "out_rainy"]:
+		for phase in ["train", "in", "out_foggy", "out_night", "out_snowy", "out_rainy"]
 			# List file for train and test loaders
 			self.store = []
 			frame_lens[phase] = []
@@ -108,7 +108,7 @@ class FeatureAbstraction:
 if __name__ == "__main__":
 	trainroot = '../Vanderbilt_data/training/' # 'data/nuscenes-v1.0-mini/'
 	testroot = '../Vanderbilt_data/testing/'
-	dstroot = '../NTU_features_all/'
+	dstroot = '../NTU_features_rainy_only/'
 	try:
 		os.mkdir(dstroot)
 	except:

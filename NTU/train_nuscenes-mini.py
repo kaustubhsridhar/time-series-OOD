@@ -25,8 +25,9 @@ More technical details please see in paper link: https://arxiv.org/abs/2107.1175
 def init_param():
 	parser = argparse.ArgumentParser() 
 	parser.add_argument("--episode_size", type=int, default = 5, help="number of videos in one mini-batch")	 
-	# parser.add_argument("--n_seq", type=int, default = 6, help="number of sequence to sample from one video") # changed to use all sequences in video by changing datasets file to use list of n_seq values
-	parser.add_argument("--nd", type=int, default = 16, help="number of frames in a 3D input cube")    # prev: default=6; changed to 16 based on Ramneet's choice
+	# parser.add_argument("--n_seq", type=int, default = 6, help="number of sequence/window to sample from one video") 
+	# Changed above to use fixed number of random sequences (aka windows) in each video (aka trace) every epoch to train (by changing datasets file to use list of n_seq values ==> helpful to test variable number of sequences at test time)
+	parser.add_argument("--nd", type=int, default = 16, help="number of frames in a 3D input cube")    # prev: default=6; changed to 16 based on Ramneet's choice of frames in a window/sequence
 	parser.add_argument("--group", type=int, default = 2, 
 			help="2 refer to the two latent subspaces, in horizontal and vertical direction respectively.")  
 	parser.add_argument("--nz", type=int, default = 12, help="Dimension of one latent subspace")	  
@@ -96,9 +97,8 @@ def run():
 #
 seed()
 # obtain below from feature_abstraction
-frame_lens = {'train': [148, 130, 130, 148, 130, 148, 130, 130, 148, 130, 130, 130, 130, 148, 148, 130, 148, 130, 148, 148], 
-			'in': [123, 122, 123, 121, 124, 123, 121, 121, 122, 123, 123, 121, 123, 122, 121, 121, 122, 122, 123, 123, 123, 122, 122, 123, 122, 122, 122], 
-			'out_foggy': [123, 122, 123, 121, 124, 123, 121, 121, 122, 123, 123, 121, 123, 122, 121, 121, 122, 122, 123, 123, 123, 122, 122, 123, 122, 122, 122]}
+frame_lens = {'train': [148, 130, 130, 148, 130, 148, 130, 130, 148, 130, 130, 130, 130, 148, 148, 130, 148, 130, 148, 148]
+				}
 args = init_param()
 args.training = True
 args.data_file = "../NTU_features/train.train" # "data/nuscenes-v1.0-mini.train"

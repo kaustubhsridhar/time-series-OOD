@@ -38,7 +38,7 @@ def load_model(test_config):
 	# Assifn test clips
 	args.data_file = test_config["test_clips"]
 	# Sequentially advance 1 frame per step 
-	args.n_seqs = [f - args.nd for f in test_config["frames_per_clip"]] # New: changed to list
+	args.n_seqs = [f - args.nd for f in test_config["frames_per_clip"]] # New: changed to list # Changed to test all sequences(aka window) in video(aka trace). Number of sequences(aka windows) is total frames-frame size(aka nd = 16)
 
 	# Load  weights  
 	encoder = Encoder(args)
@@ -73,7 +73,8 @@ frame_lens = {'train': [148, 130, 130, 148, 130, 148, 130, 130, 148, 130, 130, 1
 				'out_foggy': [123, 122, 123, 121, 124, 123, 121, 121, 122, 123, 123, 121, 123, 122, 121, 121, 122, 122, 123, 123, 123, 122, 122, 123, 122, 122, 122], 
 				'out_night': [123, 122, 123, 121, 124, 123, 121, 121, 122, 123, 123, 121, 123, 122, 121, 121, 122, 122, 123, 123, 123, 122, 122, 123, 122, 122, 122], 
 				'out_snowy': [123, 122, 123, 121, 124, 123, 121, 121, 122, 123, 123, 121, 123, 122, 121, 121, 122, 122, 123, 123, 123, 122, 122, 123, 122, 122, 122], 
-				'out_rainy': [111, 141, 142, 112, 114, 141, 140, 141, 141, 140, 111, 112, 111, 113, 114, 111, 114, 141, 114, 111, 116, 141, 112, 122, 112, 141, 111, 112, 141, 141, 112, 112, 111, 116, 142, 140, 111, 116, 111, 116, 116, 114, 113, 111, 142, 115, 114, 111, 141, 116, 122, 114, 114, 141, 112, 141, 114, 141, 111, 111, 111, 113, 111, 114, 111, 141, 116, 111, 122, 117, 111, 111, 111]}
+				#'out_rainy_old': [111, 141, 142, 112, 114, 141, 140, 141, 141, 140, 111, 112, 111, 113, 114, 111, 114, 141, 114, 111, 116, 141, 112, 122, 112, 141, 111, 112, 141, 141, 112, 112, 111, 116, 142, 140, 111, 116, 111, 116, 116, 114, 113, 111, 142, 115, 114, 111, 141, 116, 122, 114, 114, 141, 112, 141, 114, 141, 111, 111, 111, 113, 111, 114, 111, 141, 116, 111, 122, 117, 111, 111, 111],
+				'out_rainy': [141, 122, 112, 114, 141, 140, 141, 140, 111, 112, 111, 113, 111, 114, 111, 114, 141, 114, 111, 116, 111, 114, 141, 111, 111, 141, 142]}
 
 bi3dof_simple_test_in = {
     "model_file" : "bi3dof-simple-600epoch-6seq.pt", # "model/nuscenes-mini/bi3dof-simple-600epoch.pt",
@@ -83,10 +84,11 @@ bi3dof_simple_test_in = {
 }
 
 def getOutBi3DOF(type_of_OOD):
+	features_folder = "../NTU_features_rainy_only/" # "../NTU_features_all/" # Change to "../NTU_features_rainy_only/" for rainy
 	bi3dof_simple_test_out = {
 		"model_file" : "bi3dof-simple-600epoch-6seq.pt", # "model/nuscenes-mini/bi3dof-simple-600epoch.pt",
 		"network" : "simple",   
-		"test_clips": "../NTU_features_all/{}.test".format(type_of_OOD), # "data/nuscenes-v1.0-mini.test",      
+		"test_clips": features_folder+"{}.test".format(type_of_OOD), # "data/nuscenes-v1.0-mini.test",      
 		"frames_per_clip": frame_lens[type_of_OOD]
 	}
 	return bi3dof_simple_test_out
@@ -141,5 +143,6 @@ def run(type_of_OOD):
 	print('Average detection delay for OOD traces: ', det_delay)
 	print('TNR: ', TNR)
 
-for type_of_OOD in ['out_snowy', 'out_foggy', 'out_night', 'out_rainy']:
-	run(type_of_OOD)
+if __name__ == "__main__":
+	for type_of_OOD in ['out_snowy', 'out_foggy', 'out_night', 'out_rainy']:
+		run(type_of_OOD)
