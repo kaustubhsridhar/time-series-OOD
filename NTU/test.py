@@ -84,7 +84,7 @@ bi3dof_simple_test_in = {
 }
 
 def getOutBi3DOF(type_of_OOD):
-	features_folder = "../NTU_features_rainy_only/" # "../NTU_features_all/" # Change to "../NTU_features_rainy_only/" for rainy
+	features_folder = "../NTU_features_all/" # Change to "../NTU_features_rainy_only/" for rainy
 	bi3dof_simple_test_out = {
 		"model_file" : "bi3dof-simple-600epoch-6seq.pt", # "model/nuscenes-mini/bi3dof-simple-600epoch.pt",
 		"network" : "simple",   
