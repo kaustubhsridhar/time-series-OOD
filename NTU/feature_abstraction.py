@@ -108,7 +108,7 @@ class FeatureAbstraction:
 if __name__ == "__main__":
 	trainroot = '../Vanderbilt_data/training/' # 'data/nuscenes-v1.0-mini/'
 	testroot = '../Vanderbilt_data/testing/'
-	dstroot = '../NTU_features_rainy_only/'
+	dstroot = '../NTU_features_all/'
 	try:
 		os.mkdir(dstroot)
 	except:
