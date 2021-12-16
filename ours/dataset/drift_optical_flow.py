@@ -97,7 +97,7 @@ def compute_optical_flow(video_frames, halve_features = False, save_image = Fals
         im1 = im2
 
         # print(flow_image.shape) # (ht, wdth, 3)
-        flow_image = flow_image.transpose((2, 0, 1))
+        # flow_image = flow_image.transpose((2, 0, 1))
         # print(flow_image.shape)
 
         flows.append(flow_image)
@@ -192,7 +192,7 @@ class DriftDataset(data.Dataset):
         trans_clip = []
         
         for frame in clip:
-            frame = self.transforms_(frame) # tensor [C x H x W]
+            frame = self.transforms_(frame) # from  img [H x W x C]  to tensor [C x H x W]
             trans_clip.append(frame)
         trans_clip = torch.stack(trans_clip).permute([1, 0, 2, 3])
         return trans_clip
