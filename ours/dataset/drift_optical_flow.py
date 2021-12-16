@@ -183,7 +183,7 @@ class DriftDataset(data.Dataset):
                 for img in range(1,no_images+1):
                     with Image.open('{}/{}{}/image_{}.jpg'.format(root_dir, episode, ext, (str(img).zfill(5)))) as im:  # episode
                         video_frames.append(im.resize((self.img_width, self.img_hgt)))
-                video_frames = compute_optical_flow(video_frames, halve_features = True, save_image = False) # New
+                video_frames = compute_optical_flow(video_frames, halve_features = False, save_image = False) # New
                 # self.opt_flow_trace.append()
                 self.videos.append(video_frames)      
     
