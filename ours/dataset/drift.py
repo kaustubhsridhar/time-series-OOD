@@ -6,6 +6,7 @@ import numpy as np
 import sys
 import numbers
 import random
+import cv2 # New
 if sys.version_info[0] == 2:
     import cPickle as pickle
 else:
@@ -18,6 +19,31 @@ import csv
 import copy
 
 import matplotlib.pyplot as plt 
+
+def pil_to_cv2_to_gray(pil_image):
+    cv2_image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR) 
+    gray_image = cv2.cvtColor(cv2_image, cv2.COLOR_BGR2GRAY)
+    return gray_image
+
+def compute_optical_flow(video_frames): # New
+    flows = []
+    im1_pil = video_frames[0]
+    im1 = pil_to_cv2_to_gray(im1_pil)
+    flow = None
+    for i, im2_pil in enumerate(video_frames[1:]):
+        im2 = pil_to_cv2_to_gray(im2_pil)
+        flow = cv2.calcOpticalFlowFarneback(im1, im2, flow, 
+							pyr_scale = 0.5, levels = 1, iterations = 1, 
+							winsize = 11, poly_n = 5, poly_sigma = 1.1,  
+							flags = 0 if flow is None else cv2.OPTFLOW_USE_INITIAL_FLOW )
+        flows.append(flow)
+        print(f"shape of a single flow is {flow.shape}")
+        # move im1 forward
+        im1 = im2
+    print(f"is {len(video_frames)} == {len(flows)-1}?")
+    
+    return flows
+
 
 class DriftDataset(data.Dataset):
     """Drift dataset
@@ -56,6 +82,7 @@ class DriftDataset(data.Dataset):
                     #print("Image: ", img)
                     with Image.open('{}/{}/image_{}.jpg'.format(root_dir, episode, (str(img).zfill(5)))) as im: 
                         video_frames.append(im.resize((self.img_width, self.img_hgt)))  
+                video_frames = compute_optical_flow(video_frames) # New
                 self.videos.append(video_frames)
 
         elif self.cal:
@@ -74,6 +101,7 @@ class DriftDataset(data.Dataset):
                     #print("Image: ", img)
                     with Image.open('{}/{}/image_{}.jpg'.format(root_dir, episode, (str(img).zfill(5)))) as im: 
                         video_frames.append(im.resize((self.img_width, self.img_hgt)))  
+                video_frames = compute_optical_flow(video_frames) # New
                 self.videos.append(video_frames)
 
         else:
@@ -93,7 +121,7 @@ class DriftDataset(data.Dataset):
                 for img in range(1,no_images+1):
                     with Image.open('{}/{}{}/image_{}.jpg'.format(root_dir, episode, ext, (str(img).zfill(5)))) as im:  
                         video_frames.append(im.resize((self.img_width, self.img_hgt)))
-                # video_frames = trace -> optical flow trace func
+                video_frames = compute_optical_flow(video_frames) # New
                 # self.opt_flow_trace.append()
                 self.videos.append(video_frames)      
     
@@ -209,3 +237,8 @@ class DriftDataset(data.Dataset):
             orig_clip = self.transform_clip(orig_clip)
 
             yield orig_clip, trans_clip, transform_id
+
+if __name__ == "__main__":
+    data_train = DriftDataset("../../drift_data/training", train=True)
+    data_test_iD = DriftDataset("../../drift_data/testing/in", train=False, in_dist_test=True)
+    data_test_iD = DriftDataset("../../drift_data/testing/out", train=False, in_dist_test=False)
