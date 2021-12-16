@@ -37,10 +37,10 @@ def compute_optical_flow(video_frames): # New
 							winsize = 11, poly_n = 5, poly_sigma = 1.1,  
 							flags = 0 if flow is None else cv2.OPTFLOW_USE_INITIAL_FLOW )
         flows.append(flow)
-        print(f"shape of a single flow is {flow.shape}")
+        # print(f"shape of a single flow is {flow.shape}")
         # move im1 forward
         im1 = im2
-    print(f"is {len(video_frames)} == {len(flows)-1}?")
+    print(f"is {len(video_frames)} == {len(flows)}-1?")
     
     return flows
 
