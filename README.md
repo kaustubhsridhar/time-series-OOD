@@ -23,7 +23,7 @@ python feature_abstraction.py
 Run code to train a model which will be saved within NTU directory.
 ```
 cd NTU
-python train_nuscenes-mini.py
+python train_<name of dataset>.py
 ```
 
 Test as follows. Plots will be saved to NTU/plots/ and results will be printed to stdout.

@@ -45,7 +45,7 @@ def init_param():
 	args.n_seqs = [6 for _ in range(len(frame_lens["train"]))]
 
 	# input dimension as in # [g,d,h,w]
-	args.input_size = [args.group, args.nd, 120,160]   
+	args.input_size = [args.group, args.nd, 120,160] 
 	args.transform_size = [113,152]   
 
 	# default values 
@@ -92,7 +92,12 @@ def run():
 			progress_bar(batch_idx, len(train_loader), 'Epoch%3d  Recontruction/Loss: %.6f  Latent/Loss: %.6f' 
 										% (epoch, loss_reconstruction/num_examples, loss_latent/num_examples) )		   
 	# save 
-	torch.save(vae.state_dict(), "bi3dof-{}-{}epoch-{}seq.pt".format(args.latentprior,  epoch+1, args.n_seqs[0]) )
+	try:
+		os.mkdir("Vanderbilt_models")
+	except:
+		pass
+
+	torch.save(vae.state_dict(), "Vanderbilt_models/bi3dof-{}-{}epoch-{}seq.pt".format(args.latentprior,  epoch+1, args.n_seqs[0]) )
 
 #
 seed()
@@ -101,5 +106,5 @@ frame_lens = {'train': [148, 130, 130, 148, 130, 148, 130, 130, 148, 130, 130, 1
 				}
 args = init_param()
 args.training = True
-args.data_file = "../NTU_features/train.train" # "data/nuscenes-v1.0-mini.train"
+args.data_file = "../Vanderbilt_features_all/train.train" # "data/nuscenes-v1.0-mini.train"
 run()
