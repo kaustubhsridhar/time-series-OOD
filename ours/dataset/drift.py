@@ -40,7 +40,7 @@ def compute_optical_flow(video_frames): # New
         # print(f"shape of a single flow is {flow.shape}")
         # move im1 forward
         im1 = im2
-    print(f"is {len(video_frames)} == {len(flows)}-1?")
+    # print(f"is {len(video_frames)} == {len(flows)}-1?")
     
     return flows
 
