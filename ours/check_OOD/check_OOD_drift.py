@@ -41,7 +41,7 @@ import numpy as np
 # from models.r21d import R2Plus1DNet
 # from models.vcopn import VCOPN
 
-from r3d import Regressor as r3d_regressor
+from models.r3d import Regressor as r3d_regressor
 
 from dataset.carla import CARLAVCOPDataset
 from dataset.drift import DriftDataset
