@@ -7,3 +7,4 @@ rsync -azvP -e 'ssh' --exclude '*.zip' ksridhar@koa02.seas.upenn.edu:/home/ramne
 rsync -azvP -e 'ssh' --exclude '*.zip' ksridhar@koa02.seas.upenn.edu:/home/ramneetk/classification_on_temporal_transforms/drift_dataset/temp_in/testing/ ../drift_data/testing/in/
 rsync -azvP -e 'ssh' --exclude '*.zip' ksridhar@koa02.seas.upenn.edu:/home/ramneetk/classification_on_temporal_transforms/drift_dataset/out/ ../drift_data/testing/out/
 
+rsync -azvP -e 'ssh' ksridhar@koa02.seas.upenn.edu:~/time-series-OOD/ours/dataset/drift/ ./

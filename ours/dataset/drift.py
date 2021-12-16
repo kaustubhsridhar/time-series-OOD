@@ -6,6 +6,7 @@ import numpy as np
 import sys
 import numbers
 import random
+from torchvision import transforms # NEW AND TEMPORARY
 import cv2 # New
 if sys.version_info[0] == 2:
     import cPickle as pickle
@@ -20,28 +21,89 @@ import copy
 
 import matplotlib.pyplot as plt 
 
-def pil_to_cv2_to_gray(pil_image):
-    cv2_image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR) 
+
+def pil_to_cv2(pil_image): # New
+    cv2_image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)     
+    return cv2_image
+
+def cv2_to_gray(cv2_image):
     gray_image = cv2.cvtColor(cv2_image, cv2.COLOR_BGR2GRAY)
     return gray_image
 
-def compute_optical_flow(video_frames): # New
+def flow_to_pil(flow_input):
+    return flow_input
+
+def get_optical_flow_image_from_features(flow_x, flow_y, mask, count, im1, im2, halve_features, show_image=False):
+    # converting to dense optical flow based on https://www.geeksforgeeks.org/python-opencv-dense-optical-flow/
+    magnitude, angle = cv2.cartToPolar(flow_x, flow_y)
+    mask[..., 0] = angle * 180 / np.pi / 2
+    mask[..., 2] = cv2.normalize(magnitude, None, 0, 255, cv2.NORM_MINMAX)
+    mask = np.float32(mask)
+    rgb = cv2.cvtColor(mask, cv2.COLOR_HSV2BGR)
+    if show_image:
+        print(count)
+        temp_im1 = cv2.cvtColor(im1, cv2.COLOR_GRAY2BGR)
+        temp_im2 = cv2.cvtColor(im2, cv2.COLOR_GRAY2BGR)
+        if halve_features:
+            try:
+                os.mkdir("./drift_half")
+            except:
+                pass
+            cv2.imwrite(f"./drift_half/{count}.png", rgb)
+        else:
+            three_images = np.concatenate( (np.concatenate((temp_im1, temp_im2), axis=1), rgb), axis=1)
+            try:
+                os.mkdir("./drift")
+            except:
+                pass
+            cv2.imwrite(f"./drift/{count}.png", three_images)
+
+    return rgb
+
+
+def compute_optical_flow(video_frames, halve_features = False, save_image = False): # New
     flows = []
     im1_pil = video_frames[0]
-    im1 = pil_to_cv2_to_gray(im1_pil)
+    im1 = pil_to_cv2(im1_pil)
+
+    if halve_features:
+        mask = np.zeros((int(im1.shape[0]/2), int(im1.shape[1]/2), 3))
+    else:
+        mask = np.zeros_like(im1)
+
+    mask[..., 1] = 255
+    count = 0
+
     flow = None
+    im1 = cv2_to_gray(im1)
     for i, im2_pil in enumerate(video_frames[1:]):
-        im2 = pil_to_cv2_to_gray(im2_pil)
+        im2 = cv2_to_gray(pil_to_cv2(im2_pil))
         flow = cv2.calcOpticalFlowFarneback(im1, im2, flow, 
 							pyr_scale = 0.5, levels = 1, iterations = 1, 
 							winsize = 11, poly_n = 5, poly_sigma = 1.1,  
 							flags = 0 if flow is None else cv2.OPTFLOW_USE_INITIAL_FLOW )
-        flows.append(flow)
-        # print(f"shape of a single flow is {flow.shape}")
+        #print(f"shape of a single flow is {flow.shape}") # (360, 640, 2) = (ht, width, 2) where 2 is for flow in x and y directions
+        
+        if halve_features:
+            flow_x = cv2.resize(flow[..., 0], None, fx=0.5, fy=0.5)
+            flow_y = cv2.resize(flow[..., 1], None, fx=0.5, fy=0.5)
+        else:
+            flow_x, flow_y = flow[..., 0], flow[..., 1]
+
+        flow_image = get_optical_flow_image_from_features(flow_x, flow_y, mask, count, im1, im2, halve_features, show_image=save_image)
+        count += 1
+
         # move im1 forward
         im1 = im2
-    # print(f"is {len(video_frames)} == {len(flows)}-1?")
+
+        # print(flow_image.shape) # (ht, wdth, 3)
+        flow_image = flow_image.transpose((2, 0, 1))
+        # print(flow_image.shape)
+
+        flows.append(flow_image)
     
+    if save_image:
+        exit(0)
     return flows
 
 
@@ -82,7 +144,7 @@ class DriftDataset(data.Dataset):
                     #print("Image: ", img)
                     with Image.open('{}/{}/image_{}.jpg'.format(root_dir, episode, (str(img).zfill(5)))) as im: 
                         video_frames.append(im.resize((self.img_width, self.img_hgt)))  
-                video_frames = compute_optical_flow(video_frames) # New
+                video_frames = compute_optical_flow(video_frames, halve_features = False, save_images = False) # New
                 self.videos.append(video_frames)
 
         elif self.cal:
@@ -101,7 +163,7 @@ class DriftDataset(data.Dataset):
                     #print("Image: ", img)
                     with Image.open('{}/{}/image_{}.jpg'.format(root_dir, episode, (str(img).zfill(5)))) as im: 
                         video_frames.append(im.resize((self.img_width, self.img_hgt)))  
-                video_frames = compute_optical_flow(video_frames) # New
+                video_frames = compute_optical_flow(video_frames, halve_features = False, save_image = False) # New
                 self.videos.append(video_frames)
 
         else:
@@ -115,13 +177,13 @@ class DriftDataset(data.Dataset):
                 ext='_1'
 
             for episode in range(1,no_episodes+1):
-                file = open("{}/{}{}/n_frames".format(root_dir, episode, ext), 'r')
+                file = open("{}/{}{}/n_frames".format(root_dir, episode, ext), 'r') # episode
                 no_images = int(file.read())
                 video_frames = [] 
                 for img in range(1,no_images+1):
-                    with Image.open('{}/{}{}/image_{}.jpg'.format(root_dir, episode, ext, (str(img).zfill(5)))) as im:  
+                    with Image.open('{}/{}{}/image_{}.jpg'.format(root_dir, episode, ext, (str(img).zfill(5)))) as im:  # episode
                         video_frames.append(im.resize((self.img_width, self.img_hgt)))
-                video_frames = compute_optical_flow(video_frames) # New
+                video_frames = compute_optical_flow(video_frames, halve_features = True, save_image = False) # New
                 # self.opt_flow_trace.append()
                 self.videos.append(video_frames)      
     
@@ -239,6 +301,11 @@ class DriftDataset(data.Dataset):
             yield orig_clip, trans_clip, transform_id
 
 if __name__ == "__main__":
-    data_train = DriftDataset("../../drift_data/training", train=True)
-    data_test_iD = DriftDataset("../../drift_data/testing/in", train=False, in_dist_test=True)
-    data_test_iD = DriftDataset("../../drift_data/testing/out", train=False, in_dist_test=False)
+    train_transforms = transforms.Compose([
+            transforms.ToTensor()
+        ])
+    # data_train = DriftDataset("../../drift_data/training", train=True, transforms_=train_transforms)
+    # item_1 = data_train.__getitem__(1)
+    # item_2 = data_train.__get_test_item__(1)
+    # data_test_iD = DriftDataset("../../drift_data/testing/in", train=False, in_dist_test=True, transforms_=train_transforms)
+    data_test_iD = DriftDataset("../../drift_data/testing/out", train=False, in_dist_test=False, transforms_=train_transforms)
