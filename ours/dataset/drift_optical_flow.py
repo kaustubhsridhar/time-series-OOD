@@ -109,7 +109,6 @@ def compute_optical_flow(video_frames, halve_features = False, save_image = Fals
 
 class DriftDataset(data.Dataset):
     """Drift dataset
-
     Args:
         root_dir (string): Directory with training/test data.
         train (bool): train split or test split.
@@ -144,7 +143,7 @@ class DriftDataset(data.Dataset):
                     #print("Image: ", img)
                     with Image.open('{}/{}/image_{}.jpg'.format(root_dir, episode, (str(img).zfill(5)))) as im: 
                         video_frames.append(im.resize((self.img_width, self.img_hgt)))  
-                video_frames = compute_optical_flow(video_frames, halve_features = False, save_images = False) # New
+                video_frames = compute_optical_flow(video_frames, halve_features = False, save_image = False) # New
                 self.videos.append(video_frames)
 
         elif self.cal:
@@ -184,7 +183,6 @@ class DriftDataset(data.Dataset):
                     with Image.open('{}/{}{}/image_{}.jpg'.format(root_dir, episode, ext, (str(img).zfill(5)))) as im:  # episode
                         video_frames.append(im.resize((self.img_width, self.img_hgt)))
                 video_frames = compute_optical_flow(video_frames, halve_features = False, save_image = False) # New
-                # self.opt_flow_trace.append()
                 self.videos.append(video_frames)      
     
     def __len__(self):
@@ -300,12 +298,12 @@ class DriftDataset(data.Dataset):
 
             yield orig_clip, trans_clip, transform_id
 
-if __name__ == "__main__":
-    train_transforms = transforms.Compose([
-            transforms.ToTensor()
-        ])
-    # data_train = DriftDataset("../../drift_data/training", train=True, transforms_=train_transforms)
-    # item_1 = data_train.__getitem__(1)
-    # item_2 = data_train.__get_test_item__(1)
-    # data_test_iD = DriftDataset("../../drift_data/testing/in", train=False, in_dist_test=True, transforms_=train_transforms)
-    data_test_iD = DriftDataset("../../drift_data/testing/out", train=False, in_dist_test=False, transforms_=train_transforms)
+# if __name__ == "__main__":
+#     train_transforms = transforms.Compose([
+#             transforms.ToTensor()
+#         ])
+#     # data_train = DriftDataset("../../drift_data/training", train=True, transforms_=train_transforms)
+#     # item_1 = data_train.__getitem__(1)
+#     # item_2 = data_train.__get_test_item__(1)
+#     # data_test_iD = DriftDataset("../../drift_data/testing/in", train=False, in_dist_test=True, transforms_=train_transforms)
+#     data_test_iD = DriftDataset("../../drift_data/testing/out", train=False, in_dist_test=False, transforms_=train_transforms)
