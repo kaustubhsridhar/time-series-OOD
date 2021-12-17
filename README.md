@@ -1,6 +1,6 @@
-Setup Vanderbilt_data in following folder structure at ./
+Setup carla_data in following folder structure at ./
 ```bash
-├── Vanderbilt_data
+├── carla_data
 │   ├── testing
 │   │   ├── in
 │   │   ├── out_foggy/out
@@ -28,10 +28,11 @@ Also setup drift_data in following folder structure at ./
 │   ├── training
 ```
 
-Run the following to extract features to ./NTU_features_all/. The following also produces the dictionary of frame lengths (frame_lens) that is pasted into the training and test code below.
+Run the following to extract features to ./carla_features_all/. The following also produces the dictionary of frame lengths (frame_lens) that is pasted into the training and test code below.
 ```
 python feature_abstraction_<name of dataset>.py
 ```
+(where <name of dataset> can be 'carla' or 'drift')
 
 Run code to train a model which will be saved within NTU directory.
 ```
