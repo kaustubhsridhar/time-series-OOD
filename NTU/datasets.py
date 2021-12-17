@@ -5,9 +5,9 @@ import h5py
 import torch
 from torch.utils.data import Dataset
 
-_seed = 20201205
+_seed_orig = 20201205
 
-def seed():
+def seed(_seed = _seed_orig):
 	torch.manual_seed(_seed)
 	if torch.cuda.is_available():
 		torch.cuda.manual_seed(_seed)

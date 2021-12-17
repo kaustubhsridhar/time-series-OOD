@@ -83,7 +83,7 @@ bi3dof_simple_test_in = {
 def getOutBi3DOF(type_of_OOD):
 	features_folder = "../drift_features_all/" # Change to "../NTU_features_rainy_only/" for rainy
 	bi3dof_simple_test_out = {
-		"model_file" : "drift_models/bi3dof-simple-600epoch-6seq.pt", # "model/nuscenes-mini/bi3dof-simple-600epoch.pt",
+		"model_file" : "drift_models/bi3dof-simple-600epoch-6seq-seed{}.pt".format(SEED), # "model/nuscenes-mini/bi3dof-simple-600epoch.pt",
 		"network" : "simple",   
 		"test_clips": features_folder+"{}.test".format(type_of_OOD), # "data/nuscenes-v1.0-mini.test",      
 		"frames_per_clip": frame_lens[type_of_OOD]
@@ -97,6 +97,8 @@ def getOutBi3DOF(type_of_OOD):
 # iD_scores_final, [GT(t1), ..., GT(tN)] --> roc_curve [GT is 0 for OOD and 1 for iD]
 # epsilon = 95% smallest position of iD_scores_final's iD traces only
 # scan iD_scores for first location in each OOD (not iD) trace when iD_score < epsilon --> gives detection delay and TNR
+
+SEED = 6
 
 def run(type_of_OOD):
 	print('\n\n\n', type_of_OOD, '\n\n')
@@ -130,7 +132,7 @@ def run(type_of_OOD):
 		os.mkdir('./plots_drift/')
 	except:
 		pass
-	plt.savefig('./plots_drift/plot_{}.png'.format(type_of_OOD))
+	plt.savefig('./plots_drift/plot_{}_seed{}.png'.format(type_of_OOD, SEED))
 
 	# detection delay, TNR = TN/(TN+FP) calculation
 	epsilon = compute_epsilon_on_iD_traces_only(iD_scores_all, GTs_all)

@@ -97,10 +97,11 @@ def run():
 	except:
 		pass
 
-	torch.save(vae.state_dict(), "drift_models/bi3dof-{}-{}epoch-{}seq.pt".format(args.latentprior,  epoch+1, args.n_seqs[0]) )
+	torch.save(vae.state_dict(), "drift_models/bi3dof-{}-{}epoch-{}seq-seed{}.pt".format(args.latentprior,  epoch+1, args.n_seqs[0], SEED) )
 
 #
-seed()
+SEED = 6
+seed(SEED)
 # obtain below from feature_abstraction
 frame_lens = {'train': [49, 74, 49, 49, 49, 49, 59, 59, 59, 59, 59, 49, 59, 59, 59, 59, 59, 49, 49, 49, 49, 48, 49, 49], 
 				'in': [49, 89, 59, 59, 59, 59, 59, 59, 59, 59, 59, 49, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 49, 59, 59, 59, 59, 59, 49, 49, 49, 49, 49, 49], 
