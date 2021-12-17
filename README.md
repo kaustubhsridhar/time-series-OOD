@@ -11,13 +11,26 @@ Setup Vanderbilt_data in following folder structure at ./
 │   │   ├── setting_1
 │   │   ├── setting_2
 │   │   ├── setting_3
-├── NTU
-├── NTU_features_all (created by below)
 ```
 
-Then run the following to extract features to ./NTU_features_all/. The following also produces the dictionary of frame lengths (frame_lens) that is pasted into the training and test code below.
+# OURs
+
+
+
+# NTU 
+
+Also setup drift_data in following folder structure at ./
+```bash
+├── drift_data
+│   ├── testing
+│   │   ├── in
+│   │   ├── out
+│   ├── training
 ```
-python feature_abstraction.py
+
+Run the following to extract features to ./NTU_features_all/. The following also produces the dictionary of frame lengths (frame_lens) that is pasted into the training and test code below.
+```
+python feature_abstraction_<name of dataset>.py
 ```
 
 Run code to train a model which will be saved within NTU directory.
@@ -29,5 +42,5 @@ python train_<name of dataset>.py
 Test as follows. Plots will be saved to NTU/plots/ and results will be printed to stdout.
 ```
 cd NTU
-python test.py
+python test_<name of dataset>.py
 ```
