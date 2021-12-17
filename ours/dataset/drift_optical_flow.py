@@ -143,7 +143,7 @@ class DriftDataset(data.Dataset):
                     #print("Image: ", img)
                     with Image.open('{}/{}/image_{}.jpg'.format(root_dir, episode, (str(img).zfill(5)))) as im: 
                         video_frames.append(im.resize((self.img_width, self.img_hgt)))  
-                video_frames = compute_optical_flow(video_frames, halve_features = False, save_image = False) # New
+                # video_frames = compute_optical_flow(video_frames, halve_features = False, save_image = False) # New
                 self.videos.append(video_frames)
 
         elif self.cal:
@@ -162,7 +162,7 @@ class DriftDataset(data.Dataset):
                     #print("Image: ", img)
                     with Image.open('{}/{}/image_{}.jpg'.format(root_dir, episode, (str(img).zfill(5)))) as im: 
                         video_frames.append(im.resize((self.img_width, self.img_hgt)))  
-                video_frames = compute_optical_flow(video_frames, halve_features = False, save_image = False) # New
+                # video_frames = compute_optical_flow(video_frames, halve_features = False, save_image = False) # New
                 self.videos.append(video_frames)
 
         else:
@@ -182,7 +182,7 @@ class DriftDataset(data.Dataset):
                 for img in range(1,no_images+1):
                     with Image.open('{}/{}{}/image_{}.jpg'.format(root_dir, episode, ext, (str(img).zfill(5)))) as im:  # episode
                         video_frames.append(im.resize((self.img_width, self.img_hgt)))
-                video_frames = compute_optical_flow(video_frames, halve_features = False, save_image = False) # New
+                # video_frames = compute_optical_flow(video_frames, halve_features = False, save_image = False) # New
                 self.videos.append(video_frames)      
     
     def __len__(self):
@@ -248,6 +248,10 @@ class DriftDataset(data.Dataset):
         else: # periodic (forward, backward)
            trans_clip[self.clip_total_frames//2:self.clip_total_frames] = reversed(trans_clip[self.clip_total_frames//2:self.clip_total_frames]) 
         
+        # applying optical flow on original and transformed clips
+        trans_clip = compute_optical_flow(trans_clip, halve_features = False, save_image = False)
+        orig_clip = compute_optical_flow(orig_clip, halve_features = False, save_image = False)
+
         trans_clip = self.transform_clip(trans_clip)
         orig_clip = self.transform_clip(orig_clip)
 
@@ -293,6 +297,10 @@ class DriftDataset(data.Dataset):
             else: # periodic (forward, backward)
                 trans_clip[self.clip_total_frames//2:self.clip_total_frames] = reversed(trans_clip[self.clip_total_frames//2:self.clip_total_frames]) 
             
+            # applying optical flow on original and transformed clips
+            trans_clip = compute_optical_flow(trans_clip, halve_features = False, save_image = False)
+            orig_clip = compute_optical_flow(orig_clip, halve_features = False, save_image = False)
+
             trans_clip = self.transform_clip(trans_clip)
             orig_clip = self.transform_clip(orig_clip)
 
