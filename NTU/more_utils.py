@@ -16,6 +16,12 @@ def OOD_score_to_iD_score(list_2D):
 def min_of_each_row(list_2D):
 	return [min(row) for row in list_2D]
 
+def collapse_to_1D(list_2D):
+    list_1D = []
+    for row in list_2D:
+        list_1D.extend(row)
+    return list_1D
+
 def compute_epsilon_on_iD_traces_only(iD_scores_all, GTs_all, TPR=0.95):
     only_iD_traces_scores = []
     for trace_idx, trace_GT in enumerate(GTs_all):
