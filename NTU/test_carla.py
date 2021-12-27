@@ -4,7 +4,7 @@ import torch
 from torch.cuda import current_blas_handle
 from network import Bi3DOF, Encoder, Decoder
 from datasets import seed, Bi3DOFDataset
-from more_utils import make2D, OOD_score_to_iD_score, min_of_each_row, compute_epsilon_on_iD_traces_only, scan_iD_scores_of_windows, scan_iD_scores_of_windows_and_print_list
+from more_utils import make2D, OOD_score_to_iD_score, min_of_each_row, compute_epsilon_on_iD_traces_only, scan_iD_scores_of_windows, scan_iD_scores_of_windows_and_print_list, collapse_to_1D
 import os
 from sklearn.metrics import roc_curve, roc_auc_score
 import matplotlib.pyplot as plt
@@ -111,17 +111,20 @@ def run(type_of_OOD):
 		OOD_scores_flattened = [h[i]+v[i] for i in range(len(h))]
 		OOD_scores_2D_list = make2D(OOD_scores_flattened, args.n_seqs)
 		iD_scores_2D_list = OOD_score_to_iD_score(OOD_scores_2D_list)
-		iD_scores_for_each_trace = min_of_each_row(iD_scores_2D_list)
+		#iD_scores_for_each_trace = min_of_each_row(iD_scores_2D_list)
+		iD_scores_windows = collapse_to_1D(iD_scores_2D_list)
 		if ('in' in bi3dof_simple["test_clips"]) and ('rainy' not in bi3dof_simple["test_clips"]):
 			GT = 1
 		else:
 			GT = 0
-		GTs_for_each_trace = [GT for _ in range(len(iD_scores_for_each_trace))]
+		#GTs_for_each_trace = [GT for _ in range(len(iD_scores_for_each_trace))]
+		GTs_for_each_trace = [GT for _ in range(len(iD_scores_windows))]
 
 		if GT==0:
 			iD_scores_2D_list_of_OOD_traces_only = iD_scores_2D_list
 
-		iD_scores_all.extend(iD_scores_for_each_trace)
+		# iD_scores_all.extend(iD_scores_for_each_trace)
+		iD_scores_all.extend(iD_scores_windows)
 		GTs_all.extend(GTs_for_each_trace)
 
 	fpr, tpr, threshs = roc_curve(GTs_all, iD_scores_all)
