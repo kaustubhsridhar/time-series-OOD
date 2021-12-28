@@ -38,7 +38,7 @@ def load_model(test_config):
 	# Assifn test clips
 	args.data_file = test_config["test_clips"]
 	# Sequentially advance 1 frame per step 
-	args.n_seqs = [f - args.nd for f in test_config["frames_per_clip"]] # New: changed to list # Changed to test all sequences(aka window) in video(aka trace). Number of sequences(aka windows) is total frames-frame size(aka nd = 16)
+	args.n_seqs = [f - 2*args.nd for f in test_config["frames_per_clip"]] # New: changed to list # Changed to test all sequences(aka window) in video(aka trace). Number of sequences(aka windows) is total frames-frame size(aka nd = 16)
 
 	# Load  weights  
 	encoder = Encoder(args)
