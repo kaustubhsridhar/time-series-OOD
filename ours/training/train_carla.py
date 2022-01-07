@@ -1,6 +1,7 @@
 """Applied temporal transformation prediction.
 
-For training- python train_carla.py --cl 16 --log carla_log/16 --bs 2 --gpu 1
+For training with only OF - 
+1) 5 transforms - python train_carla.py --cl 16 --log carla_log/final_results/5_classes/ --bs 2 --gpu 0 --use_image False --use_of True --transformation_list speed shuffle reverse periodic identity --epochs 600
 
 For testing - python train_carla.py --bs 2 --mode test --ckpt carla_log/16/r3d_cl16_12091327/model_300.pt --gpu 2
 
@@ -22,16 +23,12 @@ from torchvision import transforms
 import torch.optim as optim
 from tensorboardX import SummaryWriter
 
-#from datasets.ucf101 import UCF101VCOPDataset
-# from models.c3d import C3D
-# from models.r3d import R3DNet
-# from models.r21d import R2Plus1DNet
+from r3d import Regressor as r3d_regressor
 
-from models.r3d import Regressor as r3d_regressor
-
-from dataset.carla import CARLAVCOPDataset
+from dataset.carla_optical_flow_appended import CARLADataset
 
 import pdb
+from distutils.util import strtobool
 
 def train(args, model, criterion, optimizer, device, train_dataloader, writer, epoch):
     torch.set_grad_enabled(True)
@@ -152,6 +149,9 @@ def parse_args():
     parser.add_argument('--pf', type=int, default=100, help='print frequency every batch')
     parser.add_argument('--seed', type=int, default=100, help='seed for initializing training.')
     parser.add_argument('--img_size', type=int, default=224, help='img height and width')
+    parser.add_argument("--use_image", type=lambda x:bool(strtobool(x)), default=True, help="Use img info")
+    parser.add_argument("--use_of", type=lambda x:bool(strtobool(x)), default=True, help="use optical flow info")
+    parser.add_argument('--transformation_list', '--names-list', nargs='+', default=["speed","shuffle","reverse","periodic","identity"])
 
     args = parser.parse_args()
     return args
@@ -172,14 +172,13 @@ if __name__ == '__main__':
             torch.cuda.manual_seed_all(args.seed)
 
     ########### model r3d for now ##############
-    # if args.model == 'c3d':
-    #     base = C3D(with_classifier=False)
-    # elif args.model == 'r3d':
-    net = r3d_regressor().to(device)
-    # elif args.model == 'r21d':   
-        # base = R2Plus1DNet(layer_sizes=(1,1,1,1), with_classifier=False)
-    # if args.cuda: ASSUMING CUDA is true always
-    net = torch.nn.DataParallel(net, device_ids=[args.gpu])
+    # net = r3d_regressor().to(device)
+    # net = torch.nn.DataParallel(net, device_ids=[args.gpu])
+
+    in_channels = 3
+    if args.use_image and args.use_of:
+        in_channels = 6
+    net = r3d_regressor(num_classes=len(args.transformation_list), in_channels=in_channels).to(device)
 
     if args.ckpt != '':
         net.load_state_dict(torch.load(args.ckpt))
@@ -200,7 +199,7 @@ if __name__ == '__main__':
             transforms.ToTensor()
         ])
 
-        orig_train_dataset = CARLAVCOPDataset(root_dir='CARLA_dataset/Vanderbilt_data/training', clip_len=16, train=True, transforms_=train_transforms, img_size=args.img_size)
+        orig_train_dataset = CARLADataset(root_dir='CARLA_dataset/Vanderbilt_data/training', clip_len=16, train=True, transforms_=train_transforms, img_size=args.img_size, use_image=args.use_image, use_of=args.use_of, transformation_list=args.transformation_list)
 
         train_dataset, val_dataset = random_split(orig_train_dataset, (len(orig_train_dataset)-13, 13), generator=torch.Generator().manual_seed(42)) # split val for 13 videos, we have a total of 33 videos, so training on 20. We will be using the validation dataset as calibration dataset for OOD detection in the CP framework.
 
@@ -214,12 +213,12 @@ if __name__ == '__main__':
         criterion = nn.CrossEntropyLoss()
 
         # setup optimizer
-        fc2_params = list(map(id, net.module.fc2.parameters()))
-        base_params = filter(lambda p: id(p) not in fc2_params, net.parameters())
+        # fc2_params = list(map(id, net.fc2.parameters()))
+        # base_params = filter(lambda p: id(p) not in fc2_params, net.parameters())
 
         # optimizer = optim.SGD([{'params':base_params}, {'params':net.module.fc2.parameters(), 'lr': args.lr*args.lrMul}], lr=args.lr, momentum=0.9, weight_decay=args.wgtDecay, nesterov=True)
 
-        optimizer = optim.AdamW(params= net.parameters(), lr= args.lr, weight_decay=args.wgtDecay)
+        optimizer = optim.Adam(params= net.parameters(), lr= args.lr, weight_decay=args.wgtDecay)
 
         prev_best_val_loss = float('inf')
         prev_best_model_path = None
@@ -248,7 +247,7 @@ if __name__ == '__main__':
         test_transforms = transforms.Compose([
             transforms.ToTensor()
         ])
-        test_dataset = CARLAVCOPDataset(root_dir='CARLA_dataset/Vanderbilt_data/testing', clip_len=16, train=False, transforms_=test_transforms, img_size=args.img_size, in_dist_test=True)
+        test_dataset = CARLADataset(root_dir='CARLA_dataset/Vanderbilt_data/testing', clip_len=16, train=False, transforms_=test_transforms, img_size=args.img_size, in_dist_test=True, use_image=args.use_image, use_of=args.use_of, transformation_list=args.transformation_list)
         print("Test dataset len: ", test_dataset.__len__())
         test_dataloader = DataLoader(test_dataset, batch_size=args.bs, shuffle=False,
                                 num_workers=args.workers, pin_memory=True)
