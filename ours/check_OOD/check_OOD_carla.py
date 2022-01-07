@@ -94,7 +94,7 @@ def calc_test_ce_loss(opt, model, criterion, device, test_dataset, in_dist=True)
     all_traces_ce_loss = []
 
     # definning dictionary for saving losses
-    key_list = ["0", "1", "2", "3"]
+    key_list = ["0", "1", "2", "3", "4"]
     trasform_losses_dictionary = dict.fromkeys(key_list)
     for key in key_list:
          trasform_losses_dictionary[key] = []
@@ -144,7 +144,7 @@ def calc_cal_ce_loss(opt, model, criterion, device, cal_dataloader): # for calib
     # random.seed(opt.seed)
 
     # definning dictionary for saving losses
-    key_list = ["0", "1", "2", "3"]
+    key_list = ["0", "1", "2", "3", "4"]
     trasform_losses_dictionary = dict.fromkeys(key_list)
     for key in key_list:
          trasform_losses_dictionary[key] = []
@@ -416,6 +416,3 @@ if __name__ == "__main__":
 
     print(np.mean(auroc_all_trials,0))
     print(np.std(auroc_all_trials,0))
-
-
-    
