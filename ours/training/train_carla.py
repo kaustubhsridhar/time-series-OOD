@@ -254,3 +254,5 @@ if __name__ == '__main__':
         print('TEST video number: {}.'.format(len(test_dataset)))
         criterion = nn.CrossEntropyLoss()
         test(args, net, criterion, device, test_dataloader)
+
+        
