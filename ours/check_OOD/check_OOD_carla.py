@@ -4,7 +4,7 @@ command to run
 PREV (without optical flow): python check_OOD_carla_per_window.py --gpu 0 --cuda --ckpt carla_log/16/r3d_cl16_12091327/model_500.pt --bs 2 --model r3d --n 5 --save_dir carla_log/16/r3d_cl16_12091327
 
 NOW (only with OF):
-With 5 transforms - python check_OOD_carla_per_window.py --gpu 0 --cuda --ckpt  --bs 2 --model r3d --n 5 --save_dir --use_image False --use_of True --transformation_list speed shuffle reverse periodic identity --n 5
+With 5 transforms - python check_OOD_carla_per_window.py --gpu 1 --cuda --ckpt carla_log/final_results/5_classes/r3d_cl16_01071135/model_600.pt --bs 2 --model r3d --n 20 --save_dir carla_log/final_results/5_classes/snowy --use_image False --use_of True --transformation_list speed shuffle reverse periodic identity
 
 '''
 
@@ -361,7 +361,7 @@ def eval_detection_fisher(eval_n):
 
     # get_det_delay(in_min_fisher_per_trace, out_fisher_values)
     
-    return in_fisher_per_win, out_fisher_per_win
+    return in_fisher_per_win, out_fisher_per_win, in_fisher_values, out_fisher_values # in_fisher_values, out_fisher_values are 2D - traces X windows
 
 def getAUROC(in_fisher_values, out_fisher_values):
     fisher_values = np.concatenate((in_fisher_values, out_fisher_values))
@@ -374,45 +374,67 @@ def getAUROC(in_fisher_values, out_fisher_values):
     au_roc = roc_auc_score(label, fisher_values)*100
     return au_roc
 
+def getTNR(in_fisher_values, out_fisher_values):
 
-def get_det_delay(in_min_fisher_per_trace, out_fisher_values):
+    in_fisher = np.sort(in_fisher_values)[::-1] # sorting in descending order
+    tau = in_fisher[int(0.95*len(in_fisher))] # TNR at 95% TPR
+    tnr = 100*(len(out_fisher_values[out_fisher_values<tau])/len(out_fisher_values))
 
-    # calculating detection delay at 95% TPR (iD is positive here)
-    in_min_fisher_per_trace = np.array(in_min_fisher_per_trace)
-    in_min_fisher_per_trace_sorted = (np.sort(in_min_fisher_per_trace))[::-1]
-    epsilon = in_min_fisher_per_trace_sorted[int(len(in_min_fisher_per_trace_sorted)*0.95)] # epsilon at 95% TPR
-    # print("epsilon: ", epsilon) ##### DO -1 here ###############
+    return tnr, tau
 
-    det_delay = [1000]*len(out_fisher_values)
-    tn = 0
+def get_det_delay(scores_2D_list, tau):
 
-    for i in range(len(out_fisher_values)): # iterating over OOD traces
-        # print("out_fisher_values: ", out_fisher_values[i])
-        for j in range(len(out_fisher_values[i])): # iterating over windows in the trace
-            if out_fisher_values[i][j] < epsilon:
-                det_delay[i] = j
-                tn += 1
+    det_delays = []
+
+    for trace_idx, row in enumerate(scores_2D_list):
+        for window_idx, val in enumerate(row):
+            if val<tau:
+                # print("Trace id: {}, win_id: {}".format(trace_idx, window_idx))
+                det_delays.append(window_idx)
                 break
-
-    print("TNR at 95% TPR: ", 100*(tn/len(out_fisher_values)))
-    print("Det at win: ", det_delay)
+    avg_det_delay = sum(det_delays)/len(det_delays)
+    
+    return avg_det_delay
 
 if __name__ == "__main__":
     torch.manual_seed(opt.seed)
     np.random.seed(opt.seed)
     random.seed(opt.seed)
     auroc_all_trials = []
+    tnr_all_trials = []
+    det_delay_all_trials = []
     for trial in range(opt.trials):
         auroc_one_trial = []
+        tnr_one_trial = []
+        det_delay_one_trial = []
         checkOOD()
         for i in range(opt.n):
-            in_fisher_values_per_win, out_fisher_values_per_win = eval_detection_fisher(i+1)
+            in_fisher_values_per_win, out_fisher_values_per_win, in_fisher_win_values_trace_wise, out_fisher_win_values_trace_wise = eval_detection_fisher(i+1)
             au_roc = getAUROC(in_fisher_values_per_win, out_fisher_values_per_win)
             auroc_one_trial.append(au_roc)
+            tnr, tau = getTNR(in_fisher_values_per_win, out_fisher_values_per_win)
+            tnr_one_trial.append(tnr)
             print("For trial: {}, n: {}, AUROC: {}".format(trial+1, i+1, au_roc))
+            print("For trial: {}, n: {}, TNR: {}".format(trial+1, i+1, tnr))
+            if i == (opt.n-1):
+                # detection delay for last n
+                avg_det_delay = get_det_delay(out_fisher_win_values_trace_wise, tau)
+                det_delay_one_trial.append(avg_det_delay)
         auroc_all_trials.append(auroc_one_trial)
+        tnr_all_trials.append(tnr_one_trial)
+        det_delay_all_trials.append(det_delay_one_trial)
 
     auroc_all_trials = np.array(auroc_all_trials)
+    tnr_all_trials = np.array(tnr_all_trials)
+    det_delay_all_trials = np.array(det_delay_all_trials)
 
-    print(np.mean(auroc_all_trials,0))
-    print(np.std(auroc_all_trials,0))
+    print("AUROC Mean: ", np.mean(auroc_all_trials,0))
+    # print(np.std(auroc_all_trials,0))
+
+    print("TNR Mean: ", np.mean(tnr_all_trials,0))
+    # print(np.std(tnr_all_trials,0))
+
+    print("Det Delay Mean: ", np.mean(det_delay_all_trials,0))
+    # print(np.std(det_delay_all_trials,0))
+
+    
