@@ -172,7 +172,8 @@ class CARLADataset(data.Dataset):
             for episode in episodes:
                 file = open("{}/{}/{}/label.csv".format(root_dir,folder_name,episode))
                 reader = csv.reader(file)
-                no_images= len(list(reader)) # no_images = number of frames in the trace/episode
+                no_images= len(list(reader)) # no_images = number of frames in the trace/episode for snowy, foggy, night, rainy
+                # no_images= 50 # for replay
                 video_frames = [] 
                 for img in range(0,no_images):
                     #print(img)
