@@ -1,0 +1,20 @@
+out_replay
+Loaded the pretrained vae model...
+VAE: (AUROC, TNR, Avg Det Delay): (0.47761658031088083, 4.071058475203553, 11.476190476190476) 
+
+out_snowy
+Loaded the pretrained vae model...
+VAE: (AUROC, TNR, Avg Det Delay): (0.5323572543617998, 0.0, -1) 
+
+out_foggy
+Loaded the pretrained vae model...
+VAE: (AUROC, TNR, Avg Det Delay): (0.5202676767676767, 2.3030303030303028, 33.05555555555556) 
+
+out_night
+Loaded the pretrained vae model...
+VAE: (AUROC, TNR, Avg Det Delay): (0.5086573461891644, 1.7878787878787878, 72.8076923076923) 
+
+out_rainy
+Loaded the pretrained vae model...
+VAE: (AUROC, TNR, Avg Det Delay): (0.5356047295126362, 0.0, -1) 
+

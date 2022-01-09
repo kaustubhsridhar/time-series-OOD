@@ -4,7 +4,7 @@ import torch
 from torch.cuda import current_blas_handle
 from network import Bi3DOF, Encoder, Decoder
 from datasets import seed, Bi3DOFDataset
-from more_utils import make2D, OOD_score_to_iD_score, min_of_each_row, compute_epsilon_on_iD_traces_only, scan_iD_scores_of_windows, scan_iD_scores_of_windows_and_print_list, collapse_to_1D
+from more_utils import make2D, OOD_score_to_iD_score, min_of_each_row, compute_epsilon_on_iD_traces_only, get_det_delay_for_detected_traces, scan_iD_scores_of_windows_and_print_list, collapse_to_1D, getTNR
 import os
 from sklearn.metrics import roc_curve, roc_auc_score
 import matplotlib.pyplot as plt
@@ -101,9 +101,12 @@ def getOutBi3DOF(type_of_OOD):
 SEED = 6
 
 def run(type_of_OOD):
-	print('\n\n\n', type_of_OOD, '\n\n')
+	print('\n', type_of_OOD, '\n')
 	# ROC curve calculation
 	iD_scores_all = []; GTs_all = []
+	scores_of_only_in_points = []
+	scores_of_only_out_points = []
+
 	for idx, bi3dof_simple in enumerate([bi3dof_simple_test_in, getOutBi3DOF(type_of_OOD)]): # i.e. for traces in [iD traces, OOD traces]
 		model, args = load_model(bi3dof_simple)
 		h,v = compute_score(model, args)
@@ -115,17 +118,19 @@ def run(type_of_OOD):
 		iD_scores_windows = collapse_to_1D(iD_scores_2D_list)
 		if ('in' in bi3dof_simple["test_clips"]):
 			GT = 1
+			scores_of_only_in_points.extend(iD_scores_windows)
 		else:
 			GT = 0
+			scores_of_only_out_points.extend(iD_scores_windows)
 		#GTs_for_each_trace = [GT for _ in range(len(iD_scores_for_each_trace))]
-		GTs_for_each_trace = [GT for _ in range(len(iD_scores_windows))]
+		GTs_for_each_window = [GT for _ in range(len(iD_scores_windows))]
 
 		if GT==0:
 			iD_scores_2D_list_of_OOD_traces_only = iD_scores_2D_list
 
 		#iD_scores_all.extend(iD_scores_for_each_trace)
 		iD_scores_all.extend(iD_scores_windows)
-		GTs_all.extend(GTs_for_each_trace)
+		GTs_all.extend(GTs_for_each_window)
 
 	fpr, tpr, threshs = roc_curve(GTs_all, iD_scores_all)
 	auroc = roc_auc_score(GTs_all, iD_scores_all)
@@ -138,13 +143,11 @@ def run(type_of_OOD):
 		pass
 	plt.savefig('./plots_drift/plot_{}_seed{}.png'.format(type_of_OOD, SEED))
 
-	# detection delay, TNR = TN/(TN+FP) calculation
-	epsilon = compute_epsilon_on_iD_traces_only(iD_scores_all, GTs_all)
-	#det_delay, TNR = scan_iD_scores_of_windows(iD_scores_2D_list_of_OOD_traces_only, epsilon)
-	det_delay, TNR = scan_iD_scores_of_windows_and_print_list(iD_scores_2D_list_of_OOD_traces_only, epsilon) # only uncomment this for 'out_rainy'
+	TNR, tau = getTNR(scores_of_only_in_points, scores_of_only_out_points)
+	det_delay = get_det_delay_for_detected_traces(iD_scores_2D_list_of_OOD_traces_only, tau)
 
-	print('Average detection delay for OOD traces: ', det_delay)
-	print('TNR: ', TNR)
+	print(f'(AUROC, TNR, Avg Det Delay): ({auroc}, {TNR}, {det_delay})')
+	
 
 if __name__ == "__main__":
 	for type_of_OOD in ['out']:

@@ -32,7 +32,7 @@ class FeatureAbstraction:
 		train_folders = [6, 20, 17, 7, 30, 8, 13, 27, 5, 26, 31, 21, 32, 3, 10, 19, 1, 24, 4, 2]
 		frame_lens = {}
 
-		for phase in ["train", "in", "out_foggy", "out_night", "out_snowy", "out_rainy"]:
+		for phase in ["train", "in", "out_foggy", "out_night", "out_snowy", "out_rainy", "out_replay"]:
 			# List file for train and test loaders
 			self.store = []
 			frame_lens[phase] = []
@@ -43,14 +43,14 @@ class FeatureAbstraction:
 				names = []
 				for folder_number in train_folders:
 					if folder_number <= 10:
-						locs.append(trainroot+"/setting_1/"+str(folder_number))
-						names.append(trainroot+"/setting_1/"+str(folder_number))
+						locs.append(trainroot+"setting_1/"+str(folder_number))
+						names.append(trainroot+"setting_1/"+str(folder_number))
 					elif folder_number >= 11 and folder_number <= 21:
-						locs.append(trainroot+"/setting_2/"+str(folder_number-11))
-						names.append(trainroot+"/setting_2/"+str(folder_number))
+						locs.append(trainroot+"setting_2/"+str(folder_number-11))
+						names.append(trainroot+"setting_2/"+str(folder_number))
 					elif folder_number >= 22 and folder_number <= 32:
-						locs.append(trainroot+"/setting_3/"+str(folder_number-22))
-						names.append(trainroot+"/setting_3/"+str(folder_number))
+						locs.append(trainroot+"setting_3/"+str(folder_number-22))
+						names.append(trainroot+"setting_3/"+str(folder_number))
 			elif ("in" in phase) and ("rainy" not in phase):
 				path = testroot+phase+"/"
 				locs = glob(path + "*")
@@ -106,7 +106,7 @@ class FeatureAbstraction:
 		print('frame lengths for phases are: \n', frame_lens)
 
 if __name__ == "__main__":
-	trainroot = '../carla_data/training/' # 'data/nuscenes-v1.0-mini/'
+	trainroot = '../carla_data/training/' 
 	testroot = '../carla_data/testing/'
 	dstroot = '../carla_features_all/'
 

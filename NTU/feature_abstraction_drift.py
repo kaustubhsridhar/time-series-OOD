@@ -95,7 +95,7 @@ class FeatureAbstraction:
 		print('frame lengths for phases are: \n', frame_lens)
 
 if __name__ == "__main__":
-	trainroot = '../drift_data/training/' # 'data/nuscenes-v1.0-mini/'
+	trainroot = '../drift_data/training/' 
 	testroot = '../drift_data/testing/'
 	dstroot = '../drift_features_all/'
 

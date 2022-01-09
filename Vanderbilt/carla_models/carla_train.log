@@ -1,0 +1,1054 @@
+cannot find the pretrained VAE model, retrain(ing) it
+Epoch 1/350	 Time: 90.423	 Loss: 1553.81185738
+Epoch 2/350	 Time: 96.266	 Loss: 671.33217858
+Epoch 3/350	 Time: 108.694	 Loss: 588.48520494
+Epoch 4/350	 Time: 116.288	 Loss: 537.80875335
+Epoch 5/350	 Time: 112.904	 Loss: 500.99733690
+Epoch 6/350	 Time: 115.477	 Loss: 480.46189442
+Epoch 7/350	 Time: 120.877	 Loss: 459.71773836
+Epoch 8/350	 Time: 135.409	 Loss: 443.84410744
+Epoch 9/350	 Time: 141.848	 Loss: 429.69196013
+Epoch 10/350	 Time: 139.147	 Loss: 413.74419324
+Epoch 11/350	 Time: 138.332	 Loss: 404.96797092
+Epoch 12/350	 Time: 135.756	 Loss: 393.22189086
+Epoch 13/350	 Time: 135.622	 Loss: 385.18114498
+Epoch 14/350	 Time: 136.745	 Loss: 377.49276874
+Epoch 15/350	 Time: 136.654	 Loss: 366.78655410
+Epoch 16/350	 Time: 139.019	 Loss: 361.53394432
+Epoch 17/350	 Time: 139.225	 Loss: 354.95245291
+Epoch 18/350	 Time: 136.977	 Loss: 346.30741549
+Epoch 19/350	 Time: 134.072	 Loss: 341.10880604
+Epoch 20/350	 Time: 137.914	 Loss: 338.62428056
+Epoch 21/350	 Time: 133.742	 Loss: 331.78398992
+Epoch 22/350	 Time: 136.192	 Loss: 326.65297515
+Epoch 23/350	 Time: 138.017	 Loss: 325.58947754
+Epoch 24/350	 Time: 133.508	 Loss: 317.28018188
+Epoch 25/350	 Time: 138.447	 Loss: 313.58277069
+Epoch 26/350	 Time: 136.263	 Loss: 308.88788333
+Epoch 27/350	 Time: 134.850	 Loss: 303.83612867
+Epoch 28/350	 Time: 134.503	 Loss: 301.30765437
+Epoch 29/350	 Time: 134.754	 Loss: 296.99606990
+Epoch 30/350	 Time: 138.583	 Loss: 294.54645302
+Epoch 31/350	 Time: 135.884	 Loss: 291.77170361
+Epoch 32/350	 Time: 138.143	 Loss: 288.35709214
+Epoch 33/350	 Time: 135.247	 Loss: 285.93378562
+Epoch 34/350	 Time: 135.327	 Loss: 284.59525097
+Epoch 35/350	 Time: 140.215	 Loss: 281.34752260
+Epoch 36/350	 Time: 139.051	 Loss: 279.57311486
+Epoch 37/350	 Time: 137.495	 Loss: 275.76342002
+Epoch 38/350	 Time: 136.058	 Loss: 272.58162716
+Epoch 39/350	 Time: 136.869	 Loss: 269.22084396
+Epoch 40/350	 Time: 134.200	 Loss: 268.58969274
+Epoch 41/350	 Time: 134.475	 Loss: 266.46329595
+Epoch 42/350	 Time: 136.874	 Loss: 265.53897235
+Epoch 43/350	 Time: 137.865	 Loss: 262.65614301
+Epoch 44/350	 Time: 138.626	 Loss: 259.62847094
+Epoch 45/350	 Time: 136.735	 Loss: 257.27352081
+Epoch 46/350	 Time: 133.990	 Loss: 255.74739005
+Epoch 47/350	 Time: 135.065	 Loss: 254.15854899
+Epoch 48/350	 Time: 135.448	 Loss: 253.89584824
+Epoch 49/350	 Time: 136.377	 Loss: 248.81168988
+Epoch 50/350	 Time: 131.558	 Loss: 246.68131896
+Epoch 51/350	 Time: 132.911	 Loss: 243.92600925
+Epoch 52/350	 Time: 133.282	 Loss: 244.09913776
+Epoch 53/350	 Time: 133.246	 Loss: 242.82344195
+Epoch 54/350	 Time: 132.606	 Loss: 239.71824330
+Epoch 55/350	 Time: 135.002	 Loss: 238.73311747
+Epoch 56/350	 Time: 132.006	 Loss: 238.79066117
+Epoch 57/350	 Time: 133.184	 Loss: 236.48452005
+Epoch 58/350	 Time: 131.265	 Loss: 234.64955385
+Epoch 59/350	 Time: 129.429	 Loss: 235.23498360
+Epoch 60/350	 Time: 136.223	 Loss: 232.77394262
+Epoch 61/350	 Time: 137.658	 Loss: 229.93365952
+Epoch 62/350	 Time: 135.914	 Loss: 229.62846690
+Epoch 63/350	 Time: 130.593	 Loss: 228.78518449
+Epoch 64/350	 Time: 134.810	 Loss: 224.61356871
+Epoch 65/350	 Time: 134.355	 Loss: 226.39088265
+Epoch 66/350	 Time: 138.177	 Loss: 224.90462292
+Epoch 67/350	 Time: 135.527	 Loss: 222.77923321
+Epoch 68/350	 Time: 133.306	 Loss: 221.15353008
+Epoch 69/350	 Time: 138.359	 Loss: 222.23511216
+Epoch 70/350	 Time: 133.209	 Loss: 221.19143607
+Epoch 71/350	 Time: 133.301	 Loss: 218.23655473
+Epoch 72/350	 Time: 133.475	 Loss: 215.67011761
+Epoch 73/350	 Time: 131.212	 Loss: 214.84406219
+Epoch 74/350	 Time: 137.021	 Loss: 215.40753560
+Epoch 75/350	 Time: 138.262	 Loss: 214.53823502
+Epoch 76/350	 Time: 134.434	 Loss: 213.21177551
+Epoch 77/350	 Time: 133.441	 Loss: 212.36187920
+Epoch 78/350	 Time: 135.263	 Loss: 210.24989547
+Epoch 79/350	 Time: 134.602	 Loss: 210.52804250
+Epoch 80/350	 Time: 138.071	 Loss: 210.24969465
+Epoch 81/350	 Time: 134.408	 Loss: 208.15686719
+Epoch 82/350	 Time: 135.511	 Loss: 206.73526667
+Epoch 83/350	 Time: 135.575	 Loss: 206.60503572
+Epoch 84/350	 Time: 136.078	 Loss: 204.86286663
+Epoch 85/350	 Time: 134.570	 Loss: 202.94309647
+Epoch 86/350	 Time: 133.369	 Loss: 203.11169662
+Epoch 87/350	 Time: 135.329	 Loss: 204.77986706
+Epoch 88/350	 Time: 132.965	 Loss: 202.12407605
+Epoch 89/350	 Time: 134.407	 Loss: 200.75038463
+Epoch 90/350	 Time: 131.896	 Loss: 202.39110627
+Epoch 91/350	 Time: 133.941	 Loss: 199.21997035
+Epoch 92/350	 Time: 137.720	 Loss: 198.90748088
+Epoch 93/350	 Time: 131.897	 Loss: 197.71522171
+Epoch 94/350	 Time: 137.674	 Loss: 196.44265396
+Epoch 95/350	 Time: 134.038	 Loss: 196.87435755
+Epoch 96/350	 Time: 134.959	 Loss: 196.11534171
+Epoch 97/350	 Time: 134.491	 Loss: 196.42891369
+Epoch 98/350	 Time: 131.021	 Loss: 194.75371473
+Epoch 99/350	 Time: 129.028	 Loss: 192.31258997
+Epoch 100/350	 Time: 134.686	 Loss: 192.84613177
+Epoch 101/350	 Time: 130.719	 Loss: 192.09080505
+Epoch 102/350	 Time: 131.348	 Loss: 191.75982596
+Epoch 103/350	 Time: 134.959	 Loss: 191.59965270
+Epoch 104/350	 Time: 131.935	 Loss: 188.55048449
+Epoch 105/350	 Time: 131.087	 Loss: 189.17842418
+Epoch 106/350	 Time: 132.876	 Loss: 187.21088576
+Epoch 107/350	 Time: 133.059	 Loss: 187.08480379
+Epoch 108/350	 Time: 133.098	 Loss: 186.22042093
+Epoch 109/350	 Time: 131.516	 Loss: 187.77961713
+Epoch 110/350	 Time: 130.746	 Loss: 185.13553909
+Epoch 111/350	 Time: 133.058	 Loss: 187.50369421
+Epoch 112/350	 Time: 135.564	 Loss: 185.29069116
+Epoch 113/350	 Time: 138.047	 Loss: 187.73977591
+Epoch 114/350	 Time: 133.668	 Loss: 183.68640154
+Epoch 115/350	 Time: 136.185	 Loss: 182.84158395
+Epoch 116/350	 Time: 132.076	 Loss: 181.37038834
+Epoch 117/350	 Time: 133.837	 Loss: 180.96496144
+Epoch 118/350	 Time: 132.127	 Loss: 180.91174246
+Epoch 119/350	 Time: 137.324	 Loss: 181.54850313
+Epoch 120/350	 Time: 131.303	 Loss: 181.04423295
+Epoch 121/350	 Time: 133.657	 Loss: 179.64529700
+Epoch 122/350	 Time: 132.484	 Loss: 179.02821701
+Epoch 123/350	 Time: 133.765	 Loss: 178.08304587
+Epoch 124/350	 Time: 136.277	 Loss: 178.13443572
+Epoch 125/350	 Time: 130.487	 Loss: 177.56749541
+Epoch 126/350	 Time: 102.483	 Loss: 175.04636076
+Epoch 127/350	 Time: 101.778	 Loss: 177.34230550
+Epoch 128/350	 Time: 109.139	 Loss: 175.24348888
+Epoch 129/350	 Time: 101.651	 Loss: 175.30889770
+Epoch 130/350	 Time: 102.541	 Loss: 174.92182098
+Epoch 131/350	 Time: 102.019	 Loss: 174.40705696
+Epoch 132/350	 Time: 106.652	 Loss: 173.51547329
+Epoch 133/350	 Time: 102.888	 Loss: 174.38333481
+Epoch 134/350	 Time: 100.522	 Loss: 174.11576510
+Epoch 135/350	 Time: 101.514	 Loss: 172.05756597
+Epoch 136/350	 Time: 98.750	 Loss: 172.16167406
+Epoch 137/350	 Time: 101.261	 Loss: 172.08907800
+Epoch 138/350	 Time: 105.351	 Loss: 171.00176300
+Epoch 139/350	 Time: 102.284	 Loss: 170.89966557
+Epoch 140/350	 Time: 103.303	 Loss: 170.84782497
+Epoch 141/350	 Time: 101.203	 Loss: 169.43105114
+Epoch 142/350	 Time: 102.138	 Loss: 169.56895657
+Epoch 143/350	 Time: 102.319	 Loss: 170.16123805
+Epoch 144/350	 Time: 101.481	 Loss: 168.37415971
+Epoch 145/350	 Time: 101.283	 Loss: 167.92491466
+Epoch 146/350	 Time: 101.584	 Loss: 167.09998593
+Epoch 147/350	 Time: 100.683	 Loss: 167.00050915
+Epoch 148/350	 Time: 99.358	 Loss: 167.31371334
+Epoch 149/350	 Time: 98.360	 Loss: 168.11014688
+Epoch 150/350	 Time: 102.757	 Loss: 165.57093986
+Epoch 151/350	 Time: 105.490	 Loss: 164.75981912
+Epoch 152/350	 Time: 99.904	 Loss: 164.64073321
+Epoch 153/350	 Time: 99.623	 Loss: 164.02407609
+Epoch 154/350	 Time: 98.311	 Loss: 165.27490743
+Epoch 155/350	 Time: 98.666	 Loss: 163.49554496
+Epoch 156/350	 Time: 101.898	 Loss: 163.02134214
+Epoch 157/350	 Time: 104.628	 Loss: 162.80967835
+Epoch 158/350	 Time: 101.583	 Loss: 162.19639886
+Epoch 159/350	 Time: 102.678	 Loss: 161.71094855
+Epoch 160/350	 Time: 100.896	 Loss: 161.46437213
+Epoch 161/350	 Time: 101.893	 Loss: 160.38774933
+Epoch 162/350	 Time: 101.898	 Loss: 161.53312701
+Epoch 163/350	 Time: 101.137	 Loss: 160.39857343
+Epoch 164/350	 Time: 102.160	 Loss: 159.46596641
+Epoch 165/350	 Time: 99.404	 Loss: 160.46982724
+Epoch 166/350	 Time: 101.546	 Loss: 160.30177728
+Epoch 167/350	 Time: 104.156	 Loss: 158.43868826
+Epoch 168/350	 Time: 101.088	 Loss: 159.72257294
+Epoch 169/350	 Time: 99.816	 Loss: 157.60673400
+Epoch 170/350	 Time: 99.737	 Loss: 158.09001598
+Epoch 171/350	 Time: 99.987	 Loss: 157.74844080
+Epoch 172/350	 Time: 103.266	 Loss: 156.88378678
+Epoch 173/350	 Time: 101.571	 Loss: 157.79515988
+Epoch 174/350	 Time: 100.479	 Loss: 157.32892389
+Epoch 175/350	 Time: 104.161	 Loss: 155.85604613
+Epoch 176/350	 Time: 101.470	 Loss: 157.11972818
+Epoch 177/350	 Time: 101.330	 Loss: 156.97682015
+Epoch 178/350	 Time: 100.808	 Loss: 155.67331511
+Epoch 179/350	 Time: 101.427	 Loss: 155.33650593
+Epoch 180/350	 Time: 100.760	 Loss: 154.99038310
+Epoch 181/350	 Time: 101.525	 Loss: 154.33571090
+Epoch 182/350	 Time: 100.436	 Loss: 153.76923274
+Epoch 183/350	 Time: 100.445	 Loss: 153.79556415
+Epoch 184/350	 Time: 102.623	 Loss: 153.84328961
+Epoch 185/350	 Time: 100.128	 Loss: 153.65910638
+Epoch 186/350	 Time: 100.159	 Loss: 153.99917655
+Epoch 187/350	 Time: 102.376	 Loss: 152.08476029
+Epoch 188/350	 Time: 99.940	 Loss: 151.56776411
+Epoch 189/350	 Time: 101.614	 Loss: 152.28051214
+Epoch 190/350	 Time: 99.857	 Loss: 151.95666399
+Epoch 191/350	 Time: 99.604	 Loss: 152.49342750
+Epoch 192/350	 Time: 100.190	 Loss: 152.12650799
+Epoch 193/350	 Time: 98.888	 Loss: 152.02345557
+Epoch 194/350	 Time: 100.225	 Loss: 151.37132667
+Epoch 195/350	 Time: 99.346	 Loss: 150.19927786
+Epoch 196/350	 Time: 98.763	 Loss: 149.59701906
+Epoch 197/350	 Time: 100.730	 Loss: 149.13900634
+Epoch 198/350	 Time: 97.523	 Loss: 150.09786058
+Epoch 199/350	 Time: 99.968	 Loss: 148.17303888
+Epoch 200/350	 Time: 100.442	 Loss: 148.99369181
+Epoch 201/350	 Time: 100.526	 Loss: 147.45536225
+Epoch 202/350	 Time: 98.734	 Loss: 148.14608063
+Epoch 203/350	 Time: 98.138	 Loss: 148.24128565
+Epoch 204/350	 Time: 100.697	 Loss: 147.63518814
+Epoch 205/350	 Time: 101.729	 Loss: 148.32004100
+Epoch 206/350	 Time: 98.772	 Loss: 147.38247891
+Epoch 207/350	 Time: 101.511	 Loss: 147.02998089
+Epoch 208/350	 Time: 100.851	 Loss: 148.14141723
+Epoch 209/350	 Time: 100.039	 Loss: 147.18058251
+Epoch 210/350	 Time: 99.442	 Loss: 146.22905214
+Epoch 211/350	 Time: 101.730	 Loss: 147.51556712
+Epoch 212/350	 Time: 98.592	 Loss: 146.16183261
+Epoch 213/350	 Time: 99.370	 Loss: 146.39813724
+Epoch 214/350	 Time: 101.180	 Loss: 144.98322586
+Epoch 215/350	 Time: 98.013	 Loss: 144.88935273
+Epoch 216/350	 Time: 99.010	 Loss: 144.33174730
+Epoch 217/350	 Time: 98.363	 Loss: 144.07201043
+Epoch 218/350	 Time: 101.796	 Loss: 143.68408151
+Epoch 219/350	 Time: 100.126	 Loss: 143.66679110
+Epoch 220/350	 Time: 100.691	 Loss: 144.82332409
+Epoch 221/350	 Time: 100.426	 Loss: 143.30011969
+Epoch 222/350	 Time: 102.858	 Loss: 143.23073025
+Epoch 223/350	 Time: 97.432	 Loss: 145.03361687
+Epoch 224/350	 Time: 100.902	 Loss: 143.42154869
+Epoch 225/350	 Time: 101.130	 Loss: 142.99108729
+Epoch 226/350	 Time: 99.804	 Loss: 142.85767496
+Epoch 227/350	 Time: 103.188	 Loss: 141.23626007
+Epoch 228/350	 Time: 103.064	 Loss: 143.05981445
+Epoch 229/350	 Time: 100.938	 Loss: 141.78885922
+Epoch 230/350	 Time: 102.128	 Loss: 140.74557320
+Epoch 231/350	 Time: 100.293	 Loss: 140.52018387
+Epoch 232/350	 Time: 102.492	 Loss: 141.85368452
+Epoch 233/350	 Time: 103.286	 Loss: 142.63629887
+Epoch 234/350	 Time: 100.816	 Loss: 140.54310257
+Epoch 235/350	 Time: 101.043	 Loss: 140.67088327
+Epoch 236/350	 Time: 98.398	 Loss: 140.39959717
+Epoch 237/350	 Time: 100.755	 Loss: 140.59670021
+Epoch 238/350	 Time: 98.031	 Loss: 139.74103529
+Epoch 239/350	 Time: 101.108	 Loss: 140.28146485
+Epoch 240/350	 Time: 99.988	 Loss: 139.46494740
+Epoch 241/350	 Time: 99.825	 Loss: 139.26501202
+Epoch 242/350	 Time: 100.898	 Loss: 140.25525893
+Epoch 243/350	 Time: 100.378	 Loss: 139.16918893
+Epoch 244/350	 Time: 101.177	 Loss: 139.57841334
+Epoch 245/350	 Time: 102.340	 Loss: 139.64823194
+Epoch 246/350	 Time: 100.426	 Loss: 138.08182569
+Epoch 247/350	 Time: 100.730	 Loss: 138.48152818
+Epoch 248/350	 Time: 101.071	 Loss: 138.18525573
+Epoch 249/350	 Time: 100.518	 Loss: 137.01742054
+Epoch 250/350	 Time: 104.425	 Loss: 137.30119210
+Epoch 251/350	 Time: 99.011	 Loss: 129.60280337
+Epoch 252/350	 Time: 98.428	 Loss: 128.22804453
+Epoch 253/350	 Time: 100.264	 Loss: 127.94234353
+Epoch 254/350	 Time: 98.748	 Loss: 128.16792350
+Epoch 255/350	 Time: 100.384	 Loss: 127.76855513
+Epoch 256/350	 Time: 100.287	 Loss: 127.90011904
+Epoch 257/350	 Time: 97.722	 Loss: 127.69930364
+Epoch 258/350	 Time: 102.464	 Loss: 127.59484530
+Epoch 259/350	 Time: 100.725	 Loss: 127.91010013
+Epoch 260/350	 Time: 99.614	 Loss: 127.67223840
+Epoch 261/350	 Time: 100.688	 Loss: 127.64519632
+Epoch 262/350	 Time: 100.062	 Loss: 127.54464897
+Epoch 263/350	 Time: 98.541	 Loss: 127.36727826
+Epoch 264/350	 Time: 103.265	 Loss: 127.35210103
+Epoch 265/350	 Time: 106.766	 Loss: 127.62192211
+Epoch 266/350	 Time: 102.059	 Loss: 127.35306049
+Epoch 267/350	 Time: 101.047	 Loss: 127.44716066
+Epoch 268/350	 Time: 99.360	 Loss: 127.51219765
+Epoch 269/350	 Time: 99.289	 Loss: 127.13426708
+Epoch 270/350	 Time: 98.328	 Loss: 127.32915593
+Epoch 271/350	 Time: 101.674	 Loss: 127.29568850
+Epoch 272/350	 Time: 98.581	 Loss: 127.28550755
+Epoch 273/350	 Time: 99.953	 Loss: 127.23307520
+Epoch 274/350	 Time: 100.783	 Loss: 127.14318830
+Epoch 275/350	 Time: 100.078	 Loss: 126.92268521
+Epoch 276/350	 Time: 101.589	 Loss: 127.38000611
+Epoch 277/350	 Time: 102.870	 Loss: 127.25427535
+Epoch 278/350	 Time: 99.770	 Loss: 126.91994169
+Epoch 279/350	 Time: 99.736	 Loss: 127.09935550
+Epoch 280/350	 Time: 100.821	 Loss: 127.29676731
+Epoch 281/350	 Time: 101.990	 Loss: 127.00096358
+Epoch 282/350	 Time: 101.820	 Loss: 127.15032179
+Epoch 283/350	 Time: 98.397	 Loss: 127.06344227
+Epoch 284/350	 Time: 101.642	 Loss: 126.93911182
+Epoch 285/350	 Time: 99.678	 Loss: 126.82246548
+Epoch 286/350	 Time: 101.981	 Loss: 126.80037023
+Epoch 287/350	 Time: 105.146	 Loss: 126.85056752
+Epoch 288/350	 Time: 99.863	 Loss: 126.79388130
+Epoch 289/350	 Time: 101.025	 Loss: 126.43594562
+Epoch 290/350	 Time: 101.356	 Loss: 126.93455356
+Epoch 291/350	 Time: 98.902	 Loss: 126.66307734
+Epoch 292/350	 Time: 98.215	 Loss: 126.81231041
+Epoch 293/350	 Time: 100.544	 Loss: 126.48709001
+Epoch 294/350	 Time: 98.865	 Loss: 126.57617749
+Epoch 295/350	 Time: 99.314	 Loss: 126.46119067
+Epoch 296/350	 Time: 100.946	 Loss: 126.80185840
+Epoch 297/350	 Time: 102.021	 Loss: 126.59171462
+Epoch 298/350	 Time: 102.995	 Loss: 126.73967155
+Epoch 299/350	 Time: 101.182	 Loss: 126.42721330
+Epoch 300/350	 Time: 98.419	 Loss: 126.33333947
+Epoch 301/350	 Time: 98.508	 Loss: 126.33422150
+Epoch 302/350	 Time: 99.390	 Loss: 126.17703387
+Epoch 303/350	 Time: 102.066	 Loss: 126.28578107
+Epoch 304/350	 Time: 104.827	 Loss: 126.34499640
+Epoch 305/350	 Time: 102.452	 Loss: 126.29082340
+Epoch 306/350	 Time: 100.142	 Loss: 126.01788909
+Epoch 307/350	 Time: 100.221	 Loss: 125.96066100
+Epoch 308/350	 Time: 98.690	 Loss: 126.00636546
+Epoch 309/350	 Time: 99.172	 Loss: 125.99237078
+Epoch 310/350	 Time: 100.229	 Loss: 125.65135061
+Epoch 311/350	 Time: 104.370	 Loss: 125.82807159
+Epoch 312/350	 Time: 104.169	 Loss: 126.05000463
+Epoch 313/350	 Time: 98.242	 Loss: 126.11526384
+Epoch 314/350	 Time: 99.979	 Loss: 125.74112736
+Epoch 315/350	 Time: 103.132	 Loss: 125.72068094
+Epoch 316/350	 Time: 101.367	 Loss: 125.80734683
+Epoch 317/350	 Time: 98.316	 Loss: 125.74227774
+Epoch 318/350	 Time: 99.997	 Loss: 125.61867093
+Epoch 319/350	 Time: 100.934	 Loss: 125.56130832
+Epoch 320/350	 Time: 98.883	 Loss: 125.46777203
+Epoch 321/350	 Time: 101.138	 Loss: 125.31278018
+Epoch 322/350	 Time: 99.510	 Loss: 125.51620448
+Epoch 323/350	 Time: 100.129	 Loss: 125.29165544
+Epoch 324/350	 Time: 102.145	 Loss: 125.28327837
+Epoch 325/350	 Time: 102.868	 Loss: 125.39316489
+Epoch 326/350	 Time: 143.316	 Loss: 125.41266211
+Epoch 327/350	 Time: 145.551	 Loss: 125.43240427
+Epoch 328/350	 Time: 117.077	 Loss: 125.45116819
+Epoch 329/350	 Time: 114.442	 Loss: 125.28712025
+Epoch 330/350	 Time: 113.557	 Loss: 125.44779986
+Epoch 331/350	 Time: 112.851	 Loss: 125.04844017
+Epoch 332/350	 Time: 114.779	 Loss: 125.18200403
+Epoch 333/350	 Time: 104.332	 Loss: 125.02532389
+Epoch 334/350	 Time: 99.357	 Loss: 124.88488884
+Epoch 335/350	 Time: 99.899	 Loss: 124.90155178
+Epoch 336/350	 Time: 102.240	 Loss: 125.17946660
+Epoch 337/350	 Time: 99.821	 Loss: 124.77893382
+Epoch 338/350	 Time: 101.490	 Loss: 124.94479256
+Epoch 339/350	 Time: 100.412	 Loss: 124.93654475
+Epoch 340/350	 Time: 101.953	 Loss: 124.84171944
+Epoch 341/350	 Time: 98.299	 Loss: 124.80460647
+Epoch 342/350	 Time: 100.391	 Loss: 124.80622723
+Epoch 343/350	 Time: 98.868	 Loss: 124.85703339
+Epoch 344/350	 Time: 100.879	 Loss: 124.81860202
+Epoch 345/350	 Time: 98.899	 Loss: 124.74595291
+Epoch 346/350	 Time: 101.428	 Loss: 124.76708827
+Epoch 347/350	 Time: 106.928	 Loss: 124.56360740
+Epoch 348/350	 Time: 100.852	 Loss: 124.47149956
+Epoch 349/350	 Time: 101.248	 Loss: 124.75734676
+Epoch 350/350	 Time: 101.686	 Loss: 124.76103754
+/home/ksridhar/anaconda3/envs/DL_env/lib/python3.8/site-packages/torch/optim/lr_scheduler.py:416: UserWarning: To get the last learning rate computed by the scheduler, please use `get_last_lr()`.
+  warnings.warn("To get the last learning rate computed by the scheduler, "
+LR is: 0.0001
+Epoch 1/350	 Time: 99.724	 Loss: 13381.83804076
+LR is: 0.0001
+Epoch 2/350	 Time: 96.104	 Loss: 437.34232444
+LR is: 0.0001
+Epoch 3/350	 Time: 97.974	 Loss: 239.43438615
+LR is: 0.0001
+Epoch 4/350	 Time: 101.954	 Loss: 149.35488874
+LR is: 0.0001
+Epoch 5/350	 Time: 100.492	 Loss: 102.88713389
+LR is: 0.0001
+Epoch 6/350	 Time: 101.124	 Loss: 74.61940301
+LR is: 0.0001
+Epoch 7/350	 Time: 97.504	 Loss: 57.62069426
+LR is: 0.0001
+Epoch 8/350	 Time: 102.805	 Loss: 45.69778157
+LR is: 0.0001
+Epoch 9/350	 Time: 98.008	 Loss: 37.36514376
+LR is: 0.0001
+Epoch 10/350	 Time: 98.575	 Loss: 31.12880908
+LR is: 0.0001
+Epoch 11/350	 Time: 104.504	 Loss: 26.29595579
+LR is: 0.0001
+Epoch 12/350	 Time: 97.684	 Loss: 22.42451626
+LR is: 0.0001
+Epoch 13/350	 Time: 99.229	 Loss: 19.68455980
+LR is: 0.0001
+Epoch 14/350	 Time: 99.549	 Loss: 17.35662352
+LR is: 0.0001
+Epoch 15/350	 Time: 96.648	 Loss: 15.21644453
+LR is: 0.0001
+Epoch 16/350	 Time: 98.319	 Loss: 13.57965312
+LR is: 0.0001
+Epoch 17/350	 Time: 97.180	 Loss: 12.12942058
+LR is: 0.0001
+Epoch 18/350	 Time: 96.778	 Loss: 10.93427525
+LR is: 0.0001
+Epoch 19/350	 Time: 96.468	 Loss: 10.16502188
+LR is: 0.0001
+Epoch 20/350	 Time: 96.216	 Loss: 9.19136687
+LR is: 0.0001
+Epoch 21/350	 Time: 97.672	 Loss: 8.39550828
+LR is: 0.0001
+Epoch 22/350	 Time: 97.424	 Loss: 7.87243601
+LR is: 0.0001
+Epoch 23/350	 Time: 99.712	 Loss: 7.39561828
+LR is: 0.0001
+Epoch 24/350	 Time: 97.684	 Loss: 6.71152916
+LR is: 0.0001
+Epoch 25/350	 Time: 98.158	 Loss: 6.27945891
+LR is: 0.0001
+Epoch 26/350	 Time: 97.898	 Loss: 5.96390303
+LR is: 0.0001
+Epoch 27/350	 Time: 98.655	 Loss: 5.49971265
+LR is: 0.0001
+Epoch 28/350	 Time: 97.678	 Loss: 5.26881349
+LR is: 0.0001
+Epoch 29/350	 Time: 98.575	 Loss: 5.06565309
+LR is: 0.0001
+Epoch 30/350	 Time: 133.532	 Loss: 5.09258202
+LR is: 0.0001
+Epoch 31/350	 Time: 192.697	 Loss: 4.89578744
+LR is: 0.0001
+Epoch 32/350	 Time: 259.675	 Loss: 4.83594194
+LR is: 0.0001
+Epoch 33/350	 Time: 260.911	 Loss: 4.49419142
+LR is: 0.0001
+Epoch 34/350	 Time: 208.424	 Loss: 4.11834255
+LR is: 0.0001
+Epoch 35/350	 Time: 199.183	 Loss: 4.18155316
+LR is: 0.0001
+Epoch 36/350	 Time: 190.017	 Loss: 4.09142713
+LR is: 0.0001
+Epoch 37/350	 Time: 189.863	 Loss: 4.05035922
+LR is: 0.0001
+Epoch 38/350	 Time: 152.430	 Loss: 3.76100122
+LR is: 0.0001
+Epoch 39/350	 Time: 112.642	 Loss: 3.98325829
+LR is: 0.0001
+Epoch 40/350	 Time: 101.528	 Loss: 4.10422870
+LR is: 0.0001
+Epoch 41/350	 Time: 164.219	 Loss: 3.32962276
+LR is: 0.0001
+Epoch 42/350	 Time: 184.106	 Loss: 3.17355542
+LR is: 0.0001
+Epoch 43/350	 Time: 130.932	 Loss: 5.26753911
+LR is: 0.0001
+Epoch 44/350	 Time: 99.802	 Loss: 3.79719561
+LR is: 0.0001
+Epoch 45/350	 Time: 100.907	 Loss: 3.34107100
+LR is: 0.0001
+Epoch 46/350	 Time: 96.946	 Loss: 3.89385714
+LR is: 0.0001
+Epoch 47/350	 Time: 202.045	 Loss: 3.48954934
+LR is: 0.0001
+Epoch 48/350	 Time: 174.855	 Loss: 10.80953044
+LR is: 0.0001
+Epoch 49/350	 Time: 135.015	 Loss: 20.97559874
+LR is: 0.0001
+Epoch 50/350	 Time: 136.039	 Loss: 4.00115587
+LR is: 0.0001
+Epoch 51/350	 Time: 126.973	 Loss: 6.10984669
+LR is: 0.0001
+Epoch 52/350	 Time: 133.427	 Loss: 4.40714182
+LR is: 0.0001
+Epoch 53/350	 Time: 129.663	 Loss: 4.08409003
+LR is: 0.0001
+Epoch 54/350	 Time: 101.500	 Loss: 6.61626986
+LR is: 0.0001
+Epoch 55/350	 Time: 104.363	 Loss: 5.11006189
+LR is: 0.0001
+Epoch 56/350	 Time: 99.504	 Loss: 5.45646600
+LR is: 0.0001
+Epoch 57/350	 Time: 101.378	 Loss: 4.40875328
+LR is: 0.0001
+Epoch 58/350	 Time: 100.836	 Loss: 4.52924432
+LR is: 0.0001
+Epoch 59/350	 Time: 101.035	 Loss: 25.56332655
+LR is: 0.0001
+Epoch 60/350	 Time: 97.729	 Loss: 3.45936189
+LR is: 0.0001
+Epoch 61/350	 Time: 91.899	 Loss: 2.67215275
+LR is: 0.0001
+Epoch 62/350	 Time: 92.744	 Loss: 4.68957430
+LR is: 0.0001
+Epoch 63/350	 Time: 91.271	 Loss: 5.71538815
+LR is: 0.0001
+Epoch 64/350	 Time: 94.445	 Loss: 6.00239606
+LR is: 0.0001
+Epoch 65/350	 Time: 92.374	 Loss: 6.66787406
+LR is: 0.0001
+Epoch 66/350	 Time: 93.550	 Loss: 15.59860210
+LR is: 0.0001
+Epoch 67/350	 Time: 93.279	 Loss: 12.04165292
+LR is: 0.0001
+Epoch 68/350	 Time: 93.010	 Loss: 3.87052133
+LR is: 0.0001
+Epoch 69/350	 Time: 94.075	 Loss: 1.96962905
+LR is: 0.0001
+Epoch 70/350	 Time: 92.460	 Loss: 4.84798906
+LR is: 0.0001
+Epoch 71/350	 Time: 88.110	 Loss: 5.06439537
+LR is: 0.0001
+Epoch 72/350	 Time: 69.331	 Loss: 22.34491640
+LR is: 0.0001
+Epoch 73/350	 Time: 69.459	 Loss: 4.00429857
+LR is: 0.0001
+Epoch 74/350	 Time: 69.448	 Loss: 3.91940055
+LR is: 0.0001
+Epoch 75/350	 Time: 69.454	 Loss: 4.56258586
+LR is: 0.0001
+Epoch 76/350	 Time: 69.455	 Loss: 2.03947317
+LR is: 0.0001
+Epoch 77/350	 Time: 69.464	 Loss: 10.40271846
+LR is: 0.0001
+Epoch 78/350	 Time: 69.475	 Loss: 3.66701085
+LR is: 0.0001
+Epoch 79/350	 Time: 69.467	 Loss: 3.89600005
+LR is: 0.0001
+Epoch 80/350	 Time: 69.452	 Loss: 3.53697299
+LR is: 0.0001
+Epoch 81/350	 Time: 69.456	 Loss: 8.46410984
+LR is: 0.0001
+Epoch 82/350	 Time: 69.483	 Loss: 3.20434156
+LR is: 0.0001
+Epoch 83/350	 Time: 69.466	 Loss: 3.40922210
+LR is: 0.0001
+Epoch 84/350	 Time: 69.497	 Loss: 3.16954970
+LR is: 0.0001
+Epoch 85/350	 Time: 69.491	 Loss: 7.05287644
+LR is: 0.0001
+Epoch 86/350	 Time: 69.497	 Loss: 2.70703877
+LR is: 0.0001
+Epoch 87/350	 Time: 69.477	 Loss: 11.91915285
+LR is: 0.0001
+Epoch 88/350	 Time: 69.513	 Loss: 2.09043332
+LR is: 0.0001
+Epoch 89/350	 Time: 69.492	 Loss: 2.32756559
+LR is: 0.0001
+Epoch 90/350	 Time: 69.483	 Loss: 7.21650400
+LR is: 0.0001
+Epoch 91/350	 Time: 69.488	 Loss: 3.26415899
+LR is: 0.0001
+Epoch 92/350	 Time: 69.484	 Loss: 5.03248745
+LR is: 0.0001
+Epoch 93/350	 Time: 69.491	 Loss: 3.27075748
+LR is: 0.0001
+Epoch 94/350	 Time: 69.495	 Loss: 10.30633364
+LR is: 0.0001
+Epoch 95/350	 Time: 69.487	 Loss: 3.64497041
+LR is: 0.0001
+Epoch 96/350	 Time: 69.483	 Loss: 3.80855018
+LR is: 0.0001
+Epoch 97/350	 Time: 69.482	 Loss: 2.07046624
+LR is: 0.0001
+Epoch 98/350	 Time: 69.483	 Loss: 3.19465434
+LR is: 0.0001
+Epoch 99/350	 Time: 69.497	 Loss: 4.25981939
+LR is: 0.0001
+Epoch 100/350	 Time: 69.485	 Loss: 8.51894590
+LR is: 0.0001
+Epoch 101/350	 Time: 69.509	 Loss: 3.21671386
+LR is: 0.0001
+Epoch 102/350	 Time: 69.498	 Loss: 1.94716286
+LR is: 0.0001
+Epoch 103/350	 Time: 69.484	 Loss: 3.61813423
+LR is: 0.0001
+Epoch 104/350	 Time: 69.487	 Loss: 3.47024399
+LR is: 0.0001
+Epoch 105/350	 Time: 69.477	 Loss: 5.45531241
+LR is: 0.0001
+Epoch 106/350	 Time: 69.467	 Loss: 3.01368395
+LR is: 0.0001
+Epoch 107/350	 Time: 69.471	 Loss: 13.38206888
+LR is: 0.0001
+Epoch 108/350	 Time: 69.477	 Loss: 1.43339558
+LR is: 0.0001
+Epoch 109/350	 Time: 69.472	 Loss: 1.77548250
+LR is: 0.0001
+Epoch 110/350	 Time: 69.475	 Loss: 0.95013399
+LR is: 0.0001
+Epoch 111/350	 Time: 69.464	 Loss: 4.15238957
+LR is: 0.0001
+Epoch 112/350	 Time: 69.468	 Loss: 6.70829294
+LR is: 0.0001
+Epoch 113/350	 Time: 69.503	 Loss: 4.42737969
+LR is: 0.0001
+Epoch 114/350	 Time: 69.492	 Loss: 1.18846267
+LR is: 0.0001
+Epoch 115/350	 Time: 69.474	 Loss: 0.92975875
+LR is: 0.0001
+Epoch 116/350	 Time: 69.495	 Loss: 3.37979069
+LR is: 0.0001
+Epoch 117/350	 Time: 69.463	 Loss: 4.72705308
+LR is: 0.0001
+Epoch 118/350	 Time: 69.488	 Loss: 6.43879491
+LR is: 0.0001
+Epoch 119/350	 Time: 69.468	 Loss: 3.38059042
+LR is: 0.0001
+Epoch 120/350	 Time: 69.473	 Loss: 1.51714624
+LR is: 0.0001
+Epoch 121/350	 Time: 69.469	 Loss: 5.22138038
+LR is: 0.0001
+Epoch 122/350	 Time: 69.462	 Loss: 3.85881636
+LR is: 0.0001
+Epoch 123/350	 Time: 69.330	 Loss: 2.17010358
+LR is: 0.0001
+Epoch 124/350	 Time: 69.345	 Loss: 3.02725273
+LR is: 0.0001
+Epoch 125/350	 Time: 69.352	 Loss: 1.70817803
+LR is: 0.0001
+Epoch 126/350	 Time: 69.321	 Loss: 1.06966983
+LR is: 0.0001
+Epoch 127/350	 Time: 69.332	 Loss: 4.02440347
+LR is: 0.0001
+Epoch 128/350	 Time: 69.350	 Loss: 7.27009984
+LR is: 0.0001
+Epoch 129/350	 Time: 69.348	 Loss: 3.48926835
+LR is: 0.0001
+Epoch 130/350	 Time: 69.321	 Loss: 1.70493103
+LR is: 0.0001
+Epoch 131/350	 Time: 69.347	 Loss: 2.22747311
+LR is: 0.0001
+Epoch 132/350	 Time: 69.504	 Loss: 1.18416372
+LR is: 0.0001
+Epoch 133/350	 Time: 69.516	 Loss: 2.73081592
+LR is: 0.0001
+Epoch 134/350	 Time: 69.527	 Loss: 7.60797008
+LR is: 0.0001
+Epoch 135/350	 Time: 69.537	 Loss: 4.47223597
+LR is: 0.0001
+Epoch 136/350	 Time: 69.388	 Loss: 1.81339834
+LR is: 0.0001
+Epoch 137/350	 Time: 69.382	 Loss: 1.69128983
+LR is: 0.0001
+Epoch 138/350	 Time: 69.380	 Loss: 0.83670121
+LR is: 0.0001
+Epoch 139/350	 Time: 69.299	 Loss: 11.58306699
+LR is: 0.0001
+Epoch 140/350	 Time: 69.332	 Loss: 4.41412389
+LR is: 0.0001
+Epoch 141/350	 Time: 69.314	 Loss: 0.60504052
+LR is: 0.0001
+Epoch 142/350	 Time: 69.394	 Loss: 0.51149365
+LR is: 0.0001
+Epoch 143/350	 Time: 69.362	 Loss: 0.60946411
+LR is: 0.0001
+Epoch 144/350	 Time: 69.307	 Loss: 0.95889850
+LR is: 0.0001
+Epoch 145/350	 Time: 69.358	 Loss: 0.74909416
+LR is: 0.0001
+Epoch 146/350	 Time: 69.322	 Loss: 4.71083787
+LR is: 0.0001
+Epoch 147/350	 Time: 69.328	 Loss: 5.41362517
+LR is: 0.0001
+Epoch 148/350	 Time: 69.276	 Loss: 0.77496799
+LR is: 0.0001
+Epoch 149/350	 Time: 69.319	 Loss: 1.39210005
+LR is: 0.0001
+Epoch 150/350	 Time: 69.329	 Loss: 3.39264650
+LR is: 0.0001
+Epoch 151/350	 Time: 69.365	 Loss: 3.65912166
+LR is: 0.0001
+Epoch 152/350	 Time: 69.322	 Loss: 2.05478424
+LR is: 0.0001
+Epoch 153/350	 Time: 69.314	 Loss: 1.70372105
+LR is: 0.0001
+Epoch 154/350	 Time: 69.300	 Loss: 2.69483458
+LR is: 0.0001
+Epoch 155/350	 Time: 69.324	 Loss: 3.65791472
+LR is: 0.0001
+Epoch 156/350	 Time: 69.341	 Loss: 2.04852949
+LR is: 0.0001
+Epoch 157/350	 Time: 69.307	 Loss: 1.19275170
+LR is: 0.0001
+Epoch 158/350	 Time: 69.364	 Loss: 1.80439859
+LR is: 0.0001
+Epoch 159/350	 Time: 69.313	 Loss: 2.68000682
+LR is: 0.0001
+Epoch 160/350	 Time: 69.306	 Loss: 1.26298201
+LR is: 0.0001
+Epoch 161/350	 Time: 69.418	 Loss: 2.28932858
+LR is: 0.0001
+Epoch 162/350	 Time: 69.299	 Loss: 1782.44655968
+LR is: 0.0001
+Epoch 163/350	 Time: 69.352	 Loss: 182.94201788
+LR is: 0.0001
+Epoch 164/350	 Time: 69.381	 Loss: 5.33799654
+LR is: 0.0001
+Epoch 165/350	 Time: 69.354	 Loss: 3.70796408
+LR is: 0.0001
+Epoch 166/350	 Time: 69.336	 Loss: 2.77563666
+LR is: 0.0001
+Epoch 167/350	 Time: 69.313	 Loss: 1.97252590
+LR is: 0.0001
+Epoch 168/350	 Time: 69.352	 Loss: 1.76954411
+LR is: 0.0001
+Epoch 169/350	 Time: 69.278	 Loss: 1.57425135
+LR is: 0.0001
+Epoch 170/350	 Time: 69.302	 Loss: 1.35114837
+LR is: 0.0001
+Epoch 171/350	 Time: 69.311	 Loss: 1.30763062
+LR is: 0.0001
+Epoch 172/350	 Time: 69.299	 Loss: 1.27498124
+LR is: 0.0001
+Epoch 173/350	 Time: 69.329	 Loss: 1.15738666
+LR is: 0.0001
+Epoch 174/350	 Time: 69.313	 Loss: 1.03712986
+LR is: 0.0001
+Epoch 175/350	 Time: 69.309	 Loss: 0.94124533
+LR is: 0.0001
+Epoch 176/350	 Time: 69.329	 Loss: 0.85153237
+LR is: 0.0001
+Epoch 177/350	 Time: 69.273	 Loss: 0.84944618
+LR is: 0.0001
+Epoch 178/350	 Time: 69.345	 Loss: 0.77188864
+LR is: 0.0001
+Epoch 179/350	 Time: 69.392	 Loss: 0.80661075
+LR is: 0.0001
+Epoch 180/350	 Time: 69.377	 Loss: 0.82882518
+LR is: 0.0001
+Epoch 181/350	 Time: 69.426	 Loss: 0.75098995
+LR is: 0.0001
+Epoch 182/350	 Time: 69.316	 Loss: 0.73550615
+LR is: 0.0001
+Epoch 183/350	 Time: 69.293	 Loss: 0.72834609
+LR is: 0.0001
+Epoch 184/350	 Time: 69.307	 Loss: 0.70082051
+LR is: 0.0001
+Epoch 185/350	 Time: 69.327	 Loss: 0.73659391
+LR is: 0.0001
+Epoch 186/350	 Time: 69.293	 Loss: 0.92946219
+LR is: 0.0001
+Epoch 187/350	 Time: 69.328	 Loss: 0.72058422
+LR is: 0.0001
+Epoch 188/350	 Time: 69.292	 Loss: 0.78150493
+LR is: 0.0001
+Epoch 189/350	 Time: 69.301	 Loss: 0.54927871
+LR is: 0.0001
+Epoch 190/350	 Time: 69.313	 Loss: 0.83498440
+LR is: 0.0001
+Epoch 191/350	 Time: 69.333	 Loss: 1.66077123
+LR is: 0.0001
+Epoch 192/350	 Time: 69.298	 Loss: 0.72999560
+LR is: 0.0001
+Epoch 193/350	 Time: 69.297	 Loss: 1.41295008
+LR is: 0.0001
+Epoch 194/350	 Time: 69.266	 Loss: 0.83272789
+LR is: 0.0001
+Epoch 195/350	 Time: 69.375	 Loss: 0.99244887
+LR is: 0.0001
+Epoch 196/350	 Time: 69.316	 Loss: 1.29095397
+LR is: 0.0001
+Epoch 197/350	 Time: 69.307	 Loss: 4.09725877
+LR is: 0.0001
+Epoch 198/350	 Time: 69.315	 Loss: 1.38184502
+LR is: 0.0001
+Epoch 199/350	 Time: 69.313	 Loss: 1.30335859
+LR is: 0.0001
+Epoch 200/350	 Time: 69.263	 Loss: 1.95650188
+LR is: 0.0001
+Epoch 201/350	 Time: 69.284	 Loss: 2.81100421
+LR is: 0.0001
+Epoch 202/350	 Time: 69.274	 Loss: 0.93298507
+LR is: 0.0001
+Epoch 203/350	 Time: 69.252	 Loss: 1.86742821
+LR is: 0.0001
+Epoch 204/350	 Time: 69.303	 Loss: 1.41093739
+LR is: 0.0001
+Epoch 205/350	 Time: 69.301	 Loss: 2.75683518
+LR is: 0.0001
+Epoch 206/350	 Time: 69.334	 Loss: 1.35639560
+LR is: 0.0001
+Epoch 207/350	 Time: 69.291	 Loss: 2.02632235
+LR is: 0.0001
+Epoch 208/350	 Time: 69.322	 Loss: 2.64684302
+LR is: 0.0001
+Epoch 209/350	 Time: 69.291	 Loss: 1.44641733
+LR is: 0.0001
+Epoch 210/350	 Time: 69.269	 Loss: 3.57888984
+LR is: 0.0001
+Epoch 211/350	 Time: 69.314	 Loss: 0.71253451
+LR is: 0.0001
+Epoch 212/350	 Time: 69.302	 Loss: 2.67169250
+LR is: 0.0001
+Epoch 213/350	 Time: 69.279	 Loss: 5.35653354
+LR is: 0.0001
+Epoch 214/350	 Time: 69.297	 Loss: 0.55948232
+LR is: 0.0001
+Epoch 215/350	 Time: 69.283	 Loss: 0.80219524
+LR is: 0.0001
+Epoch 216/350	 Time: 69.261	 Loss: 1.34531883
+LR is: 0.0001
+Epoch 217/350	 Time: 69.308	 Loss: 2.10013869
+LR is: 0.0001
+Epoch 218/350	 Time: 69.288	 Loss: 4.33723391
+LR is: 0.0001
+Epoch 219/350	 Time: 69.328	 Loss: 0.83537310
+LR is: 0.0001
+Epoch 220/350	 Time: 69.322	 Loss: 2.61169453
+LR is: 0.0001
+Epoch 221/350	 Time: 69.380	 Loss: 1.44990202
+LR is: 0.0001
+Epoch 222/350	 Time: 69.284	 Loss: 3.37412086
+LR is: 0.0001
+Epoch 223/350	 Time: 69.302	 Loss: 6.99571769
+LR is: 0.0001
+Epoch 224/350	 Time: 69.260	 Loss: 0.58060174
+LR is: 0.0001
+Epoch 225/350	 Time: 69.278	 Loss: 0.93084803
+LR is: 0.0001
+Epoch 226/350	 Time: 69.306	 Loss: 1.04397733
+LR is: 0.0001
+Epoch 227/350	 Time: 69.262	 Loss: 4.90359811
+LR is: 0.0001
+Epoch 228/350	 Time: 69.270	 Loss: 3.63528830
+LR is: 0.0001
+Epoch 229/350	 Time: 69.289	 Loss: 1.04754177
+LR is: 0.0001
+Epoch 230/350	 Time: 69.301	 Loss: 0.65620314
+LR is: 0.0001
+Epoch 231/350	 Time: 69.252	 Loss: 3.05135322
+LR is: 0.0001
+Epoch 232/350	 Time: 69.326	 Loss: 2.80069491
+LR is: 0.0001
+Epoch 233/350	 Time: 69.280	 Loss: 1.82317814
+LR is: 0.0001
+Epoch 234/350	 Time: 69.274	 Loss: 7.32304480
+LR is: 0.0001
+Epoch 235/350	 Time: 69.303	 Loss: 4.17040833
+LR is: 0.0001
+Epoch 236/350	 Time: 69.311	 Loss: 0.39268165
+LR is: 0.0001
+Epoch 237/350	 Time: 69.339	 Loss: 0.30150048
+LR is: 0.0001
+Epoch 238/350	 Time: 69.284	 Loss: 0.76348963
+LR is: 0.0001
+Epoch 239/350	 Time: 69.259	 Loss: 1.52901738
+LR is: 0.0001
+Epoch 240/350	 Time: 69.314	 Loss: 5.37348254
+LR is: 0.0001
+Epoch 241/350	 Time: 69.269	 Loss: 0.72536787
+LR is: 0.0001
+Epoch 242/350	 Time: 69.258	 Loss: 2.34048659
+LR is: 0.0001
+Epoch 243/350	 Time: 69.317	 Loss: 2.17355629
+LR is: 0.0001
+Epoch 244/350	 Time: 69.324	 Loss: 1.66420850
+LR is: 0.0001
+Epoch 245/350	 Time: 69.324	 Loss: 3.15231511
+LR is: 0.0001
+Epoch 246/350	 Time: 69.287	 Loss: 0.86702239
+LR is: 0.0001
+Epoch 247/350	 Time: 69.236	 Loss: 2.24224451
+LR is: 0.0001
+Epoch 248/350	 Time: 69.309	 Loss: 1.29445658
+LR is: 0.0001
+Epoch 249/350	 Time: 69.336	 Loss: 1.33398754
+LR is: 0.0001
+Epoch 250/350	 Time: 69.243	 Loss: 6.45319625
+LR is: 1.0000000000000002e-06
+  LR scheduler: new learning rate is 1e-06
+Epoch 251/350	 Time: 69.274	 Loss: 0.15517318
+LR is: 1e-05
+Epoch 252/350	 Time: 69.272	 Loss: 0.10719577
+LR is: 1e-05
+Epoch 253/350	 Time: 69.358	 Loss: 0.09752750
+LR is: 1e-05
+Epoch 254/350	 Time: 69.279	 Loss: 0.08798123
+LR is: 1e-05
+Epoch 255/350	 Time: 69.297	 Loss: 0.08402315
+LR is: 1e-05
+Epoch 256/350	 Time: 69.432	 Loss: 0.08501139
+LR is: 1e-05
+Epoch 257/350	 Time: 69.302	 Loss: 0.07715624
+LR is: 1e-05
+Epoch 258/350	 Time: 69.308	 Loss: 0.07682163
+LR is: 1e-05
+Epoch 259/350	 Time: 69.335	 Loss: 0.07369116
+LR is: 1e-05
+Epoch 260/350	 Time: 69.292	 Loss: 0.07284666
+LR is: 1e-05
+Epoch 261/350	 Time: 69.314	 Loss: 0.07021858
+LR is: 1e-05
+Epoch 262/350	 Time: 69.324	 Loss: 0.07348639
+LR is: 1e-05
+Epoch 263/350	 Time: 69.336	 Loss: 0.06934135
+LR is: 1e-05
+Epoch 264/350	 Time: 69.353	 Loss: 0.06994079
+LR is: 1e-05
+Epoch 265/350	 Time: 69.316	 Loss: 0.06711873
+LR is: 1e-05
+Epoch 266/350	 Time: 69.341	 Loss: 0.06637934
+LR is: 1e-05
+Epoch 267/350	 Time: 69.294	 Loss: 0.06745722
+LR is: 1e-05
+Epoch 268/350	 Time: 69.319	 Loss: 0.06266228
+LR is: 1e-05
+Epoch 269/350	 Time: 69.316	 Loss: 0.06315827
+LR is: 1e-05
+Epoch 270/350	 Time: 69.325	 Loss: 0.06977715
+LR is: 1e-05
+Epoch 271/350	 Time: 69.303	 Loss: 0.06159713
+LR is: 1e-05
+Epoch 272/350	 Time: 69.331	 Loss: 0.06220640
+LR is: 1e-05
+Epoch 273/350	 Time: 69.327	 Loss: 0.05969516
+LR is: 1e-05
+Epoch 274/350	 Time: 69.318	 Loss: 0.06031168
+LR is: 1e-05
+Epoch 275/350	 Time: 69.329	 Loss: 0.06030833
+LR is: 1e-05
+Epoch 276/350	 Time: 69.300	 Loss: 0.05956220
+LR is: 1e-05
+Epoch 277/350	 Time: 69.306	 Loss: 0.05820379
+LR is: 1e-05
+Epoch 278/350	 Time: 69.289	 Loss: 0.05924340
+LR is: 1e-05
+Epoch 279/350	 Time: 69.278	 Loss: 0.06294763
+LR is: 1e-05
+Epoch 280/350	 Time: 69.335	 Loss: 0.06377042
+LR is: 1e-05
+Epoch 281/350	 Time: 69.299	 Loss: 0.07071008
+LR is: 1e-05
+Epoch 282/350	 Time: 69.341	 Loss: 0.06219637
+LR is: 1e-05
+Epoch 283/350	 Time: 69.297	 Loss: 0.06656009
+LR is: 1e-05
+Epoch 284/350	 Time: 69.298	 Loss: 0.06464915
+LR is: 1e-05
+Epoch 285/350	 Time: 69.341	 Loss: 0.05858072
+LR is: 1e-05
+Epoch 286/350	 Time: 69.309	 Loss: 0.05895370
+LR is: 1e-05
+Epoch 287/350	 Time: 69.331	 Loss: 0.05660678
+LR is: 1e-05
+Epoch 288/350	 Time: 69.317	 Loss: 0.06395402
+LR is: 1e-05
+Epoch 289/350	 Time: 69.299	 Loss: 0.06100402
+LR is: 1e-05
+Epoch 290/350	 Time: 69.295	 Loss: 0.06160103
+LR is: 1e-05
+Epoch 291/350	 Time: 69.308	 Loss: 0.06436779
+LR is: 1e-05
+Epoch 292/350	 Time: 69.310	 Loss: 0.05975681
+LR is: 1e-05
+Epoch 293/350	 Time: 69.317	 Loss: 0.06497329
+LR is: 1e-05
+Epoch 294/350	 Time: 69.325	 Loss: 0.05790652
+LR is: 1e-05
+Epoch 295/350	 Time: 69.301	 Loss: 0.06378684
+LR is: 1e-05
+Epoch 296/350	 Time: 69.335	 Loss: 0.06310136
+LR is: 1e-05
+Epoch 297/350	 Time: 69.321	 Loss: 0.06660613
+LR is: 1e-05
+Epoch 298/350	 Time: 69.307	 Loss: 0.06707287
+LR is: 1e-05
+Epoch 299/350	 Time: 69.313	 Loss: 0.05817386
+LR is: 1e-05
+Epoch 300/350	 Time: 69.269	 Loss: 0.06199572
+LR is: 1e-05
+Epoch 301/350	 Time: 69.281	 Loss: 0.06306307
+LR is: 1e-05
+Epoch 302/350	 Time: 69.329	 Loss: 0.07393671
+LR is: 1e-05
+Epoch 303/350	 Time: 69.336	 Loss: 0.07991435
+LR is: 1e-05
+Epoch 304/350	 Time: 69.332	 Loss: 0.06675880
+LR is: 1e-05
+Epoch 305/350	 Time: 69.318	 Loss: 0.08182862
+LR is: 1e-05
+Epoch 306/350	 Time: 69.316	 Loss: 0.11854984
+LR is: 1e-05
+Epoch 307/350	 Time: 69.313	 Loss: 0.07596849
+LR is: 1e-05
+Epoch 308/350	 Time: 69.313	 Loss: 0.05747767
+LR is: 1e-05
+Epoch 309/350	 Time: 69.308	 Loss: 0.06044243
+LR is: 1e-05
+Epoch 310/350	 Time: 69.341	 Loss: 0.09555724
+LR is: 1e-05
+Epoch 311/350	 Time: 69.287	 Loss: 0.14073060
+LR is: 1e-05
+Epoch 312/350	 Time: 69.309	 Loss: 0.07700399
+LR is: 1e-05
+Epoch 313/350	 Time: 69.316	 Loss: 0.05432364
+LR is: 1e-05
+Epoch 314/350	 Time: 69.296	 Loss: 0.06052572
+LR is: 1e-05
+Epoch 315/350	 Time: 69.294	 Loss: 0.08469251
+LR is: 1e-05
+Epoch 316/350	 Time: 69.325	 Loss: 0.06774947
+LR is: 1e-05
+Epoch 317/350	 Time: 69.317	 Loss: 0.07109706
+LR is: 1e-05
+Epoch 318/350	 Time: 69.311	 Loss: 0.06954685
+LR is: 1e-05
+Epoch 319/350	 Time: 69.315	 Loss: 0.05933773
+LR is: 1e-05
+Epoch 320/350	 Time: 69.301	 Loss: 0.07263587
+LR is: 1e-05
+Epoch 321/350	 Time: 69.318	 Loss: 0.08050090
+LR is: 1e-05
+Epoch 322/350	 Time: 69.294	 Loss: 0.05498255
+LR is: 1e-05
+Epoch 323/350	 Time: 69.274	 Loss: 0.06361162
+LR is: 1e-05
+Epoch 324/350	 Time: 69.318	 Loss: 0.08805316
+LR is: 1e-05
+Epoch 325/350	 Time: 69.289	 Loss: 0.05784912
+LR is: 1e-05
+Epoch 326/350	 Time: 69.275	 Loss: 0.07151282
+LR is: 1e-05
+Epoch 327/350	 Time: 69.305	 Loss: 0.09312845
+LR is: 1e-05
+Epoch 328/350	 Time: 69.301	 Loss: 0.09582849
+LR is: 1e-05
+Epoch 329/350	 Time: 69.299	 Loss: 0.04930322
+LR is: 1e-05
+Epoch 330/350	 Time: 69.287	 Loss: 0.07006306
+LR is: 1e-05
+Epoch 331/350	 Time: 69.297	 Loss: 0.05591453
+LR is: 1e-05
+Epoch 332/350	 Time: 69.311	 Loss: 0.06554925
+LR is: 1e-05
+Epoch 333/350	 Time: 69.283	 Loss: 0.04873100
+LR is: 1e-05
+Epoch 334/350	 Time: 69.291	 Loss: 0.06712863
+LR is: 1e-05
+Epoch 335/350	 Time: 69.304	 Loss: 0.08099568
+LR is: 1e-05
+Epoch 336/350	 Time: 69.272	 Loss: 0.06119360
+LR is: 1e-05
+Epoch 337/350	 Time: 69.265	 Loss: 0.04688668
+LR is: 1e-05
+Epoch 338/350	 Time: 69.303	 Loss: 0.07632385
+LR is: 1e-05
+Epoch 339/350	 Time: 69.350	 Loss: 0.06006334
+LR is: 1e-05
+Epoch 340/350	 Time: 69.350	 Loss: 0.06550099
+LR is: 1e-05
+Epoch 341/350	 Time: 69.346	 Loss: 0.08859308
+LR is: 1e-05
+Epoch 342/350	 Time: 69.342	 Loss: 0.05615730
+LR is: 1e-05
+Epoch 343/350	 Time: 69.355	 Loss: 0.09153356
+LR is: 1e-05
+Epoch 344/350	 Time: 69.336	 Loss: 0.06678738
+LR is: 1e-05
+Epoch 345/350	 Time: 69.347	 Loss: 0.05250956
+LR is: 1e-05
+Epoch 346/350	 Time: 69.376	 Loss: 0.06125354
+LR is: 1e-05
+Epoch 347/350	 Time: 69.322	 Loss: 0.09465612
+LR is: 1e-05
+Epoch 348/350	 Time: 69.348	 Loss: 0.08769398
+LR is: 1e-05
+Epoch 349/350	 Time: 69.345	 Loss: 0.04916869
+LR is: 1e-05
+Epoch 350/350	 Time: 69.360	 Loss: 0.08655518

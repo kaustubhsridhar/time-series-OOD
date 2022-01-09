@@ -31,30 +31,29 @@ def compute_epsilon_on_iD_traces_only(iD_scores_all, GTs_all, TPR=0.95):
     only_iD_traces_scores = np.array(sorted(only_iD_traces_scores, reverse=True))
     n_traces = len(only_iD_traces_scores)
     epsilon = only_iD_traces_scores[int(TPR*n_traces)-1]
-    print('No of iD traces: {} | TPR {} location: {}'.format(n_traces, TPR, int(TPR*n_traces)-1))
-    print("iD traces' scores: ", only_iD_traces_scores)
-    print('epsilon: ', epsilon)
+    print('No of iD points: {} | TPR {} | location = int(TPR x n_pts) - 1: {} | epsilon: {}'.format(n_traces, TPR, int(TPR*n_traces)-1, epsilon))
+    # print("iD traces' scores: ", only_iD_traces_scores)
+    # print('epsilon: ', epsilon)
     return epsilon
 
-def scan_iD_scores_of_windows(iD_scores_2D_list, epsilon):
-    det_delays = []
-    not_detected_as_OOD = 0
-    for row in iD_scores_2D_list:
-        for window_idx, val in enumerate(row):
-            if val<epsilon:
-                det_delays.append(window_idx)
-                break
-            if window_idx == len(row)-1:
-                not_detected_as_OOD += 1
-    if len(det_delays) !=0:
-        avg_det_delay = sum(det_delays)/len(det_delays)
-    else:
-        avg_det_delay = -1
-    TN = len(det_delays)
-    FP = not_detected_as_OOD
-    TNR = TN / (TN + FP)
-    assert (TN + FP)==len(iD_scores_2D_list)
-    return avg_det_delay, TNR
+def getTNR(in_scores, out_scores):
+    in_scores, out_scores = np.array(in_scores), np.array(out_scores)
+
+    in_fisher = np.sort(in_scores)[::-1] # sorting in descending order
+    tau = in_fisher[int(0.95*len(in_scores))] # TNR at 95% TPR
+    tnr = 100*(len(out_scores[out_scores<tau])/len(out_scores))
+
+    return tnr, tau
+
+def get_det_delay_for_detected_traces(scores_2D_list, tau):
+   det_delays = []
+   for trace_idx, row in enumerate(scores_2D_list):
+       for window_idx, val in enumerate(row):
+           if val<tau:
+               det_delays.append(window_idx)
+               break
+   avg_det_delay = sum(det_delays)/len(det_delays)
+   return avg_det_delay
 
 def scan_iD_scores_of_windows_and_print_list(iD_scores_2D_list, epsilon):
     det_delays = []

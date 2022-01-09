@@ -1,0 +1,5 @@
+opencv-python==4.2.0.32 # added .32
+tensorflow-gpu==1.14
+keras==2.2.4
+pandas==0.25.3
+prettytable
