@@ -26,6 +26,7 @@ Also setup drift_data in following folder structure at ./
 │   │   ├── in
 │   │   ├── out
 │   ├── training
+│   ├── calibration
 ```
 
 Run the following to extract features to ./carla_features_all/. The following also produces the dictionary of frame lengths (frame_lens) that is pasted into the training and test code below.
@@ -44,4 +45,35 @@ Test as follows. Plots will be saved to NTU/plots/ and results will be printed t
 ```
 cd NTU
 python test_<name of dataset>.py
+```
+
+# Vanderbilt
+
+To train 
+```
+cd Vanderbilt
+mkdir carla_models
+python train_vae_svdd.py -d carla
+```
+
+To test with VAE model
+```
+cd Vanderbilt
+python detect.py -d carla -v
+```
+
+# Beta-VAE
+
+To train 
+```
+cd Beta-VAE
+mkdir carla_models
+cd bvae-train-test
+python train-bvae_carla.py
+```
+
+To test with VAE model
+```
+cd Beta-VAE/bvae-train-test
+python test-bvae_carla.py
 ```
