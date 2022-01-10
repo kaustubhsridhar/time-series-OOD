@@ -98,7 +98,7 @@ def getOutBi3DOF(type_of_OOD):
 # epsilon = 95% smallest position of iD_scores_final's iD traces only
 # scan iD_scores for first location in each OOD (not iD) trace when iD_score < epsilon --> gives detection delay and TNR
 
-SEED = 6
+SEED = 2
 
 def run(type_of_OOD):
 	print('\n', type_of_OOD, '\n')
@@ -134,14 +134,21 @@ def run(type_of_OOD):
 
 	fpr, tpr, threshs = roc_curve(GTs_all, iD_scores_all)
 	auroc = roc_auc_score(GTs_all, iD_scores_all)
-	plt.figure()
-	plt.plot(fpr, tpr)
-	plt.legend(['ROC curve (AUROC: {})'.format(auroc)])
+	# plt.figure()
+	# plt.plot(fpr, tpr)
+	# plt.legend(['ROC curve (AUROC: {})'.format(auroc)])
+	# try:
+	# 	os.mkdir('./plots_drift/')
+	# except:
+	# 	pass
+	# plt.savefig('./plots_drift/plot_{}_seed{}.png'.format(type_of_OOD, SEED))
+
 	try:
-		os.mkdir('./plots_drift/')
+		os.mkdir('./npz_saved/')
 	except:
 		pass
-	plt.savefig('./plots_drift/plot_{}_seed{}.png'.format(type_of_OOD, SEED))
+	np.save(f'./npz_saved/drift_in_NTU.npz', scores_of_only_in_points)
+	np.save(f'./npz_saved/drift_out_NTU.npz', scores_of_only_out_points)
 
 	TNR, tau = getTNR(scores_of_only_in_points, scores_of_only_out_points)
 	det_delay = get_det_delay_for_detected_traces(iD_scores_2D_list_of_OOD_traces_only, tau)
