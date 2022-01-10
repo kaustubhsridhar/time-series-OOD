@@ -16,4 +16,5 @@
 # nohup python -u detect.py -d drift > drift_models/drift_svdd_test.log &
 
 # python detect.py -d carla -v
-python detect.py -d drift -v
+nohup python -u detect.py -d carla -v > carla_models/carla_vae_test_out_replay_only.log &
+# python detect.py -d drift -v

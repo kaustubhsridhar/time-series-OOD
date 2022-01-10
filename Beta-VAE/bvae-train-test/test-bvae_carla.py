@@ -171,11 +171,13 @@ if __name__ == '__main__':
             class_detector =  [21,3,26,19,4]
         # train_data_path = path + model + '/' + "train-latents.csv"
         # calib_data_path = path + model + '/' + "caliberation-latents.csv"
-        csv_file = path + model + '/' + 'calib_kl.csv'
-        with open(csv_file, 'r') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                kl_value.append(row)
+        # csv_file = path + model + '/' + 'calib_kl.csv'
+        # with open(csv_file, 'r') as file:
+        #     reader = csv.reader(file)
+        #     for row in reader:
+        #         kl_value.append(row)
+        kl_value = get_calibration_kl()
+
         kl_value1 = []
         for i in range(len(class_detector)):
             kl_value1.append(kl_value[class_detector[i]])

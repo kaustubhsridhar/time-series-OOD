@@ -72,7 +72,9 @@ def run(type_of_OOD, count, saved_model_epoch=None):
         S_values_for_in_points_only = []
         S_values_for_out_points_only = []
 
+        tot = len(test_dataset)
         for idx, (test_image, is_test_image_iD) in enumerate(test_dataloader):
+            print(f'{idx+1}/{tot}...')
             smm = SMM(args.N)
             for i in range(args.N):
                 p = icad(test_image, idx)
@@ -89,6 +91,14 @@ def run(type_of_OOD, count, saved_model_epoch=None):
         S_values_for_in_points_only = OOD_score_to_iD_score(S_values_for_in_points_only)
         S_values_for_out_points_only = OOD_score_to_iD_score(S_values_for_out_points_only)
         S_values_2D_list_for_out_points_only = make2D(S_values_for_out_points_only, frame_lens[type_of_OOD])
+
+        try:
+            os.mkdir('./npz_saved/')
+        except:
+            pass
+        second_half_of_type_of_OOD = type_of_OOD.split('_')[-1]
+        np.save(f'./npz_saved/{second_half_of_type_of_OOD}_win_in_Vanderbilt', S_values_for_in_points_only)
+        np.save(f'./npz_saved/{second_half_of_type_of_OOD}_win_out_Vanderbilt', S_values_for_out_points_only)
 
         auroc = roc_auc_score(GTs, S_values)
         TNR, tau = getTNR(S_values_for_in_points_only, S_values_for_out_points_only)
@@ -131,9 +141,9 @@ def run(type_of_OOD, count, saved_model_epoch=None):
 
 
 if __name__ == "__main__":
-    count = 1
+    count = 0
     if args.data == "carla":
-        for type_of_OOD in ['out_replay', 'out_snowy', 'out_foggy', 'out_night', 'out_rainy']:
+        for type_of_OOD in ['out_replay']:#, 'out_snowy', 'out_foggy', 'out_night', 'out_rainy']:
             print(type_of_OOD)
             run(type_of_OOD, count)
             count += 1

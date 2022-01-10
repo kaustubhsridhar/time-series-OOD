@@ -149,8 +149,8 @@ def run(type_of_OOD):
 	except:
 		pass
 	second_half_of_type_of_OOD = type_of_OOD.split('_')[-1]
-	np.save(f'./npz_saved/{second_half_of_type_of_OOD}_win_in_NTU.npz', scores_of_only_in_points)
-	np.save(f'./npz_saved/{second_half_of_type_of_OOD}_win_out_NTU.npz', scores_of_only_out_points)
+	np.save(f'./npz_saved/{second_half_of_type_of_OOD}_win_in_NTU', scores_of_only_in_points)
+	np.save(f'./npz_saved/{second_half_of_type_of_OOD}_win_out_NTU', scores_of_only_out_points)
 
 	TNR, tau = getTNR(scores_of_only_in_points, scores_of_only_out_points)
 	det_delay = get_det_delay_for_detected_traces(iD_scores_2D_list_of_OOD_traces_only, tau)

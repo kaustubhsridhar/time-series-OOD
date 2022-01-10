@@ -147,8 +147,8 @@ def run(type_of_OOD):
 		os.mkdir('./npz_saved/')
 	except:
 		pass
-	np.save(f'./npz_saved/drift_in_NTU.npz', scores_of_only_in_points)
-	np.save(f'./npz_saved/drift_out_NTU.npz', scores_of_only_out_points)
+	np.save(f'./npz_saved/drift_in_NTU.npy', scores_of_only_in_points)
+	np.save(f'./npz_saved/drift_out_NTU.npy', scores_of_only_out_points)
 
 	TNR, tau = getTNR(scores_of_only_in_points, scores_of_only_out_points)
 	det_delay = get_det_delay_for_detected_traces(iD_scores_2D_list_of_OOD_traces_only, tau)
