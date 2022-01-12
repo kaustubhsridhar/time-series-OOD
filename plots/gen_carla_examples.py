@@ -50,7 +50,7 @@ def generate(type_of_imgs):
     for n, img in enumerate(roll_of_images[int(n_roll/2)+1 :]):
         concat_roll_bottom = np.concatenate((concat_roll_bottom, img), axis=1)
 
-    white_space_height = 10
+    white_space_height = 30
     white_space_row = np.zeros([white_space_height, W*int(n_roll/2), 3],dtype=np.uint8)
     white_space_row[:] = 255
 
