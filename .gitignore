@@ -6,6 +6,6 @@ Vanderbilt/drift_models
 Beta-VAE/drift_models
 Vanderbilt/carla_models/*svdd*
 Vanderbilt/carla_models/vae.pt
-
+**__pycache__**
 Beta-VAE/carla_models
 Beta-VAE/bvae-train-test/*drift*

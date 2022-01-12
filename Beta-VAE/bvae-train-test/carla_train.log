@@ -218,3 +218,192 @@ Epoch 43/90
 
 Epoch 00043: vae_loss did not improve from 108.74246
 Epoch 44/90
+ - 2298s - loss: 104.5439 - vae_loss: 104.5439 - val_loss: 103.0614 - val_vae_loss: 103.0614
+
+Epoch 00044: vae_loss improved from 108.74246 to 104.54389, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 45/90
+ - 2326s - loss: 102.0632 - vae_loss: 102.0632 - val_loss: 105.3669 - val_vae_loss: 105.3669
+
+Epoch 00045: vae_loss improved from 104.54389 to 102.06315, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 46/90
+ - 2299s - loss: 101.1457 - vae_loss: 101.1457 - val_loss: 98.6969 - val_vae_loss: 98.6969
+
+Epoch 00046: vae_loss improved from 102.06315 to 101.14572, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 47/90
+ - 2252s - loss: 100.5516 - vae_loss: 100.5516 - val_loss: 100.5650 - val_vae_loss: 100.5650
+
+Epoch 00047: vae_loss improved from 101.14572 to 100.55161, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 48/90
+ - 2119s - loss: 96.6946 - vae_loss: 96.6946 - val_loss: 102.4375 - val_vae_loss: 102.4375
+
+Epoch 00048: vae_loss improved from 100.55161 to 96.69457, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 49/90
+ - 2056s - loss: 156.3970 - vae_loss: 156.3970 - val_loss: 132.2826 - val_vae_loss: 132.2826
+
+Epoch 00049: vae_loss did not improve from 96.69457
+Epoch 50/90
+ - 2004s - loss: 103.5304 - vae_loss: 103.5304 - val_loss: 116.4241 - val_vae_loss: 116.4241
+
+Epoch 00050: vae_loss did not improve from 96.69457
+Epoch 51/90
+ - 1927s - loss: 102.3072 - vae_loss: 102.3072 - val_loss: 103.4203 - val_vae_loss: 103.4203
+
+Epoch 00051: vae_loss did not improve from 96.69457
+Epoch 52/90
+ - 1908s - loss: 97.5067 - vae_loss: 97.5067 - val_loss: 95.3840 - val_vae_loss: 95.3840
+
+Epoch 00052: vae_loss did not improve from 96.69457
+Epoch 53/90
+ - 1979s - loss: 94.5067 - vae_loss: 94.5067 - val_loss: 95.7050 - val_vae_loss: 95.7050
+
+Epoch 00053: vae_loss improved from 96.69457 to 94.50670, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 54/90
+ - 1722s - loss: 94.2341 - vae_loss: 94.2341 - val_loss: 103.7816 - val_vae_loss: 103.7816
+
+Epoch 00054: vae_loss improved from 94.50670 to 94.23411, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 55/90
+ - 1563s - loss: 94.4187 - vae_loss: 94.4187 - val_loss: 99.8236 - val_vae_loss: 99.8236
+
+Epoch 00055: vae_loss did not improve from 94.23411
+Epoch 56/90
+ - 1651s - loss: 114.5476 - vae_loss: 114.5476 - val_loss: 99.3768 - val_vae_loss: 99.3768
+
+Epoch 00056: vae_loss did not improve from 94.23411
+Epoch 57/90
+ - 1698s - loss: 95.7099 - vae_loss: 95.7099 - val_loss: 93.8940 - val_vae_loss: 93.8940
+
+Epoch 00057: vae_loss did not improve from 94.23411
+Epoch 58/90
+ - 1685s - loss: 93.4574 - vae_loss: 93.4574 - val_loss: 93.0024 - val_vae_loss: 93.0024
+
+Epoch 00058: vae_loss improved from 94.23411 to 93.45741, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 59/90
+ - 1683s - loss: 97.9931 - vae_loss: 97.9931 - val_loss: 104.4687 - val_vae_loss: 104.4687
+
+Epoch 00059: vae_loss did not improve from 93.45741
+Epoch 60/90
+ - 1686s - loss: 93.6352 - vae_loss: 93.6352 - val_loss: 92.8805 - val_vae_loss: 92.8805
+
+Epoch 00060: vae_loss did not improve from 93.45741
+Epoch 61/90
+ - 1685s - loss: 91.8265 - vae_loss: 91.8265 - val_loss: 93.8372 - val_vae_loss: 93.8372
+
+Epoch 00061: vae_loss improved from 93.45741 to 91.82650, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 62/90
+ - 1689s - loss: 94.4942 - vae_loss: 94.4942 - val_loss: 94.6889 - val_vae_loss: 94.6889
+
+Epoch 00062: vae_loss did not improve from 91.82650
+Epoch 63/90
+ - 1682s - loss: 92.4603 - vae_loss: 92.4603 - val_loss: 90.9085 - val_vae_loss: 90.9085
+
+Epoch 00063: vae_loss did not improve from 91.82650
+Epoch 64/90
+ - 1678s - loss: 90.8538 - vae_loss: 90.8538 - val_loss: 89.3798 - val_vae_loss: 89.3798
+
+Epoch 00064: vae_loss improved from 91.82650 to 90.85380, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 65/90
+ - 1683s - loss: 89.2035 - vae_loss: 89.2035 - val_loss: 92.8044 - val_vae_loss: 92.8044
+
+Epoch 00065: vae_loss improved from 90.85380 to 89.20348, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 66/90
+ - 1677s - loss: 90.7457 - vae_loss: 90.7457 - val_loss: 88.6609 - val_vae_loss: 88.6609
+
+Epoch 00066: vae_loss did not improve from 89.20348
+Epoch 67/90
+ - 1698s - loss: 87.9683 - vae_loss: 87.9683 - val_loss: 88.4268 - val_vae_loss: 88.4268
+
+Epoch 00067: vae_loss improved from 89.20348 to 87.96832, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 68/90
+ - 1690s - loss: 121.5789 - vae_loss: 121.5789 - val_loss: 97.9707 - val_vae_loss: 97.9707
+
+Epoch 00068: vae_loss did not improve from 87.96832
+Epoch 69/90
+ - 1681s - loss: 93.1013 - vae_loss: 93.1013 - val_loss: 93.3158 - val_vae_loss: 93.3158
+
+Epoch 00069: vae_loss did not improve from 87.96832
+Epoch 70/90
+ - 1680s - loss: 106.9970 - vae_loss: 106.9970 - val_loss: 93.6760 - val_vae_loss: 93.6760
+
+Epoch 00070: vae_loss did not improve from 87.96832
+Epoch 71/90
+ - 1692s - loss: 89.8876 - vae_loss: 89.8876 - val_loss: 87.7999 - val_vae_loss: 87.7999
+
+Epoch 00071: vae_loss did not improve from 87.96832
+Epoch 72/90
+ - 1686s - loss: 87.7506 - vae_loss: 87.7506 - val_loss: 89.8904 - val_vae_loss: 89.8904
+
+Epoch 00072: vae_loss improved from 87.96832 to 87.75055, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 73/90
+ - 1488s - loss: 88.6564 - vae_loss: 88.6564 - val_loss: 87.5142 - val_vae_loss: 87.5142
+
+Epoch 00073: vae_loss did not improve from 87.75055
+Epoch 74/90
+ - 1469s - loss: 90.7866 - vae_loss: 90.7866 - val_loss: 105.7584 - val_vae_loss: 105.7584
+
+Epoch 00074: vae_loss did not improve from 87.75055
+Epoch 75/90
+ - 1457s - loss: 89.7634 - vae_loss: 89.7634 - val_loss: 90.2045 - val_vae_loss: 90.2045
+
+Epoch 00075: vae_loss did not improve from 87.75055
+Epoch 76/90
+ - 1440s - loss: 99.5590 - vae_loss: 99.5590 - val_loss: 87.4445 - val_vae_loss: 87.4445
+
+Epoch 00076: vae_loss did not improve from 87.75055
+Epoch 77/90
+ - 1476s - loss: 87.1137 - vae_loss: 87.1137 - val_loss: 85.3694 - val_vae_loss: 85.3694
+
+Epoch 00077: vae_loss improved from 87.75055 to 87.11372, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 78/90
+ - 1448s - loss: 86.1149 - vae_loss: 86.1149 - val_loss: 91.1820 - val_vae_loss: 91.1820
+
+Epoch 00078: vae_loss improved from 87.11372 to 86.11494, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 79/90
+ - 1446s - loss: 93.2883 - vae_loss: 93.2883 - val_loss: 89.3043 - val_vae_loss: 89.3043
+
+Epoch 00079: vae_loss did not improve from 86.11494
+Epoch 80/90
+ - 1417s - loss: 88.5606 - vae_loss: 88.5606 - val_loss: 93.0906 - val_vae_loss: 93.0906
+
+Epoch 00080: vae_loss did not improve from 86.11494
+Epoch 81/90
+ - 1424s - loss: 87.8047 - vae_loss: 87.8047 - val_loss: 87.8435 - val_vae_loss: 87.8435
+
+Epoch 00081: vae_loss did not improve from 86.11494
+Epoch 82/90
+ - 1332s - loss: 93.4682 - vae_loss: 93.4682 - val_loss: 167.7145 - val_vae_loss: 167.7145
+
+Epoch 00082: vae_loss did not improve from 86.11494
+Epoch 83/90
+ - 1282s - loss: 108.6017 - vae_loss: 108.6017 - val_loss: 161.8796 - val_vae_loss: 161.8796
+
+Epoch 00083: vae_loss did not improve from 86.11494
+Epoch 84/90
+ - 1410s - loss: 98.9833 - vae_loss: 98.9833 - val_loss: 90.5250 - val_vae_loss: 90.5250
+
+Epoch 00084: vae_loss did not improve from 86.11494
+Epoch 85/90
+ - 1399s - loss: 85.5777 - vae_loss: 85.5777 - val_loss: 84.9159 - val_vae_loss: 84.9159
+
+Epoch 00085: vae_loss improved from 86.11494 to 85.57773, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 86/90
+ - 1413s - loss: 84.6497 - vae_loss: 84.6497 - val_loss: 86.2257 - val_vae_loss: 86.2257
+
+Epoch 00086: vae_loss improved from 85.57773 to 84.64970, saving model to ../carla_models/30_1.4//weights.best.hdf5
+Epoch 87/90
+ - 1230s - loss: 87.1923 - vae_loss: 87.1923 - val_loss: 86.2976 - val_vae_loss: 86.2976
+
+Epoch 00087: vae_loss did not improve from 84.64970
+Epoch 88/90
+ - 2413s - loss: 86.8007 - vae_loss: 86.8007 - val_loss: 140.1194 - val_vae_loss: 140.1194
+
+Epoch 00088: vae_loss did not improve from 84.64970
+Epoch 89/90
+ - 2751s - loss: 89.9700 - vae_loss: 89.9700 - val_loss: 89.3707 - val_vae_loss: 89.3707
+
+Epoch 00089: vae_loss did not improve from 84.64970
+Epoch 90/90
+ - 2716s - loss: 85.3796 - vae_loss: 85.3796 - val_loss: 83.2600 - val_vae_loss: 83.2600
+
+Epoch 00090: vae_loss did not improve from 84.64970
+Saved Autoencoder model to disk
+Saved Encoder model to disk

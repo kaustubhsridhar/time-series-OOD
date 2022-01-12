@@ -38,7 +38,7 @@ def load_model(test_config):
 	# Assifn test clips
 	args.data_file = test_config["test_clips"]
 	# Sequentially advance 1 frame per step 
-	args.n_seqs = [f - 2*args.nd for f in test_config["frames_per_clip"]] # New: changed to list # Changed to test all sequences(aka window) in video(aka trace). Number of sequences(aka windows) is total frames-frame size(aka nd = 16)
+	args.n_seqs = [f - 2*args.nd + 1 for f in test_config["frames_per_clip"]] # New: changed to list # Changed to test all sequences(aka window) in video(aka trace). Number of sequences(aka windows) is total frames-frame size(aka nd = 16)
 
 	# Load  weights  
 	encoder = Encoder(args)
@@ -149,8 +149,9 @@ def run(type_of_OOD):
 	except:
 		pass
 	second_half_of_type_of_OOD = type_of_OOD.split('_')[-1]
-	np.save(f'./npz_saved/{second_half_of_type_of_OOD}_win_in_NTU', scores_of_only_in_points)
-	np.save(f'./npz_saved/{second_half_of_type_of_OOD}_win_out_NTU', scores_of_only_out_points)
+	if second_half_of_type_of_OOD == "replay":
+		np.save(f'./npz_saved/{second_half_of_type_of_OOD}_win_in_NTU', scores_of_only_in_points)
+		np.save(f'./npz_saved/{second_half_of_type_of_OOD}_win_out_NTU', scores_of_only_out_points)
 
 	TNR, tau = getTNR(scores_of_only_in_points, scores_of_only_out_points)
 	det_delay = get_det_delay_for_detected_traces(iD_scores_2D_list_of_OOD_traces_only, tau)
@@ -158,5 +159,5 @@ def run(type_of_OOD):
 	print(f'(AUROC, TNR, Avg Det Delay): ({auroc}, {TNR}, {det_delay})')
 
 if __name__ == "__main__":
-	for type_of_OOD in ['out_replay']:#, 'out_snowy', 'out_foggy', 'out_night', 'out_rainy']:
+	for type_of_OOD in ['out_replay', 'out_snowy', 'out_foggy', 'out_night', 'out_rainy']:
 		run(type_of_OOD)

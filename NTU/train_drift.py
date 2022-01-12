@@ -38,6 +38,7 @@ def init_param():
 	parser.add_argument("--mu2", type=float, default=0., help="Mean optic flow value in the vertical direction")  
 	parser.add_argument("--var1", type=float, default=1.,help="Varaince in the horizontal direction") 
 	parser.add_argument("--var2", type=float, default=1., help="Varaince in the horizontal? (vertical) direction")			   
+	parser.add_argument("--model_save_folder", type=str, default="./drift_models", help="set different folder names only for drift clip length ablations.")
 	args = parser.parse_args()
 
 	# min_of_n_seqs = min([f - args.nd for f in frame_lens["train"]]) # 114
@@ -93,14 +94,14 @@ def run():
 										% (epoch, loss_reconstruction/num_examples, loss_latent/num_examples) )		   
 	# save 
 	try:
-		os.mkdir("drift_models")
+		os.mkdir(args.model_save_folder)
 	except:
 		pass
 
-	torch.save(vae.state_dict(), "drift_models/bi3dof-{}-{}epoch-{}seq-seed{}.pt".format(args.latentprior,  epoch+1, args.n_seqs[0], SEED) )
+	torch.save(vae.state_dict(), "{}/bi3dof-{}-{}epoch-{}seq-seed{}.pt".format(args.model_save_folder, args.latentprior,  epoch+1, args.n_seqs[0], SEED) )
 
 #
-SEED = 6
+SEED = 2
 seed(SEED)
 # obtain below from feature_abstraction
 frame_lens = {'train': [49, 74, 49, 49, 49, 49, 59, 59, 59, 59, 59, 49, 59, 59, 59, 59, 59, 49, 49, 49, 49, 48, 49, 49], 

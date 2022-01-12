@@ -24,9 +24,11 @@ from scipy.stats import norm
 import scipy.integrate as integrate
 import Monitor_Helper
 from statistics import mean
+from glob import glob
 os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 def load_model(model_path):
+    print('model path is: ', model_path)
     with open(model_path + 'en_model.json', 'r') as jfile:
             model_svdd = model_from_json(jfile.read())
     model_svdd.load_weights(model_path + 'en_model.h5')
@@ -34,10 +36,7 @@ def load_model(model_path):
 
 #Load complete input images without shuffling
 def load_images(path):
-    # numImages = 0
     inputs = []
-    # numFiles = len(glob.glob1(path,'*.png'))
-    # numImages += numFiles
     locs = glob(path + "*")
     for idx, scenefolder in enumerate(locs):
         for img in sorted(glob(scenefolder + "/*.png")):
@@ -45,21 +44,32 @@ def load_images(path):
             img = cv2.resize(img, (224, 224))
             img = img / 255.
             inputs.append(img)
+    print('loaded test images.')
     return inputs
 
 
 #Load complete input images without shuffling
-# def load_calibration_images(train_data):
-#     inputs = []
-#     comp_inp = []
-#     with open(train_data + 'calibration.csv', 'rt') as csvfile:
-#             reader = csv.reader(csvfile)
-#             for row in reader:
-#                 img = cv2.imread(train_data + row[0])
-#                 img = cv2.resize(img, (224, 224))
-#                 img = img / 255.
-#                 inputs.append(img)
-#             return inputs
+def load_calib_images(root_dir):
+    inputs = []
+    train_folders = [12, 15, 14, 2, 16, 18, 0, 25, 9, 23, 28, 22, 11]
+    folder_locs = []
+    for folder_number in train_folders:
+        if folder_number <= 10:
+            folder_locs.append(root_dir+"setting_1/"+str(folder_number))
+        elif folder_number >= 11 and folder_number <= 21:
+            folder_locs.append(root_dir+"setting_2/"+str(folder_number-11))
+        elif folder_number >= 22 and folder_number <= 32:
+            folder_locs.append(root_dir+"setting_3/"+str(folder_number-22))
+
+    for idx, scenefolder in enumerate(folder_locs):
+        for img in sorted(glob(scenefolder + "/*.png")):
+            img = cv2.imread(img)
+            img = cv2.resize(img, (224, 224))
+            img = img / 255.
+            inputs.append(img)
+    print('loaded calibration images.')
+    return inputs
+
 
 def test_runtime(autoencoder,img):
     #inputs = np.array([img])
@@ -67,10 +77,37 @@ def test_runtime(autoencoder,img):
     autoencoder_res = Monitor_Helper.results_transpose(autoencoder_res)
     return autoencoder_res
 
-def vae_prediction(model_vae,data_path,kl_value1,class_detector): #,test_data_path,folder,model):
+def get_calibration_kl(model_path, calib_data_path, class_detector):
+    X_calib = load_calib_images(calib_data_path)
+    model_vae=load_model(model_path)
+    kl_value = []
+    for i in range(0,len(X_calib)):
+        img = np.array(X_calib[i])[np.newaxis]
+        test_val = []
+        test_mean_data = test_runtime(model_vae, img)
+        test_val.append(test_mean_data[0][0].tolist())
+        test_val.append(test_mean_data[0][1].tolist())
+        test_mean_dist=Monitor_Helper.test_data_extractor(test_val,latentsize)
+        kl,kl_avg = Monitor_Helper.kl_computation(test_mean_dist,class_detector)
+        # print(f'kl:     {kl}')
+        # print(f'kl_avg: {kl_avg}')
+        kl_value.append(kl_avg)
+    print('loaded computed calibration kl"s.')
+    return kl_value
+
+
+
+def vae_prediction(model_path,data_path, iD_data_path,kl_value1,class_detector, folder_name): #,test_data_path,folder,model):
     print("==============PREDICTING THE LABELS ==============================")
-    X_validate = load_images(data_path)
-    sliding_window = 20 #Martingale sliding window
+    OOD_data = load_images(data_path) 
+    iD_data = load_images(iD_data_path)
+    X_validate = OOD_data + iD_data
+    GTs = [0 for _ in range(len(OOD_data))] + [1 for _ in range(len(iD_data))]
+    save_npz = True
+    sliding_window = 6 #20 #Martingale sliding window
+    scores_of_OOD_only = []
+    scores_of_iD_only = []
+
     M=[]
     delta = 5
     threshold = 20 #CUSUM threshold
@@ -148,17 +185,34 @@ def vae_prediction(model_vae,data_path,kl_value1,class_detector): #,test_data_pa
         cpu_util.append(cpu)
         mem_util.append(cpu_mem)
 
+        float_m_val = math.log(m[0])
+        if GTs[i] == 0:
+            scores_of_OOD_only.append(-1*float_m_val)
+        elif GTs[i] == 1:
+            scores_of_iD_only.append(-1*float_m_val)
+
+    try:
+        os.mkdir(f'../npz_saved_sliding_{sliding_window}/')
+    except:
+        pass
+    np.save(f'../npz_saved_sliding_{sliding_window}/{folder_name}_win_out_Beta-VAE', scores_of_OOD_only)
+    np.save(f'../npz_saved_sliding_{sliding_window}/{folder_name}_win_in_Beta-VAE', scores_of_iD_only)
+
     print("Total Anomalies:%d"%(total_anomalies)) #Total OOD detected in the scene
-    print("Total Detection Time:%f"%mean(time_val)) #Average detection time across the scene
-    print("Total CPU Utilization:%f"%mean(cpu_util)) #Average CPU utilization percentage across the scene
-    print("Total Mem Utilization:%f"%mean(mem_util)) #Average Memory utilization percentage across the scene
+    # print("Total Detection Time:%f"%mean(time_val)) #Average detection time across the scene
+    # print("Total CPU Utilization:%f"%mean(cpu_util)) #Average CPU utilization percentage across the scene
+    # print("Total Mem Utilization:%f"%mean(mem_util)) #Average Memory utilization percentage across the scene
+
+
 
 
 if __name__ == '__main__':
     models = ["30_1.4"] #,"30_1.1"
     test_data_path =  "../../carla_data/testing/" # "/home/scope/Carla/CARLA_0.9.6/PythonAPI/TCPS-data/Test-data/"
-    test_folders = ["out_replay/out/", "out_snowy/out/", "out_foggy/out/", "out_night/out/", "out_rainy/out/"] # ["in-distribution","heavy-rain","high-brightness","heavy-rain-70"]
+    test_folders = ["replay", "snowy", "foggy", "night", "rainy"] # ["in-distribution","heavy-rain","high-brightness","heavy-rain-70"]
     path = "../carla_models/" # "/home/scope/Carla/CARLA_0.9.6/PythonAPI/TCPS-results/Latent-extraction/"
+    iD_test_data_path = "../../carla_data/testing/in/"
+    calib_data_path = "../../carla_data/training/"
     for model in models:
         kl_value = []
         model_path = path + model + '/'
@@ -176,7 +230,7 @@ if __name__ == '__main__':
         #     reader = csv.reader(file)
         #     for row in reader:
         #         kl_value.append(row)
-        kl_value = get_calibration_kl()
+        kl_value = get_calibration_kl(model_path, calib_data_path, class_detector)
 
         kl_value1 = []
         for i in range(len(class_detector)):
@@ -185,5 +239,5 @@ if __name__ == '__main__':
             #anomaly_path = "/home/scope/Carla/CARLA_0.9.6/PythonAPI/TCPS-results/anomaly-results/" + model + '/'
             # anomaly_path = path + model + '/'
             # os.makedirs(anomaly_path, exist_ok=True)
-            data_path = test_data_path + folder + '/'
-            vae_prediction(model_path,data_path,kl_value1,class_detector) # ,anomaly_path,folder,model) # Use M value for AUROC
+            data_path = test_data_path + "out_" + folder + "/out/"
+            vae_prediction(model_path,data_path, iD_test_data_path,kl_value1,class_detector, folder) # ,anomaly_path,folder,model) # Use M value for AUROC
