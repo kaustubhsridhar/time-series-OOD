@@ -1,12 +1,16 @@
 """Applied temporal transformation prediction.
 
-For training with only OF - 
-1) 5 transforms - python train_carla.py --cl 16 --log carla_log/final_results/5_classes/ --bs 2 --gpu 0 --use_image False --use_of True --transformation_list speed shuffle reverse periodic identity --epochs 600
+For training in drift - python train.py --cl 24 --log drift_log/4_classes/24 --bs 2 --gpu 0 --img_hgt 224 --img_width 224 --dataset DriftDataset --epochs 1000 --train_root_dir drift_dataset/in/training --cal_root_dir drift_dataset/in/calibration/ --lr 0.00001
+For testing - python train.py --bs 2 --mode test --ckpt cl16_mod_enc/r3d_cl16_11161201/model_300.pt --root_dir CARLA_dataset/Vanderbilt_data/testing
+For testing in drift - python train.py --bs 2 --mode test --ckpt drift_log/r3d_cl24_11302229/model_400.pt --test_root_dir drift_dataset/out --dataset DriftDataset --cl 24
 
-For testing - python train_carla.py --bs 2 --mode test --ckpt carla_log/16/r3d_cl16_12091327/model_300.pt --gpu 2
+
+******************** FINAL Training ****************************
+Drift - python train.py --cl 16 --log drift_log/4_classes/16/new_in_data/ --bs 2 --gpu 0 --img_hgt 224 --img_width 224 --dataset DriftDataset --epochs 2000 --train_root_dir drift_dataset/temp_in/training --cal_root_dir drift_dataset/temp_in/calibration/ --lr 0.00001
+
+Crowd - python train.py --cl 16 --log crowd_log/16 --bs 2 --gpu 1 --img_hgt 224 --img_width 224 --dataset CrowdDataset --epochs 3000 --train_root_dir moving_crowd_dataset/in/training/ --cal_root_dir moving_crowd_dataset/in/calibration/ --lr 0.00001
 
 """
-
 import os
 import math
 import itertools
@@ -23,12 +27,19 @@ from torchvision import transforms
 import torch.optim as optim
 from tensorboardX import SummaryWriter
 
+#from datasets.ucf101 import UCF101VCOPDataset
+# from models.c3d import C3D
+# from models.r3d import R3DNet
+# from models.r21d import R2Plus1DNet
+
 from r3d import Regressor as r3d_regressor
 
-from dataset.carla_optical_flow_appended import CARLADataset
+from dataset.drift_optical_flow_appended import DriftDataset # for everything - only img, only of, [img, of]
+
+from dataset.crowd import CrowdDataset
 
 import pdb
-from distutils.util import strtobool
+
 
 def train(args, model, criterion, optimizer, device, train_dataloader, writer, epoch):
     torch.set_grad_enabled(True)
@@ -47,8 +58,8 @@ def train(args, model, criterion, optimizer, device, train_dataloader, writer, e
         optimizer.zero_grad()
         # forward and backward
         outputs = model(orig_tuple_clips, transformed_tuple_clips) # return logits here
-        # print("Outputs: {}, targets: {}".format(outputs, target_tranformations))
         loss = criterion(outputs, target_tranformations)
+        # print("Outputs: {}, targets: {}, loss: {}".format(outputs, target_tranformations, loss.item()))
         loss.backward()
         optimizer.step()
         # compute loss and acc
@@ -87,6 +98,7 @@ def validate(args, model, criterion, device, val_dataloader, writer, epoch):
         outputs = model(orig_tuple_clips, transformed_tuple_clips) # return logits here
         loss = criterion(outputs, target_tranformations)
         #print("Outputs: {}, targets: {}".format(outputs, target_tranformations))
+        # print("Outputs: {}, targets: {}, loss: {}".format(outputs, target_tranformations, loss.item()))
         # compute loss and acc
         total_loss += loss.item()
         pts = torch.argmax(outputs, dim=1)
@@ -114,7 +126,7 @@ def test(args, model, criterion, device, test_dataloader):
         target_tranformations = torch.tensor(tranformation).to(device)
         # forward
         outputs = model(orig_tuple_clips, transformed_tuple_clips)
-        # print("output: {}, target: {}".format(outputs, target_tranformations))
+        print("output: {}, target: {}".format(outputs, target_tranformations))
         loss = criterion(outputs, target_tranformations)
         # compute loss and acc
         total_loss += loss.item()
@@ -127,6 +139,7 @@ def test(args, model, criterion, device, test_dataloader):
     print('[TEST] loss: {:.3f}, acc: {:.3f}'.format(avg_loss, avg_acc))
     return avg_loss
 
+from distutils.util import strtobool
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Video Clip Order Prediction')
@@ -148,13 +161,20 @@ def parse_args():
     parser.add_argument('--workers', type=int, default=4, help='number of data loading workers')
     parser.add_argument('--pf', type=int, default=100, help='print frequency every batch')
     parser.add_argument('--seed', type=int, default=100, help='seed for initializing training.')
-    parser.add_argument('--img_size', type=int, default=224, help='img height and width')
+    parser.add_argument('--train_root_dir', type=str, default='moving_crowd_dataset/in/training',help='training data directory')
+    parser.add_argument('--cal_root_dir', type=str, default='moving_crowd_dataset/in/calibration',help='calibration data directory')
+    parser.add_argument('--test_root_dir', type=str, default='moving_crowd_dataset/out',help='test data directory')
+    parser.add_argument('--img_hgt', type=int, default=224, help='img height')
+    parser.add_argument('--img_width', type=int, default=224, help='img width')
+    parser.add_argument('--dataset', default='CARLAVCOPDataset', help='dataset - CARLAVCOPDa"taset/DriftDataset/CrowdDataset')
     parser.add_argument("--use_image", type=lambda x:bool(strtobool(x)), default=True, help="Use img info")
     parser.add_argument("--use_of", type=lambda x:bool(strtobool(x)), default=True, help="use optical flow info")
     parser.add_argument('--transformation_list', '--names-list', nargs='+', default=["speed","shuffle","reverse","periodic","identity"])
 
     args = parser.parse_args()
     return args
+
+dataset_class = {'DriftDataset': DriftDataset, 'CrowdDataset': CrowdDataset}
 
 if __name__ == '__main__':
     args = parse_args()
@@ -172,13 +192,11 @@ if __name__ == '__main__':
             torch.cuda.manual_seed_all(args.seed)
 
     ########### model r3d for now ##############
-    # net = r3d_regressor().to(device)
-    # net = torch.nn.DataParallel(net, device_ids=[args.gpu])
-
     in_channels = 3
     if args.use_image and args.use_of:
         in_channels = 6
     net = r3d_regressor(num_classes=len(args.transformation_list), in_channels=in_channels).to(device)
+    # net = torch.nn.DataParallel(net, device_ids=[args.gpu])
 
     if args.ckpt != '':
         net.load_state_dict(torch.load(args.ckpt))
@@ -199,9 +217,9 @@ if __name__ == '__main__':
             transforms.ToTensor()
         ])
 
-        orig_train_dataset = CARLADataset(root_dir='CARLA_dataset/Vanderbilt_data/training', clip_len=16, train=True, transforms_=train_transforms, img_size=args.img_size, use_image=args.use_image, use_of=args.use_of, transformation_list=args.transformation_list)
+        train_dataset = dataset_class[args.dataset](root_dir=args.train_root_dir, clip_len=args.cl, train=True, cal=False, transforms_=train_transforms, img_hgt=args.img_hgt, img_width=args.img_width, use_image=args.use_image, use_of=args.use_of, transformation_list=args.transformation_list)
 
-        train_dataset, val_dataset = random_split(orig_train_dataset, (len(orig_train_dataset)-13, 13), generator=torch.Generator().manual_seed(42)) # split val for 13 videos, we have a total of 33 videos, so training on 20. We will be using the validation dataset as calibration dataset for OOD detection in the CP framework.
+        val_dataset = dataset_class[args.dataset](root_dir=args.cal_root_dir, clip_len=args.cl, train=False, cal=True, transforms_=train_transforms, img_hgt=args.img_hgt, img_width=args.img_width, use_image=args.use_image, use_of=args.use_of, transformation_list=args.transformation_list)
 
         print('TRAIN video number: {}, VAL video number: {}.'.format(len(train_dataset), len(val_dataset)))
         train_dataloader = DataLoader(train_dataset, batch_size=args.bs, shuffle=False,
@@ -217,6 +235,8 @@ if __name__ == '__main__':
         # base_params = filter(lambda p: id(p) not in fc2_params, net.parameters())
 
         # optimizer = optim.SGD([{'params':base_params}, {'params':net.module.fc2.parameters(), 'lr': args.lr*args.lrMul}], lr=args.lr, momentum=0.9, weight_decay=args.wgtDecay, nesterov=True)
+
+        # optimizer = optim.AdamW(params= net.parameters(), lr= args.lr, weight_decay=args.wgtDecay)
 
         optimizer = optim.Adam(params= net.parameters(), lr= args.lr, weight_decay=args.wgtDecay)
 
@@ -247,7 +267,7 @@ if __name__ == '__main__':
         test_transforms = transforms.Compose([
             transforms.ToTensor()
         ])
-        test_dataset = CARLADataset(root_dir='CARLA_dataset/Vanderbilt_data/testing', clip_len=16, train=False, transforms_=test_transforms, img_size=args.img_size, in_dist_test=True, use_image=args.use_image, use_of=args.use_of, transformation_list=args.transformation_list)
+        test_dataset = dataset_class[args.dataset](root_dir=args.test_root_dir, clip_len=args.cl, train=False, cal=False, transforms_=test_transforms, img_hgt=args.img_hgt, img_width=args.img_width, in_dist_test=True, use_image=args.use_image, use_of=args.use_of, transformation_list=args.transformation_list)
         print("Test dataset len: ", test_dataset.__len__())
         test_dataloader = DataLoader(test_dataset, batch_size=args.bs, shuffle=False,
                                 num_workers=args.workers, pin_memory=True)
