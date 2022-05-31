@@ -6,8 +6,7 @@
       cd ours
       pip install -r requirements.txt
 
-## Download trained models 
-### Download models from https://drive.google.com/drive/folders/1xBIkVB7TpIcRJPfF3hxzybe5KVPdbFrF?usp=sharing 
+## Download trained models: https://drive.google.com/drive/folders/1xBIkVB7TpIcRJPfF3hxzybe5KVPdbFrF?usp=sharing 
       mkdir saved_models
       mv all the downloaded models in saved_models
 
