@@ -1,5 +1,3 @@
-# folder - drift_log_optical_flow_appended/4_classes/16/
-
 from __future__ import print_function
 from PIL import Image, PILLOW_VERSION
 import os
