@@ -1,7 +1,7 @@
 '''
 command to run
 
-python check_drift.py --gpu 0 --cuda --ckpt saved_models/drift.pt --model r3d --n 20 --save_dir drift_log --cl 16
+python check_drift.py --gpu 0 --cuda --ckpt saved_models/drift.pt --n 20 --save_dir drift_log --cl 16
 
 '''
 
