@@ -200,7 +200,7 @@ def checkOOD(n = opt.n):
     ###########################################################################################################
     
     # In-Dist test CE loss
-    in_test_dataset = CARLADataset('CARLA_dataset/Vanderbilt_data/testing', clip_len=opt.cl, train=False, transforms_= transforms, img_size=opt.img_size, in_dist_test=True, use_image=opt.use_image, use_of=opt.use_of, transformation_list=opt.transformation_list)
+    in_test_dataset = CARLADataset('CARLA_dataset/testing', clip_len=opt.cl, train=False, transforms_= transforms, img_size=opt.img_size, in_dist_test=True, use_image=opt.use_image, use_of=opt.use_of, transformation_list=opt.transformation_list)
 
     print("In test dataset len: ", in_test_dataset.__len__())
     in_test_ce_loss_all_iters = []
@@ -214,7 +214,7 @@ def checkOOD(n = opt.n):
     #############################################################################################################
     
     # Out-Dist CE loss
-    out_test_dataset = CARLADataset('CARLA_dataset/Vanderbilt_data/testing', clip_len=opt.cl, train=False, transforms_= transforms, img_size=opt.img_size, in_dist_test=False, use_image=opt.use_image, use_of=opt.use_of, transformation_list=opt.transformation_list)
+    out_test_dataset = CARLADataset('CARLA_dataset/testing', clip_len=opt.cl, train=False, transforms_= transforms, img_size=opt.img_size, in_dist_test=False, use_image=opt.use_image, use_of=opt.use_of, transformation_list=opt.transformation_list)
 
     print("Out test dataset len: ", out_test_dataset.__len__())
 
