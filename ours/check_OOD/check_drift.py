@@ -1,7 +1,7 @@
 '''
 command to run
 
-python check_drift.py --gpu 0 --cuda --ckpt saved_models/drift.pt --n 20 --save_dir drift_log
+python check_drift.py --gpu 0 --cuda --ckpt saved_models/drift.pt --n 20 --save_dir drift_log --transformation_list speed shuffle reverse periodic identity
 
 '''
 
@@ -35,7 +35,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--workers', type=int, help='number of data loading workers', default=4)
 parser.add_argument('--bs', type=int, default=2)
 parser.add_argument('--cuda', action='store_true', help='enables cuda')
-parser.add_argument('--ckpt', default='saved_model/drift.pt', help="path load the trained network")
+parser.add_argument('--ckpt', default='saved_models/drift.pt', help="path load the trained network")
 parser.add_argument('--gpu', default='0', type=str, help='id(s) for CUDA_VISIBLE_DEVICES')
 parser.add_argument('--trials', type=int, default=1, help='no. of trials for taking average for the final results')
 parser.add_argument('--model', type=str, default='r3d', help='c3d/r3d/r21d')
