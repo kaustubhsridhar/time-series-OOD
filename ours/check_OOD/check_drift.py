@@ -1,7 +1,7 @@
 '''
 command to run
 
-python check_drift.py --gpu 0 --cuda --ckpt saved_models/drift.pt --n 20 --save_dir drift_log --cl 16
+python check_drift.py --gpu 0 --cuda --ckpt saved_models/drift.pt --n 20 --save_dir drift_log
 
 '''
 
@@ -39,7 +39,7 @@ parser.add_argument('--ckpt', default='', help="path load the trained network")
 parser.add_argument('--gpu', default='0', type=str, help='id(s) for CUDA_VISIBLE_DEVICES')
 parser.add_argument('--trials', type=int, default=1, help='no. of trials for taking average for the final results')
 parser.add_argument('--model', type=str, default='r3d', help='c3d/r3d/r21d')
-parser.add_argument('--cl', type=int, default=16, help='clip length')
+parser.add_argument('--cl', type=int, default=16, help='clip length=16/18/20')
 parser.add_argument('--img_size', type=int, default=224, help='img height/width')
 parser.add_argument('--n', type=int, default=5, help='number of continuous windows with p-value < epsilon to detect OODness in the trace')
 parser.add_argument('--seed', type=int, default=100, help='random seed')
