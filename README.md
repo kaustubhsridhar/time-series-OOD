@@ -62,7 +62,7 @@ cd Vanderbilt
 python detect.py -d carla -v
 ```
 
-# Beta-VAE
+# Ramankrishna et al's
 
 To train 
 ```
