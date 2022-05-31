@@ -14,8 +14,7 @@ Setup carla_data in following folder structure at ./
 ```
 
 # OURs
-
-
+  cd ours and follow instructions in README.md for reproducing CODiT's results reported in the paper
 
 # Feng et al.'s 
 
