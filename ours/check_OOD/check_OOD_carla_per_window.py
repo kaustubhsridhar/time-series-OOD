@@ -48,6 +48,7 @@ parser.add_argument('--save_dir', type=str, default='.', help='directory for sav
 parser.add_argument("--use_image", type=lambda x:bool(strtobool(x)), default=False, help="Use img info")
 parser.add_argument("--use_of", type=lambda x:bool(strtobool(x)), default=True, help="use optical flow info")
 parser.add_argument('--transformation_list', '--names-list', nargs='+', default=["speed","shuffle","reverse","periodic","identity"])
+parser.add_argument('--out_folder_name', type=str, default='out_rainy/out', help='OOD type - out_rainy/out_snowy/out_foggy/night')
 
 opt = parser.parse_args()
 print(opt)
@@ -214,7 +215,7 @@ def checkOOD(n = opt.n):
     #############################################################################################################
     
     # Out-Dist CE loss
-    out_test_dataset = CARLADataset('CARLA_dataset/testing', clip_len=opt.cl, train=False, transforms_= transforms, img_size=opt.img_size, in_dist_test=False, use_image=opt.use_image, use_of=opt.use_of, transformation_list=opt.transformation_list)
+    out_test_dataset = CARLADataset('CARLA_dataset/testing', clip_len=opt.cl, train=False, transforms_= transforms, img_size=opt.img_size, in_dist_test=False, use_image=opt.use_image, use_of=opt.use_of, transformation_list=opt.transformation_list, out_folder_name=opt.out_folder_name)
 
     print("Out test dataset len: ", out_test_dataset.__len__())
 
