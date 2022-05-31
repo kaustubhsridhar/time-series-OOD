@@ -2,7 +2,6 @@
 command to run 
 
 python check_carla.py --gpu 0 --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_rainy/out --save_dir carla_log/rainy --transformation_list speed shuffle reverse periodic identity
-
 '''
 
 from __future__ import print_function
