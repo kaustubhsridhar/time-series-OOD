@@ -28,5 +28,8 @@
 ## Generate results for Replay OODs (Figure 7 (left))
       python check_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_replay/out --save_dir carla_log/replay --transformation_list speed shuffle reverse periodic identity
 
+## Generate results for Drift OODs (Figure 7 (left))
+      python check_drift.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/drift.pt --model r3d --n 20 --save_dir drift_log --cl 16
+
 
 
