@@ -3,6 +3,10 @@
 ## Create conda environment and install requirements
       conda create --name codit python=3.6.13
       conda activate codit
-      cd CODiT
+      cd ours
       pip install -r requirements.txt
+
+## Download saved_models from https://drive.google.com/drive/folders/1xBIkVB7TpIcRJPfF3hxzybe5KVPdbFrF?usp=sharing
+      mkdir saved_models
+      mv all the downloaded models in saved_models
 
