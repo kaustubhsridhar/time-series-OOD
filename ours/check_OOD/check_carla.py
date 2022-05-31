@@ -48,7 +48,7 @@ parser.add_argument('--save_dir', type=str, default='carla_log/rainy', help='dir
 parser.add_argument("--use_image", type=lambda x:bool(strtobool(x)), default=False, help="Use img info")
 parser.add_argument("--use_of", type=lambda x:bool(strtobool(x)), default=True, help="use optical flow info")
 parser.add_argument('--transformation_list', '--names-list', nargs='+', default=["speed","shuffle","reverse","periodic","identity"])
-parser.add_argument('--out_folder_name', type=str, default='out_rainy/out', help='OOD type - out_rainy/out_snowy/out_foggy/night')
+parser.add_argument('--out_folder_name', type=str, default='out_rainy/out', help='OOD type - out_rainy/out, out_snowy/out, out_foggy/out, night/out, replay/out')
 
 opt = parser.parse_args()
 print(opt)
