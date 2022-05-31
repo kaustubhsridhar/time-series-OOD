@@ -185,7 +185,7 @@ def calc_p_value(test_ce_loss, cal_set_ce_loss):
 def checkOOD(n = opt.n):  
 
     # CAL set CE Loss
-    orig_train_dataset = CARLADataset(root_dir='CARLA_dataset/Vanderbilt_data/training', clip_len=opt.cl,  train=True, transforms_= transforms, img_size=opt.img_size, use_image=opt.use_image, use_of=opt.use_of, transformation_list=opt.transformation_list)
+    orig_train_dataset = CARLADataset(root_dir='CARLA_dataset/training', clip_len=opt.cl,  train=True, transforms_= transforms, img_size=opt.img_size, use_image=opt.use_image, use_of=opt.use_of, transformation_list=opt.transformation_list)
 
     train_dataset, cal_dataset = random_split(orig_train_dataset, (len(orig_train_dataset)-13, 13), generator=torch.Generator().manual_seed(42)) # split cal_set for 13 videos, we have a total of 33 videos, so training was done on 20 videos
 
