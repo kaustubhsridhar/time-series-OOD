@@ -1,6 +1,8 @@
-## This code is build on top of
-      Video CLip Order Prediction - https://github.com/xudejing/video-clip-order-prediction
-      Cai et al.'s for CARLA dataset - https://github.com/feiyang-cai/out_of_distribution_detector_aebs 
+# These are the instruction for reproducing CODiT's results
+
+## This code is build on
+     1. Video CLip Order Prediction's code - https://github.com/xudejing/video-clip-order-prediction
+     2. Cai et al.'s for CARLA dataset - https://github.com/feiyang-cai/out_of_distribution_detector_aebs 
       
 ## Create conda environment and install requirements
       conda create --name codit python=3.6.13
