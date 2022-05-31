@@ -1,7 +1,7 @@
 ## This code is build on top of -----
 
 ## Create conda environment and install requirements
-      conda create --name codit python=3.6
+      conda create --name codit python=3.6.1
       conda activate codit
       pip install -r requirements.txt
 
