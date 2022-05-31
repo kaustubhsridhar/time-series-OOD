@@ -82,7 +82,6 @@ def compute_optical_flow(video_frames, halve_features = False, save_image = Fals
 							pyr_scale = 0.5, levels = 1, iterations = 1, 
 							winsize = 11, poly_n = 5, poly_sigma = 1.1,  
 							flags = 0 if flow is None else cv2.OPTFLOW_USE_INITIAL_FLOW )
-        #print(f"shape of a single flow is {flow.shape}") # (360, 640, 2) = (ht, width, 2) where 2 is for flow in x and y directions
         
         if halve_features:
             flow_x = cv2.resize(flow[..., 0], None, fx=0.5, fy=0.5)
@@ -95,10 +94,6 @@ def compute_optical_flow(video_frames, halve_features = False, save_image = Fals
 
         # move im1 forward
         im1 = im2
-
-        # print(flow_image.shape) # (ht, wdth, 3)
-        # flow_image = flow_image.transpose((2, 0, 1))
-        # print(flow_image.shape)
 
         flows.append(flow_image)
     
