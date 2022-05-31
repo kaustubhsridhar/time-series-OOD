@@ -14,9 +14,9 @@
       mkdir saved_models
       mv carla.pt and drift.pt to ./saved_models
 
-## Download data: 
+## Download data: https://drive.google.com/file/d/11iJF2UQx4z78hfC8C9SFgapMgl_17SaJ/view?usp=sharing
+     unzip data.zip
       
-     
 ## Download pre-computed fisher and p-values: https://drive.google.com/drive/folders/1o2bQ6M17kvN6b78KYPuAv0oavZ0Mf926?usp=sharing
       CARLA: unzip carla_log
       Drift: unzip drift_log
