@@ -17,7 +17,7 @@ Setup carla_data in following folder structure at ./
 
 
 
-# NTU 
+# Feng et al.'s 
 
 Also setup drift_data in following folder structure at ./
 ```bash
@@ -47,7 +47,7 @@ cd NTU
 python test_<name of dataset>.py
 ```
 
-# Vanderbilt
+# Cai et al.'s
 
 To train 
 ```
