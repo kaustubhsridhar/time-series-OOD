@@ -121,7 +121,9 @@ class CARLADataset(data.Dataset):
                 in_dist_test=False,
                 use_image = True,
                 use_of = True,
-                transformation_list = ["speed","shuffle","reverse","periodic","identity"]):
+                transformation_list = ["speed","shuffle","reverse","periodic","identity"],
+		in_folder_name = 'in',
+		out_folder_name = 'out_rainy/out'):
 
         self.root_dir = root_dir
         self.clip_total_frames = clip_len
@@ -132,6 +134,8 @@ class CARLADataset(data.Dataset):
         self.use_of = use_of
         self.tranformation_list = transformation_list
         self.num_classes = len(self.tranformation_list)
+	self.in_folder_name = in_folder_name
+	self.out_folder_name = out_folder_name
 
         self.videos = []
 
@@ -156,10 +160,10 @@ class CARLADataset(data.Dataset):
 
             if in_dist_test==True: # Testing for in-distribution 
                 episodes = np.array([i for i in range(0,27)]) # new tst in_episodes with precipitation <=10
-                folder_name = 'in'
+                folder_name = self.in_folder_name # 'in'
             else:
                 episodes = np.array([i for i in range(0,27)])
-                folder_name = 'out_rainy/out'
+                folder_name = self.out_folder_name # ex. 'out_rainy/out'
 
             print("Episodes: ", episodes)
             print("folder_name: ", folder_name)
