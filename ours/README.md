@@ -1,6 +1,6 @@
 ## This code is build on top of
-      VCOP - https://github.com/xudejing/video-clip-order-prediction
-      Vandebilt - 
+      Video CLip Order Prediction - https://github.com/xudejing/video-clip-order-prediction
+      Cai et al.'s for CARLA dataset - https://github.com/feiyang-cai/out_of_distribution_detector_aebs 
       
 ## Create conda environment and install requirements
       conda create --name codit python=3.6.13
