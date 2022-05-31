@@ -1,3 +1,9 @@
+# This repo contains code for our paper, CODiT: Conformal Out-of-Distribution Detection in Time-series Data
+
+# OURs
+  cd ours and follow instructions in README.md for reproducing CODiT's results reported in the paper
+
+# Related Work
 Setup carla_data in following folder structure at ./
 ```bash
 ├── carla_data
@@ -12,9 +18,6 @@ Setup carla_data in following folder structure at ./
 │   │   ├── setting_2
 │   │   ├── setting_3
 ```
-
-# OURs
-  cd ours and follow instructions in README.md for reproducing CODiT's results reported in the paper
 
 # Feng et al.'s 
 
