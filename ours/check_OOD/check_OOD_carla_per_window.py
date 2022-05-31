@@ -1,7 +1,7 @@
 '''
 command to run 
 
-python check_OOD_carla_per_window.py --gpu 0 --cuda --ckpt carla_log/final_results/5_classes/r3d_cl16_01071135/model_600.pt --bs 2 --model r3d --n 20 --save_dir carla_log/final_results/5_classes/snowy --transformation_list speed shuffle reverse periodic identity
+python check_OOD_carla_per_window.py --gpu 0 --cuda --ckpt saved_models/carla_model.pt --save_dir carla_log/final_results/5_classes/snowy --transformation_list speed shuffle reverse periodic identity
 
 '''
 
