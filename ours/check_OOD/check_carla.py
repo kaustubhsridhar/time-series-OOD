@@ -24,7 +24,7 @@ import numpy as np
 
 from models.r3d import Regressor as r3d_regressor
 
-from dataset.carla_optical_flow_appended import CARLADataset
+from dataset.carla import CARLADataset
 
 import PIL
 import csv
