@@ -1,4 +1,6 @@
-## This code is build on top of -----
+## This code is build on top of
+      VCOP - https://github.com/xudejing/video-clip-order-prediction
+      Vandebilt - 
       
 ## Create conda environment and install requirements
       conda create --name codit python=3.6.13
