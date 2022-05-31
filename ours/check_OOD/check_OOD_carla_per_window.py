@@ -157,7 +157,7 @@ def calc_cal_ce_loss(opt, model, criterion, device, cal_dataloader): # for calib
                 # print("Loss: {}, transformation: {}, predicted trans: {}".format(loss.item(), transformation[i], outputs[i]))
                 trasform_losses_dictionary['{}'.format(target_transformations[i].item())].append(float(loss))
 
-        print('[Cal] loss: ', ce_loss)
+        #print('[Cal] loss: ', ce_loss)
         ce_loss_all_iter.append(np.array(ce_loss))
     
     import pickle
