@@ -1,7 +1,7 @@
 '''
 command to run 
 
-python check_OOD_carla_per_window.py --gpu 0 --cuda --ckpt saved_models/carla_model.pt --save_dir carla_log/final_results/5_classes/snowy --transformation_list speed shuffle reverse periodic identity
+python check_OOD_carla_per_window.py --gpu 0 --cuda --ckpt saved_models/carla_model.pt --n 20 --transformation_list speed shuffle reverse periodic identity
 
 '''
 
@@ -42,9 +42,9 @@ parser.add_argument('--trials', type=int, default=1, help='no. of trials for tak
 parser.add_argument('--model', type=str, default='r3d', help='c3d/r3d/r21d')
 parser.add_argument('--cl', type=int, default=16, help='clip length')
 parser.add_argument('--img_size', type=int, default=224, help='img height/width')
-parser.add_argument('--n', type=int, default=5, help='number of continuous windows with p-value < epsilon to detect OODness in the trace')
+parser.add_argument('--n', type=int, default=20, help='number of continuous windows with p-value < epsilon to detect OODness in the trace')
 parser.add_argument('--seed', type=int, default=100, help='random seed')
-parser.add_argument('--save_dir', type=str, default='win64', help='directory for saving p-vaues')
+parser.add_argument('--save_dir', type=str, default='.', help='directory for saving p-vaues')
 parser.add_argument("--use_image", type=lambda x:bool(strtobool(x)), default=False, help="Use img info")
 parser.add_argument("--use_of", type=lambda x:bool(strtobool(x)), default=True, help="use optical flow info")
 parser.add_argument('--transformation_list', '--names-list', nargs='+', default=["speed","shuffle","reverse","periodic","identity"])
