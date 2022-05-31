@@ -270,44 +270,6 @@ def checkOOD(n = opt.n):
                 out_p_values.append(calc_p_value(out_test_ce_loss[test_idx][window_idx], cal_set_ce_loss_all_iter[iter]))
             out_p_values_all_traces.append(np.array(out_p_values))
         np.savez("{}/out_p_values_iter{}.npz".format(opt.save_dir, iter+1), p_values=np.array(out_p_values_all_traces))
-    
-# def eval_detection(eval_n):
-#     in_p = []
-#     out_p = []
-#     for iter in range(0, opt.n):
-#         in_p.append(np.load("in_p_values_iter{}.npz".format(iter+1), allow_pickle=True)['p_values'])
-#         out_p.append(np.load("out_p_values_iter{}.npz".format(iter+1), allow_pickle=True)['p_values'])
-
-#     in_p_values = in_p[0]
-#     out_p_values = out_p[0]
-    
-#     for i in range(1, eval_n):
-#         for j in range(0, len(in_p[i])):
-#             in_p_values[j] += in_p[i][j]
-    
-#     for i in range(1, eval_n):
-#         for j in range(0, len(out_p[i])):
-#             out_p_values[j] += out_p[i][j]
-
-#     # false detection 
-#     counter_fd_traces = 0
-#     for i in range(0, len(in_p_values)): # iterating over all test iD traces, in_p_values is a 2D list
-#         for j in range(0, len(in_p_values[i])): # iterating over all windows in the test trace
-#             if in_p_values[i][j] == 0:
-#                 counter_fd_traces += 1
-#                 break
-    
-#     print("No. of false detection traces: ", counter_fd_traces)
-
-#     # positive detection 
-#     counter_pd_traces = 0
-#     for i in range(0, len(out_p_values)): # iterationg over all test OOD traces, out_p_values is a 2D list
-#         for j in range(0, len(out_p_values[i])): # iterating over all windows in the test trace
-#             if out_p_values[i][j] == 0:
-#                 counter_pd_traces += 1
-#                 break
-    
-#     print("No. of positive detection traces: ", counter_pd_traces)
 
 def calc_fisher_value(t_value, eval_n):
     summation = 0
