@@ -354,7 +354,7 @@ if __name__ == "__main__":
         auroc_one_trial = []
         tnr_one_trial = []
         det_delay_one_trial = []
-        # checkOOD()
+        checkOOD()
         for i in range(opt.n):
             in_fisher_values_per_win, out_fisher_values_per_win, in_fisher_win_values_trace_wise, out_fisher_win_values_trace_wise = eval_detection_fisher(i+1)
             au_roc = getAUROC(in_fisher_values_per_win, out_fisher_values_per_win)
