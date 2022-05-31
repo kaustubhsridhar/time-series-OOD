@@ -307,13 +307,6 @@ def eval_detection_fisher(eval_n):
 
     np.savez("{}/in_fisher_iter{}.npz".format(opt.save_dir, iter+1), in_fisher_values_win=in_fisher_per_win)
     np.savez("{}/out_fisher_iter{}.npz".format(opt.save_dir, iter+1), out_fisher_values_win=out_fisher_per_win)
-
-    #out_min_fisher_index_per_trace = [d.index(min(d)) for d in out_fisher_values]
-    #print("Detection at frames: ", out_min_fisher_index_per_trace)
-    # first_ood_frame_per_trace = [77, 46, 61, 50, 79, 64, 60, 57, 40, 57, 58, 46, 99, 86, 82, 83, 53, 54, 55, 46, 72, 57, 61, 42, 41, 56, 44, 36, 67, 70, 71, 50, 73, 85, 70, 53, 84, 79, 49, 78, 48, 81, 58, 43, 104, 72, 65, 65, 45, 87, 46, 39, 77, 50, 80, 38, 62, 59, 71, 61, 52, 49, 63, 52, 68, 82, 92, 66, 47, 53, 54, 55, 41] # the frame no. at which precipitation >= 20
-    # print("Detection delay: ", np.array(out_min_fisher_index_per_trace)-np.array(first_ood_frame_per_trace))
-
-    # get_det_delay(in_min_fisher_per_trace, out_fisher_values)
     
     return in_fisher_per_win, out_fisher_per_win, in_fisher_values, out_fisher_values # in_fisher_values, out_fisher_values are 2D - traces X windows
 
