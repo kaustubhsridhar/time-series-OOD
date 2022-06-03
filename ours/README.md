@@ -34,6 +34,9 @@
       python check_OOD_drift.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/drift.pt --n 20 --save_dir drift_log --transformation_list speed shuffle reverse periodic identity
 
 
-## (optional) Train VAE model for precition of the applied transformation on the CARLA dataset
+### (optional) Train VAE model for precition of the applied transformation on the CARLA dataset
      python train_carla.py --cl 16 --log saved_models --bs 2 --gpu 0 --transformation_list speed shuffle reverse periodic identity
+### (optional) Train VAE model for precition of the applied transformation on the CARLA dataset
+     python train_drift.py --cl 16 --log saved_models --bs 2 --gpu 0 --lr 0.00001
+
 
