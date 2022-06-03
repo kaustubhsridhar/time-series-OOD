@@ -233,8 +233,8 @@ if __name__ == '__main__':
             # scheduler.step(val_loss)         
             writer.add_scalar('train/lr', optimizer.param_groups[0]['lr'], epoch)
             # save model every 20 epoches
-            if epoch == 1:
-                torch.save(net.state_dict(), os.path.join(log_dir, 'temp_drift.pt'))
+            if epoch == 3000:
+                torch.save(net.state_dict(), os.path.join(log_dir, 'drift.pt'))
 
     elif args.mode == 'test':  ########### Test #############
         net.load_state_dict(torch.load(args.ckpt))
