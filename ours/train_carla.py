@@ -2,7 +2,7 @@
 
 For training - python train_carla.py --cl 16 --log saved_models --bs 2 --gpu 0 --transformation_list speed shuffle reverse periodic identity
 
-For testing - python train_carla.py --bs 2 --mode test --ckpt carla_log/16/r3d_cl16_12091327/model_600.pt --gpu 0
+For testing - python train_carla.py --bs 2 --mode test --ckpt saved_models/cifar.pt --gpu 0
 
 """
 
@@ -219,8 +219,7 @@ if __name__ == '__main__':
             val_loss = validate(args, net, criterion, device, val_dataloader, writer, epoch)
             # scheduler.step(val_loss)         
             writer.add_scalar('train/lr', optimizer.param_groups[0]['lr'], epoch)
-            # save model every 20 epoches
-            if epoch == 1:
+            if epoch == 600:
                 torch.save(net.state_dict(), os.path.join(log_dir, 'cifar.pt'.format(epoch)))
 
     elif args.mode == 'test':  ########### Test #############
