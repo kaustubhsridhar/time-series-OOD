@@ -39,7 +39,7 @@ class GAIT(data.Dataset):
                 train=True,
                 cal=False,
                 in_dist_test=False,
-                transformation_list = ["speed","shuffle","reverse","periodic","identity"]):
+                transformation_list = ["low_pass", 'high_low', 'low_high', 'identity']):
         
         self.root_dir = root_dir
         self.win_total_datapoints = win_len
@@ -122,10 +122,6 @@ class GAIT(data.Dataset):
                 ood_types = ['als']
 
                 print(ood_types)
-                # mild group
-                # trace_ids = {'park': [2,3,5,6,9,15], 
-                # 'als' : [2,8,10,11],
-                # 'hunt' : [1,2,5,6,8,9,11,12,14,17,20]} 
 
                 for i,ood_type in enumerate(ood_types): # enumerating on the ood_type
                     # for ood_trace_id in range(1,no_ood_traces[i]+1): 
@@ -142,15 +138,6 @@ class GAIT(data.Dataset):
                             f.close()
 
                             self.traces.append(cur_trace_data) # 3D   
-
-        # test = copy.deepcopy(self.traces) 
-        # for i in range(len(self.traces)): 
-        #     for j in range(1, len(self.traces[i])): 
-        #         test[i][j].append((self.traces[i][j][0]+self.traces[i][j][1])-(self.traces[i][j-1][0]+self.traces[i][j-1][1]))
-
-        #     test[i] = test[i][1:]
-
-        # self.traces = test
     
     def __len__(self):
         return len(self.traces)
@@ -192,55 +179,7 @@ class GAIT(data.Dataset):
         output = output.transpose()
 
         return output
-
-    # def apply_time_periodic_filter_on_2D_data(self, input_data, filter1_coeffs, filter2_coeffs): # input_data is 2D
-
-    #     input_data = np.array(input_data) 
-    #     num_cols = len(input_data[0])
-    #     num_rows = len(input_data)
-
-    #     output = []
-
-    #     for c in range(num_cols):
-    #         col_c_first_half = np.convolve(input_data[:num_rows//2,c], filter1_coeffs,'valid')
-    #         col_c_second_half = np.convolve(input_data[num_rows//2:,c], filter2_coeffs,'valid')
-    #         output.append(np.concatenate((col_c_first_half, col_c_second_half)))
-        
-    #     output = np.array(output)
-    #     output = output.transpose()
-        
-    #     return output
-
-
-    def apply_erosion(self, input_data, filter_size): # input_data is 2D = win_size X 12
-
-        input_data = np.array(input_data) 
-        num_cols = len(input_data[0])
-        num_rows = len(input_data)
-
-        output = []
-        for c in range(num_cols):
-            output.append(minimum_filter1d(input_data[:,c], size=filter_size, mode='nearest'))
-        
-        output = np.array(output)
-        output = output.transpose()
-
-        return output
-    
-    def apply_dilation(self, input_data, filter_size): # input_data is 2D = win_size X 12
-
-        input_data = np.array(input_data) 
-        num_cols = len(input_data[0])
-        num_rows = len(input_data)
-
-        output = []
-        for c in range(num_cols):
-            output.append(maximum_filter1d(input_data[:,c], size=filter_size, mode='nearest'))
-        
-        output = np.array(output)
-        output = output.transpose()
-
-        return output
+  
 
     def __getitem__(self, idx): # this is only for CAL/TRAIN
         """
@@ -257,37 +196,11 @@ class GAIT(data.Dataset):
         orig_win =  tracedata[win_start:win_start+self.win_total_datapoints] # 2D list
         trans_win = tracedata[win_start:win_start+self.win_total_datapoints] # 2D list
 
-        # random transformation selection with 0: 2x speed 1: shuffle, 2: reverse, 3: periodic (forward, backward), 4: Identity
-        transform_id = random.randint(0, self.num_classes-1)
-
-        # if self.tranformation_list[transform_id] == "speed": #  2x speed 
-            
-        #     win_start = random.randint(0, length - (2*self.win_total_datapoints)) # multiplying 2 for 2x speed
-
-        #     orig_win =  tracedata[win_start:win_start+self.win_total_datapoints]
-
-        #     trans_win = tracedata[win_start:win_start+2*self.win_total_datapoints:2]
-
-        # elif self.tranformation_list[transform_id] == "shuffle": # shuffle
-        #     random.shuffle(trans_win)
-
-        # elif self.tranformation_list[transform_id] == "reverse": # reverse
-        #     trans_win.reverse()
-
-        # elif self.tranformation_list[transform_id] == "periodic": # periodic (forward, backward)
-        #    trans_win[self.win_total_datapoints//2:self.win_total_datapoints] = reversed(trans_win[self.win_total_datapoints//2:self.win_total_datapoints]) 
-
         if self.tranformation_list[transform_id] == "low_pass":
             trans_win = self.apply_filter_on_2D_data(trans_win, [1/3,1/3,1/3])
         
         elif self.tranformation_list[transform_id] == "high_pass":
             trans_win = self.apply_filter_on_2D_data(trans_win,  [-1/2, 0, 1/2])
-
-        elif self.tranformation_list[transform_id] == "dilation":
-            trans_win = self.apply_dilation(trans_win, filter_size=3)
-        
-        elif self.tranformation_list[transform_id] == "erosion":
-            trans_win = self.apply_erosion(trans_win, filter_size=3)
 
         elif self.tranformation_list[transform_id] == "low_high": # low-pass on half, high pass on half
             trans_win = self.apply_periodic_filter_on_2D_data(trans_win, filter1_coeffs=[1/3,1/3,1/3], filter2_coeffs=[-1/2, 0, 1/2])
@@ -308,12 +221,8 @@ class GAIT(data.Dataset):
         orig_win = self.transform_win(orig_win)
         orig_win = orig_win[:,1:-1,:]
 
-        if self.tranformation_list[transform_id] == "identity" or self.tranformation_list[transform_id] == "dilation" or self.tranformation_list[transform_id] == "erosion":
+        if self.tranformation_list[transform_id] == "identity":
             trans_win = trans_win[:,1:-1,:]
-        
-        # if 'periodic' in self.tranformation_list:
-        #     trans_win = np.delete(trans_win, len(trans_win)//2)
-        #     orig_win = np.delete(orig_win, len(trans_win)//2)
 
         return orig_win, trans_win, transform_id
 
@@ -333,42 +242,11 @@ class GAIT(data.Dataset):
             orig_win =  tracedata[win_start:win_start+self.win_total_datapoints]
             trans_win = tracedata[win_start:win_start+self.win_total_datapoints]
 
-            # if self.tranformation_list[transform_id] == "speed": 
-                
-            #     # trans_win = []
-
-            #     # for index in range(self.win_total_datapoints):
-            #     #     trans_win.append(tracedata[win_start + 2*index])
-            #     trans_win = tracedata[win_start:win_start+2*self.win_total_datapoints:2]
-
-            # elif self.tranformation_list[transform_id] == "shuffle":
-
-            #     random.shuffle(trans_win)
-
-            # elif self.tranformation_list[transform_id] == "reverse": 
-
-            #     trans_win.reverse()
-
-            # elif self.tranformation_list[transform_id] == "periodic":  # periodic (forward, backward)
-            #     trans_win[self.win_total_datapoints//2:self.win_total_datapoints] = reversed(trans_win[self.win_total_datapoints//2:self.win_total_datapoints])
-
-            # elif self.tranformation_list[transform_id] == "identity": 
-            #     pass 
-            
-            # else:
-            #     raise Exception("Invalid transformation id: ", transform_id)
-
             if self.tranformation_list[transform_id] == "low_pass":
                 trans_win = self.apply_filter_on_2D_data(trans_win, [1/3,1/3,1/3])
             
             elif self.tranformation_list[transform_id] == "high_pass":
                 trans_win = self.apply_filter_on_2D_data(trans_win,  [-1/2, 0, 1/2])
-            
-            elif self.tranformation_list[transform_id] == "dilation":
-                trans_win = self.apply_dilation(trans_win, filter_size=3)
-        
-            elif self.tranformation_list[transform_id] == "erosion":
-                trans_win = self.apply_erosion(trans_win, filter_size=3)
             
             elif self.tranformation_list[transform_id] == "low_high": # low-pass on half, high pass on half
                 trans_win = self.apply_periodic_filter_on_2D_data(trans_win, filter1_coeffs=[1/3,1/3,1/3], filter2_coeffs=[-1/2, 0, 1/2])
@@ -389,11 +267,7 @@ class GAIT(data.Dataset):
             orig_win = self.transform_win(orig_win)
             orig_win = orig_win[:,1:-1,:]
 
-            if self.tranformation_list[transform_id] == "identity" or self.tranformation_list[transform_id] == "dilation" or self.tranformation_list[transform_id] == "erosion":
+            if self.tranformation_list[transform_id] == "identity":
                 trans_win = trans_win[:,1:-1,:]
-
-            # if 'periodic' in self.tranformation_list:
-            #     trans_win = np.delete(trans_win, len(trans_win)//2)
-            #     orig_win = np.delete(orig_win, len(trans_win)//2)
 
             yield orig_win, trans_win, transform_id
