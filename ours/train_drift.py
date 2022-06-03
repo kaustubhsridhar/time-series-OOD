@@ -193,7 +193,7 @@ if __name__ == '__main__':
 #                 exp_name = '{}_cl{}_{}_{}'.format(args.model, args.cl, args.desp, time.strftime('%m%d%H%M'))
 #             else:
 #                 exp_name = '{}_cl{}_{}'.format(args.model, args.cl, time.strftime('%m%d%H%M'))
-            log_dir = os.path.join(args.log, exp_name)
+            log_dir = os.path.join(args.log)
         writer = SummaryWriter(log_dir)
 
         train_transforms = transforms.Compose([
