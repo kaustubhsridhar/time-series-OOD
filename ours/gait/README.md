@@ -20,3 +20,5 @@
     mkdir gait_log
     python check_OOD_gait.py --save_dir gait_log/ --ckpt saved_models/gait_$wl$.pt  --transformation_list high_pass low_high high_low identity --wl $wl$ --cuda --gpu 0 --n 100 --disease_type $disease_type$
 
+## (optional) Training VAE model on GAIT dataset on $wl$=16/18/20
+    python train_gait.py --log saved_models --transformation_list high_pass low_high high_low identity --wl $wl$
