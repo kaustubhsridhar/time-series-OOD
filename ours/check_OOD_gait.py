@@ -1,6 +1,6 @@
 '''
 command to run 
-python check_OOD_gait.py --ckpt saved_models/gait_16.pt --save_dir gait_log --bs 3 --cuda --n 100 --transformation_list high_pass high_low low_high identity
+python check_OOD_gait.py --ckpt saved_models/gait_16.pt --save_dir gait_log --wl 16 --bs 3 --cuda --n 100 --transformation_list high_pass high_low low_high identity
 '''
 
 from __future__ import print_function
