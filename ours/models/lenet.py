@@ -4,18 +4,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-# Prev Enc blcok with Conv layer
-# class EncBlock(nn.Module):
-#     def __init__(self, in_channels, out_channels, kernel_size, stride):
-#         super(EncBlock, self).__init__()
-#         self.layers = nn.Sequential()
-#         self.layers.add_module('2DConv', nn.Conv2d(in_channels=in_channels, out_channels=out_channels, kernel_size=kernel_size, stride=stride))
-
-#     def forward(self, x):
-#         out = self.layers(x)
-#         return torch.cat([x,out], dim=1)
-#         #return out
-
 # New Enc Block with Linear Layer
 class EncBlock(nn.Module):
     def __init__(self, in_features, out_features):
