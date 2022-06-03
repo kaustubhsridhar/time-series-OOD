@@ -1,7 +1,6 @@
 """Training a VAE for Applied temporal transformation prediction.
 
-******************** FINAL Training ****************************
-python train.py --cl 16 --log drift_log --bs 2 --gpu 0 --img_hgt 224 --img_width 224 --epochs 2000 --train_root_dir drift_dataset/temp_in/training --cal_root_dir drift_dataset/temp_in/calibration/ --lr 0.00001
+python train.py --cl 16 --log drift_log --bs 2 --gpu 0 --train_root_dir data/drift_dataset/training --cal_root_dir data/drift_dataset/testing/calibration --lr 0.00001
 
 """
 import os
@@ -128,7 +127,7 @@ def test(args, model, criterion, device, test_dataloader):
 from distutils.util import strtobool
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='Video Clip Order Prediction')
+    parser = argparse.ArgumentParser(description='Video Transformation Prediction')
     parser.add_argument('--mode', type=str, default='train', help='train/test')
     parser.add_argument('--model', type=str, default='r3d', help='c3d/r3d/r21d')
     parser.add_argument('--cl', type=int, default=16, help='clip length')
@@ -147,12 +146,12 @@ def parse_args():
     parser.add_argument('--workers', type=int, default=4, help='number of data loading workers')
     parser.add_argument('--pf', type=int, default=100, help='print frequency every batch')
     parser.add_argument('--seed', type=int, default=100, help='seed for initializing training.')
-    parser.add_argument('--train_root_dir', type=str, default='moving_crowd_dataset/in/training',help='training data directory')
-    parser.add_argument('--cal_root_dir', type=str, default='moving_crowd_dataset/in/calibration',help='calibration data directory')
+    parser.add_argument('--train_root_dir', type=str, default='data/drift_dataset/training',help='training data directory')
+    parser.add_argument('--cal_root_dir', type=str, default='data/drift_dataset/testing/calibration',help='calibration data directory')
     parser.add_argument('--test_root_dir', type=str, default='moving_crowd_dataset/out',help='test data directory')
     parser.add_argument('--img_hgt', type=int, default=224, help='img height')
     parser.add_argument('--img_width', type=int, default=224, help='img width')
-    parser.add_argument('--dataset', default='DriftDataset', help='dataset - CARLAVCOPDataset/DriftDataset')
+    parser.add_argument('--dataset', default='DriftDataset', help='DriftDataset')
     parser.add_argument("--use_image", type=lambda x:bool(strtobool(x)), default=False, help="Use img info")
     parser.add_argument("--use_of", type=lambda x:bool(strtobool(x)), default=True, help="use optical flow info")
     parser.add_argument('--transformation_list', '--names-list', nargs='+', default=["speed","shuffle","reverse","periodic","identity"])
