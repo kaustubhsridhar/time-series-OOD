@@ -1,9 +1,8 @@
 """Applied temporal transformation prediction.
 
-For training with only OF - 
-1) 5 transforms - python train_carla.py --cl 16 --log carla_log/final_results/5_classes/ --bs 2 --gpu 0 --use_image False --use_of True --transformation_list speed shuffle reverse periodic identity --epochs 600
+For training - python train_carla.py --cl 16 --log saved_models --bs 2 --gpu 0 --transformation_list speed shuffle reverse periodic identity
 
-For testing - python train_carla.py --bs 2 --mode test --ckpt carla_log/16/r3d_cl16_12091327/model_300.pt --gpu 2
+For testing - python train_carla.py --bs 2 --mode test --ckpt carla_log/16/r3d_cl16_12091327/model_600.pt --gpu 0
 
 """
 
@@ -23,9 +22,9 @@ from torchvision import transforms
 import torch.optim as optim
 from tensorboardX import SummaryWriter
 
-from r3d import Regressor as r3d_regressor
+from models.r3d import Regressor as r3d_regressor
 
-from dataset.carla_optical_flow_appended import CARLADataset
+from dataset.carla import CARLADataset
 
 import pdb
 from distutils.util import strtobool
@@ -142,14 +141,14 @@ def parse_args():
     parser.add_argument('--log', type=str, help='log directory')
     parser.add_argument('--ckpt', type=str, default='', help='checkpoint path')
     parser.add_argument('--desp', type=str, help='additional description')
-    parser.add_argument('--epochs', type=int, default=300, help='number of total epochs to run')
+    parser.add_argument('--epochs', type=int, default=600, help='number of total epochs to run')
     parser.add_argument('--start-epoch', type=int, default=1, help='manual epoch number (useful on restarts)')
     parser.add_argument('--bs', type=int, default=2, help='mini-batch size')
     parser.add_argument('--workers', type=int, default=4, help='number of data loading workers')
     parser.add_argument('--pf', type=int, default=100, help='print frequency every batch')
     parser.add_argument('--seed', type=int, default=100, help='seed for initializing training.')
     parser.add_argument('--img_size', type=int, default=224, help='img height and width')
-    parser.add_argument("--use_image", type=lambda x:bool(strtobool(x)), default=True, help="Use img info")
+    parser.add_argument("--use_image", type=lambda x:bool(strtobool(x)), default=False, help="Use img info")
     parser.add_argument("--use_of", type=lambda x:bool(strtobool(x)), default=True, help="use optical flow info")
     parser.add_argument('--transformation_list', '--names-list', nargs='+', default=["speed","shuffle","reverse","periodic","identity"])
 
@@ -171,10 +170,6 @@ if __name__ == '__main__':
         if args.gpu:
             torch.cuda.manual_seed_all(args.seed)
 
-    ########### model r3d for now ##############
-    # net = r3d_regressor().to(device)
-    # net = torch.nn.DataParallel(net, device_ids=[args.gpu])
-
     in_channels = 3
     if args.use_image and args.use_of:
         in_channels = 6
@@ -188,18 +183,18 @@ if __name__ == '__main__':
             net.load_state_dict(torch.load(args.ckpt))
             log_dir = os.path.dirname(args.ckpt)
         else:
-            if args.desp:
-                exp_name = '{}_cl{}_{}_{}'.format(args.model, args.cl, args.desp, time.strftime('%m%d%H%M'))
-            else:
-                exp_name = '{}_cl{}_{}'.format(args.model, args.cl, time.strftime('%m%d%H%M'))
-            log_dir = os.path.join(args.log, exp_name)
+#             if args.desp:
+#                 exp_name = '{}_cl{}_{}_{}'.format(args.model, args.cl, args.desp, time.strftime('%m%d%H%M'))
+#             else:
+#                 exp_name = '{}_cl{}_{}'.format(args.model, args.cl, time.strftime('%m%d%H%M'))
+            log_dir = os.path.join(args.log)
         writer = SummaryWriter(log_dir)
 
         train_transforms = transforms.Compose([
             transforms.ToTensor()
         ])
 
-        orig_train_dataset = CARLADataset(root_dir='CARLA_dataset/Vanderbilt_data/training', clip_len=16, train=True, transforms_=train_transforms, img_size=args.img_size, use_image=args.use_image, use_of=args.use_of, transformation_list=args.transformation_list)
+        orig_train_dataset = CARLADataset(root_dir='data/CARLA_dataset/training', clip_len=16, train=True, transforms_=train_transforms, img_size=args.img_size, use_image=args.use_image, use_of=args.use_of, transformation_list=args.transformation_list)
 
         train_dataset, val_dataset = random_split(orig_train_dataset, (len(orig_train_dataset)-13, 13), generator=torch.Generator().manual_seed(42)) # split val for 13 videos, we have a total of 33 videos, so training on 20. We will be using the validation dataset as calibration dataset for OOD detection in the CP framework.
 
@@ -209,15 +204,10 @@ if __name__ == '__main__':
         val_dataloader = DataLoader(val_dataset, batch_size=args.bs, shuffle=False,
                                     num_workers=args.workers)
 
-        ### loss funciton, optimizer and scheduler ###
+        ### loss funciton, optimizer ###
         criterion = nn.CrossEntropyLoss()
 
         # setup optimizer
-        # fc2_params = list(map(id, net.fc2.parameters()))
-        # base_params = filter(lambda p: id(p) not in fc2_params, net.parameters())
-
-        # optimizer = optim.SGD([{'params':base_params}, {'params':net.module.fc2.parameters(), 'lr': args.lr*args.lrMul}], lr=args.lr, momentum=0.9, weight_decay=args.wgtDecay, nesterov=True)
-
         optimizer = optim.Adam(params= net.parameters(), lr= args.lr, weight_decay=args.wgtDecay)
 
         prev_best_val_loss = float('inf')
@@ -230,16 +220,8 @@ if __name__ == '__main__':
             # scheduler.step(val_loss)         
             writer.add_scalar('train/lr', optimizer.param_groups[0]['lr'], epoch)
             # save model every 20 epoches
-            if epoch % 20 == 0:
-                torch.save(net.state_dict(), os.path.join(log_dir, 'model_{}.pt'.format(epoch)))
-            # save model for the best val
-            if val_loss < prev_best_val_loss:
-                model_path = os.path.join(log_dir, 'best_model_{}.pt'.format(epoch))
-                torch.save(net.state_dict(), model_path)
-                prev_best_val_loss = val_loss
-                if prev_best_model_path:
-                    os.remove(prev_best_model_path)
-                prev_best_model_path = model_path
+            if epoch == 1:
+                torch.save(net.state_dict(), os.path.join(log_dir, 'cifar.pt'.format(epoch)))
 
     elif args.mode == 'test':  ########### Test #############
         net.load_state_dict(torch.load(args.ckpt))
@@ -247,7 +229,7 @@ if __name__ == '__main__':
         test_transforms = transforms.Compose([
             transforms.ToTensor()
         ])
-        test_dataset = CARLADataset(root_dir='CARLA_dataset/Vanderbilt_data/testing', clip_len=16, train=False, transforms_=test_transforms, img_size=args.img_size, in_dist_test=True, use_image=args.use_image, use_of=args.use_of, transformation_list=args.transformation_list)
+        test_dataset = CARLADataset(root_dir='data/CARLA_dataset/testing', clip_len=16, train=False, transforms_=test_transforms, img_size=args.img_size, in_dist_test=True, use_image=args.use_image, use_of=args.use_of, transformation_list=args.transformation_list)
         print("Test dataset len: ", test_dataset.__len__())
         test_dataloader = DataLoader(test_dataset, batch_size=args.bs, shuffle=False,
                                 num_workers=args.workers, pin_memory=True)
