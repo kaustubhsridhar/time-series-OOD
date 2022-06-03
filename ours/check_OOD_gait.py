@@ -340,12 +340,9 @@ if __name__ == "__main__":
         # tnr_all_trials.append(tnr_one_trial)
 
     auroc_all_trials = np.array(auroc_all_trials)
-    # tnr_all_trials = np.array(tnr_all_trials)
 
     print(np.mean(auroc_all_trials,0))
-    # print(np.std(auroc_all_trials,0))
 
-    # print("TNR Mean: ", np.mean(tnr_all_trials,0))
 
 
     
