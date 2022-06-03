@@ -1,6 +1,6 @@
 '''
 command to run 
-python check_OOD_GAIT.py --ckpt gait_log/3_classes/16/wl16_01032242/model_3000.pt --save_dir gait_log/3_classes/16/wl16_01032242/  --bs 3 --cuda --trials 1 --n 5
+python check_OOD_GAIT.py --ckpt saved_models/gait_16.pt --save_dir gait_log --bs 3 --cuda --n 100 --transformation_list high_pass high_low low_high identity
 '''
 
 from __future__ import print_function
@@ -20,7 +20,7 @@ import itertools
 
 import numpy as np
 
-from lenet import Regressor as regressor
+from models.lenet import Regressor as regressor
 
 from dataset.gait import GAIT
 
@@ -37,7 +37,7 @@ parser.add_argument('--trials', type=int, default=1, help='no. of trials for tak
 parser.add_argument('--wl', type=int, default=16, help='window length')
 parser.add_argument('--n', type=int, default=5, help='number of continuous windows with p-value < epsilon to detect OODness in the trace')
 parser.add_argument('--seed', type=int, default=100, help='random seed')
-parser.add_argument('--save_dir', type=str, default='win64', help='directory for saving p-vaues')
+parser.add_argument('--save_dir', type=str, default='gait_log', help='directory for saving p-vaues')
 parser.add_argument('--cal_root_dir', type=str, default='gait-in-neurodegenerative-disease-database-1.0.0',help='calibration data directory')
 parser.add_argument('--in_test_root_dir', type=str, default='gait-in-neurodegenerative-disease-database-1.0.0',help='test data directory')
 parser.add_argument('--out_test_root_dir', type=str, default='gait-in-neurodegenerative-disease-database-1.0.0',help='test data directory')
@@ -251,44 +251,6 @@ def checkOOD(n = opt.n):
                 out_p_values.append(calc_p_value(out_test_ce_loss[test_idx][window_idx], cal_set_ce_loss_all_iter[iter]))
             out_p_values_all_traces.append(np.array(out_p_values))
         np.savez("{}/out_p_values_iter{}.npz".format(opt.save_dir, iter+1), p_values=np.array(out_p_values_all_traces))
-    
-# def eval_detection(eval_n):
-#     in_p = []
-#     out_p = []
-#     for iter in range(0, opt.n):
-#         in_p.append(np.load("in_p_values_iter{}.npz".format(iter+1), allow_pickle=True)['p_values'])
-#         out_p.append(np.load("out_p_values_iter{}.npz".format(iter+1), allow_pickle=True)['p_values'])
-
-#     in_p_values = in_p[0]
-#     out_p_values = out_p[0]
-    
-#     for i in range(1, eval_n):
-#         for j in range(0, len(in_p[i])):
-#             in_p_values[j] += in_p[i][j]
-    
-#     for i in range(1, eval_n):
-#         for j in range(0, len(out_p[i])):
-#             out_p_values[j] += out_p[i][j]
-
-#     # false detection 
-#     counter_fd_traces = 0
-#     for i in range(0, len(in_p_values)): # iterating over all test iD traces, in_p_values is a 2D list
-#         for j in range(0, len(in_p_values[i])): # iterating over all windows in the test trace
-#             if in_p_values[i][j] == 0:
-#                 counter_fd_traces += 1
-#                 break
-    
-#     print("No. of false detection traces: ", counter_fd_traces)
-
-#     # positive detection 
-#     counter_pd_traces = 0
-#     for i in range(0, len(out_p_values)): # iterationg over all test OOD traces, out_p_values is a 2D list
-#         for j in range(0, len(out_p_values[i])): # iterating over all windows in the test trace
-#             if out_p_values[i][j] == 0:
-#                 counter_pd_traces += 1
-#                 break
-    
-#     print("No. of positive detection traces: ", counter_pd_traces)
 
 def calc_fisher_value(t_value, eval_n):
     summation = 0
@@ -334,12 +296,6 @@ def eval_detection_fisher(eval_n):
 
     np.savez("{}/in_fisher_iter{}.npz".format(opt.save_dir, iter+1), in_fisher_values_win=in_fisher_per_win)
     np.savez("{}/out_fisher_iter{}.npz".format(opt.save_dir, iter+1), out_fisher_values_win=out_fisher_per_win)
-
-    #out_min_fisher_index_per_trace = [d.index(min(d)) for d in out_fisher_values]
-    #print("Detection at frames: ", out_min_fisher_index_per_trace)
-    # first_ood_frame_per_trace = [77, 46, 61, 50, 79, 64, 60, 57, 40, 57, 58, 46, 99, 86, 82, 83, 53, 54, 55, 46, 72, 57, 61, 42, 41, 56, 44, 36, 67, 70, 71, 50, 73, 85, 70, 53, 84, 79, 49, 78, 48, 81, 58, 43, 104, 72, 65, 65, 45, 87, 46, 39, 77, 50, 80, 38, 62, 59, 71, 61, 52, 49, 63, 52, 68, 82, 92, 66, 47, 53, 54, 55, 41] # the frame no. at which precipitation >= 20
-    # print("Detection delay: ", np.array(out_min_fisher_index_per_trace)-np.array(first_ood_frame_per_trace))
-
     
     return in_fisher_per_win, out_fisher_per_win
 
