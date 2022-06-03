@@ -19,7 +19,7 @@ from torchvision import transforms
 import torch.optim as optim
 from tensorboardX import SummaryWriter
 
-from r3d import Regressor as r3d_regressor
+from models.r3d import Regressor as r3d_regressor
 
 from dataset.drift import DriftDataset
 
