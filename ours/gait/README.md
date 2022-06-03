@@ -15,3 +15,8 @@
     mv gait_16.pt saved_models/.
     mv gait_18.pt saved_models/.
     mv gait_20.pt saved_models/.
+
+## Check OOD with $wl$=16/18/20, $disease_type$=als/park/hunt/all
+    mkdir gait_log
+    python check_OOD_gait.py --save_dir gait_log/ --ckpt saved_models/gait_$wl$.pt  --transformation_list high_pass low_high high_low identity --wl $wl$ --cuda --gpu 0 --n 100 --disease_type $disease_type$
+
