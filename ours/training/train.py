@@ -1,14 +1,7 @@
-"""Applied temporal transformation prediction.
-
-For training in drift - python train.py --cl 24 --log drift_log/4_classes/24 --bs 2 --gpu 0 --img_hgt 224 --img_width 224 --dataset DriftDataset --epochs 1000 --train_root_dir drift_dataset/in/training --cal_root_dir drift_dataset/in/calibration/ --lr 0.00001
-For testing - python train.py --bs 2 --mode test --ckpt cl16_mod_enc/r3d_cl16_11161201/model_300.pt --root_dir CARLA_dataset/Vanderbilt_data/testing
-For testing in drift - python train.py --bs 2 --mode test --ckpt drift_log/r3d_cl24_11302229/model_400.pt --test_root_dir drift_dataset/out --dataset DriftDataset --cl 24
-
+"""Training a VAE for Applied temporal transformation prediction.
 
 ******************** FINAL Training ****************************
-Drift - python train.py --cl 16 --log drift_log/4_classes/16/new_in_data/ --bs 2 --gpu 0 --img_hgt 224 --img_width 224 --dataset DriftDataset --epochs 2000 --train_root_dir drift_dataset/temp_in/training --cal_root_dir drift_dataset/temp_in/calibration/ --lr 0.00001
-
-Crowd - python train.py --cl 16 --log crowd_log/16 --bs 2 --gpu 1 --img_hgt 224 --img_width 224 --dataset CrowdDataset --epochs 3000 --train_root_dir moving_crowd_dataset/in/training/ --cal_root_dir moving_crowd_dataset/in/calibration/ --lr 0.00001
+python train.py --cl 16 --log drift_log --bs 2 --gpu 0 --img_hgt 224 --img_width 224 --epochs 2000 --train_root_dir drift_dataset/temp_in/training --cal_root_dir drift_dataset/temp_in/calibration/ --lr 0.00001
 
 """
 import os
@@ -27,16 +20,9 @@ from torchvision import transforms
 import torch.optim as optim
 from tensorboardX import SummaryWriter
 
-#from datasets.ucf101 import UCF101VCOPDataset
-# from models.c3d import C3D
-# from models.r3d import R3DNet
-# from models.r21d import R2Plus1DNet
-
 from r3d import Regressor as r3d_regressor
 
-from dataset.drift_optical_flow_appended import DriftDataset # for everything - only img, only of, [img, of]
-
-from dataset.crowd import CrowdDataset
+from dataset.drift import DriftDataset
 
 import pdb
 
@@ -155,7 +141,7 @@ def parse_args():
     parser.add_argument('--log', type=str, help='log directory')
     parser.add_argument('--ckpt', type=str, default='', help='checkpoint path')
     parser.add_argument('--desp', type=str, help='additional description')
-    parser.add_argument('--epochs', type=int, default=300, help='number of total epochs to run')
+    parser.add_argument('--epochs', type=int, default=3000, help='number of total epochs to run')
     parser.add_argument('--start-epoch', type=int, default=1, help='manual epoch number (useful on restarts)')
     parser.add_argument('--bs', type=int, default=2, help='mini-batch size')
     parser.add_argument('--workers', type=int, default=4, help='number of data loading workers')
@@ -166,15 +152,15 @@ def parse_args():
     parser.add_argument('--test_root_dir', type=str, default='moving_crowd_dataset/out',help='test data directory')
     parser.add_argument('--img_hgt', type=int, default=224, help='img height')
     parser.add_argument('--img_width', type=int, default=224, help='img width')
-    parser.add_argument('--dataset', default='CARLAVCOPDataset', help='dataset - CARLAVCOPDa"taset/DriftDataset/CrowdDataset')
-    parser.add_argument("--use_image", type=lambda x:bool(strtobool(x)), default=True, help="Use img info")
+    parser.add_argument('--dataset', default='DriftDataset', help='dataset - CARLAVCOPDataset/DriftDataset')
+    parser.add_argument("--use_image", type=lambda x:bool(strtobool(x)), default=False, help="Use img info")
     parser.add_argument("--use_of", type=lambda x:bool(strtobool(x)), default=True, help="use optical flow info")
     parser.add_argument('--transformation_list', '--names-list', nargs='+', default=["speed","shuffle","reverse","periodic","identity"])
 
     args = parser.parse_args()
     return args
 
-dataset_class = {'DriftDataset': DriftDataset, 'CrowdDataset': CrowdDataset}
+dataset_class = {'DriftDataset': DriftDataset}
 
 if __name__ == '__main__':
     args = parse_args()
@@ -191,12 +177,10 @@ if __name__ == '__main__':
         if args.gpu:
             torch.cuda.manual_seed_all(args.seed)
 
-    ########### model r3d for now ##############
     in_channels = 3
     if args.use_image and args.use_of:
         in_channels = 6
     net = r3d_regressor(num_classes=len(args.transformation_list), in_channels=in_channels).to(device)
-    # net = torch.nn.DataParallel(net, device_ids=[args.gpu])
 
     if args.ckpt != '':
         net.load_state_dict(torch.load(args.ckpt))
