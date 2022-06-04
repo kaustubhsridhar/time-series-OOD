@@ -1,6 +1,6 @@
 '''
 command to run 
-python check_OOD_baseline.py --disease_type als --wl 16 
+python check_OOD_baseline.py --disease_type als --wl 16 --root_dir data/gait-in-neurodegenerative-disease-database-1.0.0
 '''
 
 
@@ -11,7 +11,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--disease_type', type=str, default='als', help='als/hunt/park/all')
-parser.add_argument('--root_dir', type=str, default='/home/ramneet/Documents/Time-series OOD detection with CP/gait-in-neurodegenerative-disease-database-1.0.0', help='path to the gait dataset')
+parser.add_argument('--root_dir', type=str, default='data/gait-in-neurodegenerative-disease-database-1.0.0', help='path to the gait dataset')
 parser.add_argument('--wl', type=int, default=16, help='sliding window length')
 
 opt = parser.parse_args()
