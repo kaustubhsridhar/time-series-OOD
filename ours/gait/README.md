@@ -23,6 +23,6 @@
 ## (optional) Training VAE model on GAIT dataset on $wl$=16/18/20
     python train_gait.py --log saved_models --transformation_list high_pass low_high high_low identity --wl $wl$
     
-## Generating training and generating baseline results with $wl$=16/18/20, $disese_type$ als/hunt/park/all
+## Training and generating baseline results with $wl$=16/18/20, $disese_type$ als/hunt/park/all
     python check_OOD_baseline.py --disease_type $disease_type$ --wl $disease_type$ --root_dir data/gait-in-neurodegenerative-disease-database-1.0.0
 
