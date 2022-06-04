@@ -24,5 +24,5 @@
     python train_gait.py --log saved_models --transformation_list high_pass low_high high_low identity --wl $wl$
     
 ## Training and generating baseline results with $wl$=16/18/20, $disese_type$ als/hunt/park/all
-    python check_OOD_baseline.py --disease_type $disease_type$ --wl $disease_type$ --root_dir data/gait-in-neurodegenerative-disease-database-1.0.0
+    python check_OOD_baseline.py --disease_type $disease_type$ --wl $wl$ --root_dir data/gait-in-neurodegenerative-disease-database-1.0.0
 
