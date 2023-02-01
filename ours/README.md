@@ -21,7 +21,8 @@
       Drift: unzip drift_log
       
 ## Step 5: Generate results for Weather and Night OODs (Table 2)
-Note: These results will be generated for just 1 run. In the paper, we ran these experiments 5 times (with different seeds) and reported the mean and standard deviation (std). For AUROC, where std is negligible (except for snowy), the results for 1 run are very close to the ones reported in paper for 5 times. Similar results are expected for detection delay but we found that for rainy, it came 0.05 seconds higher (0.918) than reported in paper (0.86). We will rectify it in the final version.
+# Note: These results will be generated for just 1 run. In the paper, we ran these experiments 5 times (with different seeds) and reported the mean and standard deviation (std). For AUROC, where std is negligible (except for snowy), the results for 1 run are very close to the ones reported in paper for 5 times. Similar results are expected for detection delay but we found that for rainy, it came 0.05 seconds higher (0.918) than reported in paper (0.86). We will rectify it in the final version.
+
       Rainy: python check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_rainy/out --save_dir carla_log/rainy --transformation_list speed shuffle reverse periodic identity
       Foggy: python check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_foggy/out --save_dir carla_log/foggy --transformation_list speed shuffle reverse periodic identity
       Snowy: python check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_snowy/out --save_dir carla_log/snowy --transformation_list speed shuffle reverse periodic identity
