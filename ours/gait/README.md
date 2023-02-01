@@ -1,7 +1,7 @@
 ## Install requirements
     conda create --name gait python=3.6.13
     conda activate gait
-    pip install -r requirements.txt
+    pip install -r requirement.txt
 
 ## Download data from https://drive.google.com/drive/folders/1Z-3YnlhcCxI_KlFF6FF7tMp5MSEZURRH?usp=sharing
     mkdir data
