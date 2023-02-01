@@ -4,6 +4,7 @@ import numpy as np
 import cv2
 from glob import glob
 from PIL import Image
+import os
 
 class CARLADataset(Dataset):
     def __init__(self, root_dir, new_size, transform=None):
@@ -19,13 +20,10 @@ class CARLADataset(Dataset):
 
         train_folders = [6, 20, 17, 7, 30, 8, 13, 27, 5, 26, 31, 21, 32, 3, 10, 19, 1, 24, 4, 2]
         folder_locs = []
-        for folder_number in train_folders:
-            if folder_number <= 10:
-                folder_locs.append(self.root_dir+"setting_1/"+str(folder_number))
-            elif folder_number >= 11 and folder_number <= 21:
-                folder_locs.append(self.root_dir+"setting_2/"+str(folder_number-11))
-            elif folder_number >= 22 and folder_number <= 32:
-                folder_locs.append(self.root_dir+"setting_3/"+str(folder_number-22))
+        for folder_number in ['setting_1','setting_2','setting_3']:
+            folder_list = os.listdir(self.root_dir+folder_number+'/')
+            for i in folder_list:
+                folder_locs.append(self.root_dir+folder_number+'/'+i)
     
         self.img_locs = []
         for idx, scenefolder in enumerate(folder_locs):

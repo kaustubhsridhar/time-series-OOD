@@ -16,11 +16,15 @@ class Trainer():
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         chosen_transforms = transforms.Compose([transforms.ToTensor()])
         if data_type == "carla":
-            root_dir = "../carla_data/training/"
+            root_dir = "/home/yangy96/interpretable_ood_detection/carla_experiments/carla_leave_train/"
             dataset = CARLADataset(root_dir, new_size = (224, 224), transform=chosen_transforms)
         elif data_type == "drift":
             root_dir = "../drift_data/training/"
             dataset = driftDataset(root_dir, new_size = (224, 224), transform=chosen_transforms)
+        elif data_type == "lidar":
+            root_dir = "../drift_data/training/"
+            dataset = lidarDataset(root_dir, new_size = (224, 224), transform=chosen_transforms)
+
 
         # tensor_x = torch.Tensor(np.rollaxis(X_train, 3, 1))
         # tensor_y = torch.Tensor(y_train)
@@ -126,8 +130,12 @@ class Trainer():
     
     def fit(self, train_svdd_also = False):
         # vae 
-        self.vae = VAE()
-        self.vae = self.vae.to(self.device)
+        if self.data_type == 'carla':
+            self.vae = VAE()
+            self.vae = self.vae.to(self.device)
+        else:
+            self.vae = lidarVAE()
+            self.vae = self.vae.to(self.device)
 
         # trying to load pretrained VAE model
         try:

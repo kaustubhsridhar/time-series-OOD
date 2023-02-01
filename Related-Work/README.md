@@ -74,3 +74,18 @@ To test with VAE model
 cd Beta-VAE/bvae-train-test
 python test-bvae_carla.py
 ```
+
+
+# Yang et al's (Memory OOD detector)
+
+To train (generate memories) 
+```
+cd Memories
+python3 main.py --build_memories True --memory_source ./carla_data/training --memory_dir ./memories/carla_memories_10_0.2 --initial_memory_threshold 0.2
+```
+
+To test with memories OOD detector
+```
+chmod 777 codit_comparison.sh
+./codit_comparison.sh
+```

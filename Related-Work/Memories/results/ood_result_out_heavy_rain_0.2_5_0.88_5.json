@@ -1,1 +1,0 @@
-{"detection_rate": 21.6, "ood_episode": 16, "total_episode": 74, "detect_frame_list": [111, 59, 59, 59, 111, 111, 111, 59, 59, 59, 111, 111, 59, 111, 113, 59], "average_window_delay": 35.06, "average_evaluate_time": 21.04}
