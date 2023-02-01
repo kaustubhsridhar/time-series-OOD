@@ -1,7 +1,7 @@
-# These are the instructions for reproducing CODiT's results on CARLA and DRIFT datasets. For generating results on GAIT dataset, cd gait and follow instructions in gait/README.md
+# These are instructions for reproducing CODiT's results on CARLA and DRIFT datasets. For generating results on GAIT dataset, cd gait and follow instructions in gait/README.md
 
 ## This code is build on
-     1. Video CLip Order Prediction's code - https://github.com/xudejing/video-clip-order-prediction
+     1. Video Cpip Order Prediction's code - https://github.com/xudejing/video-clip-order-prediction
      2. Cai et al.'s for CARLA dataset - https://github.com/feiyang-cai/out_of_distribution_detector_aebs 
       
 ## Create conda environment and install requirements
