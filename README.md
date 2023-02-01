@@ -1,4 +1,5 @@
 ## This repo contains code for our paper, "CODiT: Conformal Out-of-Distribution Detection in Time-series Data"
+  Clone this repo: git clone https://github.com/kaustubhsridhar/time-series-OOD.git
 
 # CODiT results
   cd ours and follow instructions in README.md for reproducing CODiT's results reported in the paper
