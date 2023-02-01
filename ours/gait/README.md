@@ -17,7 +17,7 @@
     mv gait_18.pt saved_models/.
     mv gait_20.pt saved_models/.
 
-## Step 4: Generate CODiT results in Table 4 with $wl$=16/18/20, $disease"\_"type$=als/park/hunt/all
+## Step 4: Generate CODiT results in Table 4 with $wl$=16/18/20, disease\_type=als/park/hunt/all
     mkdir gait_log
     python check_OOD_gait.py --save_dir gait_log/ --ckpt saved_models/gait_$wl$.pt  --transformation_list high_pass low_high high_low identity --wl $wl$ --cuda --gpu 0 --n 100 --disease_type $disease_type$
 
