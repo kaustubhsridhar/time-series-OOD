@@ -86,6 +86,7 @@ python3 main.py --build_memories True --memory_source ./carla_data/training --me
 
 To test with memories OOD detector
 ```
+cd Memories
 chmod 777 codit_comparison.sh
 ./codit_comparison.sh
 ```
