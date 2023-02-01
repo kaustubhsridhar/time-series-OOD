@@ -7,6 +7,7 @@
 ### Note: remave the downloaded folder to gait-in-neurodegenerative-disease-database-1.0.0.zip
     mkdir data
     cd data
+    mv gait-in-neurodegenerative-disease-database-1.0.0.zip .
     unzip gait-in-neurodegenerative-disease-database-1.0.0.zip
     cd ../
 
