@@ -131,7 +131,9 @@ def calc_cal_ce_loss(opt, model, criterion, device, cal_dataloader): # for calib
     for key in key_list:
          trasform_losses_dictionary[key] = []
 
+    print("Calculating CE For calibration data n times")
     for iter in range(0, opt.n): # n iterations with random sampling of windows and transformations on calibration datapoints
+        print("n: ", iter+1)
         ce_loss = []
         for _, data in enumerate(cal_dataloader, 1): # iteration over all calibration datapoints
             # get inputs
@@ -147,7 +149,7 @@ def calc_cal_ce_loss(opt, model, criterion, device, cal_dataloader): # for calib
                 # print("Loss: {}, transformation: {}, predicted trans: {}".format(loss.item(), transformation[i], outputs[i]))
                 trasform_losses_dictionary['{}'.format(target_transformations[i].item())].append(float(loss))
 
-        print('[Cal] loss: ', ce_loss)
+        #print('[Cal] loss: ', ce_loss)
         ce_loss_all_iter.append(np.array(ce_loss))
     
     import pickle
