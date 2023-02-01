@@ -16,7 +16,7 @@
 ## Step 3: Download data (zipped folder is ~13 GB, will take sometime to download): https://drive.google.com/file/d/11iJF2UQx4z78hfC8C9SFgapMgl_17SaJ/view?usp=sharing
      unzip data.zip
       
-## Step 4: Download pre-computed fisher and p-values: https://drive.google.com/drive/folders/1o2bQ6M17kvN6b78KYPuAv0oavZ0Mf926?usp=sharing
+## Step 4: Download the two folders (carla_log, and drift_log) containing pre-computed fisher and p-values: https://drive.google.com/drive/folders/1o2bQ6M17kvN6b78KYPuAv0oavZ0Mf926?usp=sharing
       CARLA: unzip carla_log
       Drift: unzip drift_log
       
