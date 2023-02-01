@@ -384,7 +384,7 @@ if __name__ == "__main__":
             auroc_one_trial.append(au_roc)
             # tnr = getTNR(in_fisher_values_per_win, out_fisher_values_per_win)
             # tnr_one_trial.append(tnr)
-            print("For trial: {}, n: {}, AUROC: {}".format(trial+1, i+1, au_roc))
+            #print("For trial: {}, n: {}, AUROC: {}".format(trial+1, i+1, au_roc))
             # print("For trial: {}, n: {}, TNR: {}".format(trial+1, i+1, tnr))
         auroc_all_trials.append(auroc_one_trial)
         # tnr_all_trials.append(tnr_one_trial)
