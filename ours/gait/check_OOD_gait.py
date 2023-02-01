@@ -199,7 +199,7 @@ def checkOOD(n = opt.n):
     in_test_ce_loss_all_iters = []
     print("Calculating CE loss for in-dist test data n times")
     for iter in range(0, opt.n):
-        print('iter: ',iter+1)
+        print('n: ',iter+1)
         in_test_ce_loss = calc_test_ce_loss(opt, model=net, criterion=criterion, device=device, test_dataset=in_test_dataset) # in_test_ce_loss = 2D vector with number of losses for each datapoint = no of windows in the datapoint
         in_test_ce_loss_all_iters.append(in_test_ce_loss)
     in_test_ce_loss_all_iters = np.array(in_test_ce_loss_all_iters) # 3D array
@@ -215,7 +215,7 @@ def checkOOD(n = opt.n):
     out_test_ce_loss_all_iters = []
     print("Calculating CE For OOD test data n times")
     for iter in range(0, opt.n):
-        print('iter: ',iter+1)
+        print('n: ',iter+1)
         out_test_ce_loss = calc_test_ce_loss(opt, model=net, criterion=criterion, device=device, test_dataset=out_test_dataset, in_dist=False) # out_test_ce_loss = 2D vector with number of losses for each datapoint = no of windows in the datapoint
         #print("Out loss: ", out_test_ce_loss)
         out_test_ce_loss_all_iters.append(out_test_ce_loss)
