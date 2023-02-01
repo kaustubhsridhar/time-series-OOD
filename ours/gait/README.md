@@ -11,7 +11,7 @@
     unzip gait-in-neurodegenerative-disease-database-1.0.0.zip
     cd ../
 
-## Step 3: Download trained models from https://drive.google.com/drive/folders/1p0F2D3oTUgB3QKq_0uLu1F9eKRzRibml?usp=sharing
+## Step 3: Download the three trained models (gait_16.pt, gait_18.pt, gait_20.pt) from https://drive.google.com/drive/folders/1p0F2D3oTUgB3QKq_0uLu1F9eKRzRibml?usp=sharing
     mkdir saved_models
     mv gait_16.pt saved_models/.
     mv gait_18.pt saved_models/.
