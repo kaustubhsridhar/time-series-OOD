@@ -11,7 +11,7 @@
 
 ## Step 2: Download trained models: https://drive.google.com/drive/folders/1xBIkVB7TpIcRJPfF3hxzybe5KVPdbFrF?usp=sharing 
       mkdir saved_models
-      mv carla.pt and drift.pt to ./saved_models
+      mv carla_model.pt and drift.pt to ./saved_models
 
 ## Step 3: Download data: https://drive.google.com/file/d/11iJF2UQx4z78hfC8C9SFgapMgl_17SaJ/view?usp=sharing
      unzip data.zip
