@@ -3,7 +3,7 @@
     conda activate gait
     pip install -r requirement.txt
 
-## Step 2: Download gait-in-neurodegenerative-disease-database-1.0.0 data folder from https://drive.google.com/drive/folders/1Z-3YnlhcCxI_KlFF6FF7tMp5MSEZURRH?usp=sharing
+## Step 2: Download gait-in-neurodegenerative-disease-database-1.0.0 folder from https://drive.google.com/drive/folders/1Z-3YnlhcCxI_KlFF6FF7tMp5MSEZURRH?usp=sharing
 ### Note: remave the downloaded folder to gait-in-neurodegenerative-disease-database-1.0.0.zip
     mkdir data
     cd data
