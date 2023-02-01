@@ -7,7 +7,6 @@
 ## Step 1: Create conda environment and install requirements
       conda create --name codit python=3.6.13
       conda activate codit
-      cd ours
       pip install -r requirements.txt
 
 ## Step 2: Download trained models: https://drive.google.com/drive/folders/1xBIkVB7TpIcRJPfF3hxzybe5KVPdbFrF?usp=sharing 
