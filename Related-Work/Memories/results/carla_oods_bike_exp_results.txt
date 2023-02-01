@@ -1,0 +1,4 @@
+(W: 5 tau: 5 alpha: 0.92 dist: 0.2 ) FN: 0/27 Avg Delay: 0.0 
+(W: 5 tau: 5 alpha: 0.92 dist: 0.2 ) FN: 0/27 Avg Delay: 0.0 
+(W: 5 tau: 5 alpha: 0.78 dist: 0.3 ) FN: 2/27 Avg Delay: 0.96 
+(W: 5 tau: 5 alpha: 0.78 dist: 0.3 ) FN: 2/27 Avg Delay: 0.96 
