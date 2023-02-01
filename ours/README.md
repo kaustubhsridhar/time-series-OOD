@@ -20,7 +20,7 @@
       CARLA: unzip carla_log
       Drift: unzip drift_log
       
-## Step 5: Generate results for Weather and Night OODs (Table 2)
+## Step 5: Generate AUROC and detection delay results for Weather and Night OODs (Table 2)
 # Note: The following results will be generated for just 1 run. In the paper, we ran these experiments 5 times (with different seeds) and reported the mean and standard deviation (std). For AUROC, where std is low (except for snowy), the results for 1 run are very close to the ones reported in paper. Similar results are expected for detection delay (except for night with high std). Here, we found that the detection delay for rainy to be 0.05 seconds higher (0.918) than reported in paper (0.86). We will rectify it in the final version.
 
       Rainy: python check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_rainy/out --save_dir carla_log/rainy --transformation_list speed shuffle reverse periodic identity
@@ -28,10 +28,10 @@
       Snowy: python check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_snowy/out --save_dir carla_log/snowy --transformation_list speed shuffle reverse periodic identity
       Night: python check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_night/out --save_dir carla_log/night --transformation_list speed shuffle reverse periodic identity
      
-## Step 6: Generate results for Replay OODs (Figure 9 (left))
+## Step 6: Generate AUROC and TNR results for Replay OODs (Figure 9 (left))
       python check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_replay/out --save_dir carla_log/replay --printTNR 1 --transformation_list speed shuffle reverse periodic identity
 
-## Step 7: Generate results for Drift OODs (Figure 9 (left))
+## Step 7: Generate AUROC and TNR results for Drift OODs (Figure 9 (left))
       python check_OOD_drift.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/drift.pt --n 20 --save_dir drift_log --transformation_list speed shuffle reverse periodic identity
 
 
