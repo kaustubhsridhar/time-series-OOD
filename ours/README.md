@@ -1,5 +1,5 @@
 # These are instructions for reproducing CODiT's results on CARLA and DRIFT datasets on a server with GPUs. 
-# For generating results on GAIT dataset, cd gait and follow instructions in gait/README.md
+## For generating results on GAIT dataset, cd gait and follow instructions in gait/README.md
 
 ## This code is build on top of
      1. Video Clip Order Prediction's code - https://github.com/xudejing/video-clip-order-prediction
@@ -18,8 +18,9 @@
      unzip data.zip
       
 ## Step 4: Download the two folders (carla_log, and drift_log) containing pre-computed fisher and p-values: https://drive.google.com/drive/folders/1o2bQ6M17kvN6b78KYPuAv0oavZ0Mf926?usp=sharing
-      CARLA: unzip carla_log
-      Drift: unzip drift_log
+### Note: Remane the downloaded folders to carla_log.zip and drift_log.zip respectively
+      CARLA: unzip carla_log.zip
+      Drift: unzip drift_log.zip
       
 ## Step 5: Generate AUROC and detection delay results for Weather and Night OODs (Table 2)
 # Note: The following results will be generated for just 1 run. In the paper, we ran these experiments 5 times (with different seeds) and reported the mean and standard deviation (std). For AUROC, where std is low (except for snowy), the results for 1 run are very close to the ones reported in paper. Similar results are expected for detection delay (except for night with high std). Here, we found that the detection delay for rainy to be 0.05 seconds higher (0.918) than reported in paper (0.86). We will rectify it in the final version.
