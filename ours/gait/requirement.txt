@@ -11,7 +11,7 @@ scikit-video==1.1.11
 scipy==1.2.1
 tensorboard==1.14.0
 tensorboardX==1.4
-torch==1.7.0
+torch==1.9.0
 torchvision==0.2.1
 tqdm==4.31.1
 opencv-python
