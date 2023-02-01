@@ -358,6 +358,7 @@ if __name__ == "__main__":
         det_delay_one_trial = []
         #checkOOD() # call this for saving the fisher values of the sliding windows for test iD and OOD traces from scratch. It takes time to run this
         for i in range(opt.n):
+            print("Calculating results for n: {} from the pre-computed fisher-values".format(n+1))
             in_fisher_values_per_win, out_fisher_values_per_win, in_fisher_win_values_trace_wise, out_fisher_win_values_trace_wise = eval_detection_fisher(i+1)
             au_roc = getAUROC(in_fisher_values_per_win, out_fisher_values_per_win)
             auroc_one_trial.append(au_roc)
