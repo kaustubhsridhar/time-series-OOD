@@ -44,7 +44,7 @@ cd NTU
 python test_<name of dataset>.py
 ```
 
-# Cai et al.'s
+# Cai et al.'s (VAE)
 
 To train 
 ```
