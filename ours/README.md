@@ -23,7 +23,7 @@ For generating results on GAIT dataset, cd gait and follow instructions in gait/
       CARLA: unzip carla_log.zip
       Drift: unzip drift_log.zip
       
-# Step 5: Generate the following results after populating --gpu with the gpu number (0/1/2/3) on which you are running these experiments
+# Step 5: Generate the following results after populating --gpu command line argument with the gpu number (0/1/2/3) on which you are running these experiments
 
 ## Generate AUROC and detection delay results for Weather and Night OODs (Table 2)
 ### Note: The following results will be generated for just 1 run. In the paper, we ran these experiments 5 times (with different seeds) and reported the mean and standard deviation (std). For AUROC with low std (except for snowy), the results for 1 run are very close to the ones reported in paper. Similar results are for detection delay (except for night with high std). Here, we found that the detection delay for rainy to be 0.05 seconds higher (0.918) than the one reported in paper (0.86). We will rectify it in the final version.
