@@ -1,4 +1,4 @@
-# These are instructions for reproducing CODiT's results on CARLA and DRIFT datasets on a server with GPUs. 
+# These are instructions for reproducing CODiT's results on CARLA (Table 2) and DRIFT (Fig. 9 (left)) datasets on a server with GPUs. 
 
 For generating results on GAIT dataset, cd gait and follow instructions in gait/README.md
 
