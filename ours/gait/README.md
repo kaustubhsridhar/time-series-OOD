@@ -19,7 +19,7 @@
     mv gait_18.pt saved_models/.
     mv gait_20.pt saved_models/.
 
-## Step 4: Generate CODiT results in Table 4 after populating the command-line arguments: --ckpt as saved_models/gait_$wl$.pt where wl = 16/18/20, --wl=16/18/20 (same as wl in saved_models/gait_$wl$.pt), and --disease\_type=als/park/hunt/all
+## Step 4: Generate CODiT results in Table 4 after populating the command-line arguments: --ckpt=saved_models/gait_$wl$.pt where wl = 16/18/20, --wl=16/18/20 (same as wl in saved_models/gait_$wl$.pt), and --disease\_type=als/park/hunt/all
 
 ### park is for PD, hunt is for HD
 
@@ -30,7 +30,7 @@
     mkdir gait_log
     python check_OOD_gait.py --save_dir gait_log/ --ckpt saved_models/gait_$wl$.pt  --transformation_list high_pass low_high high_low identity --wl $wl$ --cuda --gpu 0 --n 100 --disease_type $disease_type$
     
-## Generate baseline results with --wl=16/18/20, --disese\_type als/hunt/park/all in Table 4
+## Generate baseline results in Table 4 with --wl=16/18/20, --disese\_type=als/hunt/park/all
     python check_OOD_baseline.py --disease_type $disease_type$ --wl $wl$ --root_dir data/gait-in-neurodegenerative-disease-database-1.0.0
 
 ## (optional) Training VAE model on GAIT dataset on wl=16/18/20
