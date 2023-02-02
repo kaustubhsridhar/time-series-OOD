@@ -24,7 +24,7 @@ For generating results on GAIT dataset, cd gait and follow instructions in gait/
       Drift: unzip drift_log.zip
       
 ## Step 5: Generate AUROC and detection delay results for Weather and Night OODs (Table 2)
-# Note: The following results will be generated for just 1 run. In the paper, we ran these experiments 5 times (with different seeds) and reported the mean and standard deviation (std). For AUROC, where std is low (except for snowy), the results for 1 run are very close to the ones reported in paper. Similar results are expected for detection delay (except for night with high std). Here, we found that the detection delay for rainy to be 0.05 seconds higher (0.918) than reported in paper (0.86). We will rectify it in the final version.
+### Note: The following results will be generated for just 1 run. In the paper, we ran these experiments 5 times (with different seeds) and reported the mean and standard deviation (std). For AUROC with low std (except for snowy), the results for 1 run are very close to the ones reported in paper. Similar results are for detection delay (except for night with high std). Here, we found that the detection delay for rainy to be 0.05 seconds higher (0.918) than the one reported in paper (0.86). We will rectify it in the final version.
 
       Rainy: python check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_rainy/out --save_dir carla_log/rainy --transformation_list speed shuffle reverse periodic identity
       Foggy: python check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_foggy/out --save_dir carla_log/foggy --transformation_list speed shuffle reverse periodic identity
