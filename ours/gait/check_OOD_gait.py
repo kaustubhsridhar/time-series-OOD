@@ -392,7 +392,7 @@ if __name__ == "__main__":
     auroc_all_trials = np.array(auroc_all_trials)
     # tnr_all_trials = np.array(tnr_all_trials)
 
-    print("AUROC for CODiT on {} as OOD data with window length {} is {}".format(opt.disease_type, opt.wl,np.mean(auroc_all_trials,0)[-1]))
+    print("AUROC for CODiT(n=100) on {} as OOD data with window length {} is {}".format(opt.disease_type, opt.wl,np.mean(auroc_all_trials,0)[-1]))
     # print(np.std(auroc_all_trials,0))
 
     # print("TNR Mean: ", np.mean(tnr_all_trials,0))
