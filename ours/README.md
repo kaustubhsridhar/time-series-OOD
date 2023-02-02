@@ -1,5 +1,6 @@
 # These are instructions for reproducing CODiT's results on CARLA and DRIFT datasets on a server with GPUs. 
-### For generating results on GAIT dataset, cd gait and follow instructions in gait/README.md
+
+For generating results on GAIT dataset, cd gait and follow instructions in gait/README.md
 
 ## This code is build on top of
      1. Video Clip Order Prediction's code - https://github.com/xudejing/video-clip-order-prediction
