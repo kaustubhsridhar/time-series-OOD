@@ -363,7 +363,7 @@ if __name__ == "__main__":
     tnr_all_trials = np.array(tnr_all_trials)
 
     #print("Printing results for n = 1 to {}".format(opt.n))
-    print("AUROC: ", np.mean(auroc_all_trials,0)[-1])
+    print("AUROC for CODiT(n=20) on Drift dataset for w=16", np.mean(auroc_all_trials,0)[-1])
     # print(np.std(auroc_all_trials,0))
 
-    print("TNR: ", np.mean(tnr_all_trials,0)[-1])
+    print("TNR for CODiT(n=20) on Drift dataset for w=16", np.mean(tnr_all_trials,0)[-1])
