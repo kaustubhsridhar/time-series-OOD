@@ -18,7 +18,7 @@ For generating results on GAIT dataset, cd gait and follow instructions in gait/
 ## Step 3: Download data (zipped folder is ~13 GB, will take sometime to download): https://drive.google.com/file/d/11iJF2UQx4z78hfC8C9SFgapMgl_17SaJ/view?usp=sharing
      unzip data.zip
       
-## Step 4: Download the two folders (carla_log, and drift_log) containing pre-computed fisher and p-values: https://drive.google.com/drive/folders/1o2bQ6M17kvN6b78KYPuAv0oavZ0Mf926?usp=sharing
+## Step 4: Download the two folders (carla_log, and drift_log) containing pre-computed fisher and p-values for 1 run for speedy evaluation: https://drive.google.com/drive/folders/1o2bQ6M17kvN6b78KYPuAv0oavZ0Mf926?usp=sharing
 ### Note: Remane the downloaded folders to carla_log.zip and drift_log.zip respectively
       CARLA: unzip carla_log.zip
       Drift: unzip drift_log.zip
