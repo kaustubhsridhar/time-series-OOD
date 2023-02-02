@@ -379,6 +379,7 @@ if __name__ == "__main__":
         # tnr_one_trial = []
         checkOOD()
         for i in range(opt.n):
+            print("Calculating fisher-values for n: ", i+1)
             in_fisher_values_per_win, out_fisher_values_per_win = eval_detection_fisher(i+1)
             au_roc = getAUROC(in_fisher_values_per_win, out_fisher_values_per_win)
             auroc_one_trial.append(au_roc)
