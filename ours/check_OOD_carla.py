@@ -387,6 +387,6 @@ if __name__ == "__main__":
         print("TNR: ", np.mean(tnr_all_trials,0)[-1])
     # print(np.std(tnr_all_trials,0))
 
-    print("Avg. Det Delay on CARLA dataset for {} as OOD type and n=20: {}".format(opt.save_dir[-5:],np.mean(det_delay_all_trials,0)[0]+1)*0.8)) # detection delay in seconds - 16/20 is the time duration for 1 window
+    print("Avg. Det Delay on CARLA dataset for {} as OOD type and n=20: {}".format(opt.save_dir[-5:],np.mean(det_delay_all_trials,0)[0]+1)*0.8))) # detection delay in seconds - 16/20 is the time duration for 1 window
     # print(np.std(det_delay_all_trials,0))
 
