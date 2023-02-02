@@ -1,3 +1,5 @@
+# The following instructions for generating results (Table 4) on GAIT dataset. This code has been tested on a server with GPUs.
+
 ## Step 1: Install requirements
     conda create --name gait python=3.6.13
     conda activate gait
@@ -18,6 +20,8 @@
     mv gait_20.pt saved_models/.
 
 ## Step 4: Generate CODiT results in Table 4 with wl=16/18/20, disease\_type=als/park/hunt/all
+### Note: The following results will be generated for just 1 run. In the paper, we ran these experiments 5 times (with different seeds) and reported the mean and standard deviation (std). For AUROC with low std (except for w=16), the results for 1 run are very close to the ones reported in paper.......
+
     mkdir gait_log
     python check_OOD_gait.py --save_dir gait_log/ --ckpt saved_models/gait_$wl$.pt  --transformation_list high_pass low_high high_low identity --wl $wl$ --cuda --gpu 0 --n 100 --disease_type $disease_type$
 
