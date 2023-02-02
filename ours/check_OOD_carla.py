@@ -380,14 +380,14 @@ if __name__ == "__main__":
 
     #print("Printing AUROC and TNR results for n = 1 to {}".format(opt.n))
 
-    print("AUROC for CODiT(n=20) on CARLA dataset for {} as OOD type: {}".format(opt.save_dir[-5:],np.mean(auroc_all_trials,0)[-1]))
+    print("AUROC for CODiT(n=20) on CARLA dataset for {} as OOD type: {}".format(opt.save_dir[10:],np.mean(auroc_all_trials,0)[-1]))
     # print(np.std(auroc_all_trials,0))
 
     if opt.printTNR:
-        print("TNR: ", np.mean(tnr_all_trials,0)[-1])
+        print("TNR for CODiT(n=20) on CARLA dataset for {} as OOD type: {}".format(opt.save_dir[10:], np.mean(tnr_all_trials,0)[-1])
     # print(np.std(tnr_all_trials,0))
 
     det_delay = (np.mean(det_delay_all_trials,0)[0]+1)*0.8
-    print("Avg. Det Delay for CODiT(n=20) on CARLA dataset for {} as OOD type: {}".format(opt.save_dir[-5:],det_delay)) # detection delay in seconds - 16/20 is the time duration for 1 window
+    print("Avg. Det Delay for CODiT(n=20) on CARLA dataset for {} as OOD type: {}".format(opt.save_dir[10:],det_delay)) # detection delay in seconds - 16/20 is the time duration for 1 window
     # print(np.std(det_delay_all_trials,0))
 
