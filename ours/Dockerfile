@@ -9,6 +9,7 @@ RUN apt-get update
 RUN pip3 install --upgrade pip
 RUN pip3 install -U setuptools --no-cache-dir
 
+RUN mkdir -p /home/time-series-OOD
 COPY ./ /home/time-series-OOD/ours
 
 WORKDIR /home/time-series-OOD/ours
