@@ -11,8 +11,8 @@ For generating results on GAIT dataset, cd gait and follow instructions in gait/
 This step is for seting up the Docker environment.
 
 1. install [Docker](https://docs.docker.com/get-docker/) on your machine 
-2. To build a docker image: `docker build -t reproduce-test .` <br>
-3. To run the docker container and open an interactive session with docker: `docker run -i -t --gpus all --name temp_test --rm reproduce-test /bin/bash`
+2. To build a docker image: `docker build -t codit .` <br>
+3. To run the docker container and open an interactive session with docker: `docker run -i -t --gpus all --name temp_test --rm codit /bin/bash`
 
 After finishing the experiments, to leave the docker environment, 
 run `exit` <br>
