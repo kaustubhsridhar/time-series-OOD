@@ -5,7 +5,18 @@ For generating results on GAIT dataset, cd gait and follow instructions in gait/
 ## This code is build on top of
      1. Video Clip Order Prediction's code - https://github.com/xudejing/video-clip-order-prediction
      2. Cai et al.'s for CARLA dataset - https://github.com/feiyang-cai/out_of_distribution_detector_aebs 
-      
+
+## Setting up the environment
+
+This step is for seting up the Docker environment.
+
+1. install [Docker](https://docs.docker.com/get-docker/) on your machine 
+2. To build a docker image: `docker build -t reproduce-test .` <br>
+3. To run the docker container and open an interactive session with docker: `docker run -i -t --gpus all --name temp_test --rm reproduce-test /bin/bash`
+
+After finishing the experiments, to leave the docker environment, 
+run `exit` <br>
+
 ## Step 1: Create conda environment and install requirements (It  takes ~20-30 minutes for installing requirements)
       conda create --name codit python=3.6.13
       conda activate codit
