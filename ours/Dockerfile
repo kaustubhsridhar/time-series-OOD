@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.0-base-ubuntu18.04-rc
+FROM nvidia/cuda:12.0.1-base-ubuntu18.04
 
 RUN apt-get update
 RUN apt-get install build-essential -y
