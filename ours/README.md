@@ -26,9 +26,6 @@ For generating results on GAIT dataset, cd gait and follow instructions in gait/
 2. To build a docker image: `docker build -t codit .` <br>
 3. To run the docker container and open an interactive session with docker: `docker run -i -t --gpus all --name temp_test --rm codit /bin/bash`
 
-After finishing the experiments, to leave the docker environment, 
-run `exit` <br>
-
 ### Create conda environment and install requirements (It  takes ~20-30 minutes for installing requirements)
       conda create --name codit python=3.6.13
       conda activate codit
