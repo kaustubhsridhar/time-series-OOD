@@ -6,7 +6,19 @@ For generating results on GAIT dataset, cd gait and follow instructions in gait/
      1. Video Clip Order Prediction's code - https://github.com/xudejing/video-clip-order-prediction
      2. Cai et al.'s for CARLA dataset - https://github.com/feiyang-cai/out_of_distribution_detector_aebs 
 
-## Step 1: Setting up the environment: Two options here : (1) Docker, (2) Conda
+## Step 1: Download trained models: https://drive.google.com/drive/folders/1xBIkVB7TpIcRJPfF3hxzybe5KVPdbFrF?usp=sharing 
+      mkdir saved_models
+      mv carla_model.pt and drift.pt to ./saved_models
+
+## Step 2: Download data (zipped folder is ~13 GB, will take sometime to download): https://drive.google.com/file/d/11iJF2UQx4z78hfC8C9SFgapMgl_17SaJ/view?usp=sharing
+     unzip data.zip
+      
+## Step 3: Download the two folders (carla_log, and drift_log) containing pre-computed fisher and p-values for 1 run for speedy evaluation: https://drive.google.com/drive/folders/1o2bQ6M17kvN6b78KYPuAv0oavZ0Mf926?usp=sharing
+### Note: Rename the downloaded zip files to carla_log.zip and drift_log.zip respectively
+      CARLA: unzip carla_log.zip
+      Drift: unzip drift_log.zip
+      
+## Step 4: Setting up the environment: Two options here : (1) Docker,or (2) Conda. You can work with either of these two options.
 
 ### This step is for seting up the Docker environment.
 
@@ -21,18 +33,6 @@ run `exit` <br>
       conda create --name codit python=3.6.13
       conda activate codit
       pip install -r requirements.txt
-
-## Step 2: Download trained models: https://drive.google.com/drive/folders/1xBIkVB7TpIcRJPfF3hxzybe5KVPdbFrF?usp=sharing 
-      mkdir saved_models
-      mv carla_model.pt and drift.pt to ./saved_models
-
-## Step 3: Download data (zipped folder is ~13 GB, will take sometime to download): https://drive.google.com/file/d/11iJF2UQx4z78hfC8C9SFgapMgl_17SaJ/view?usp=sharing
-     unzip data.zip
-      
-## Step 4: Download the two folders (carla_log, and drift_log) containing pre-computed fisher and p-values for 1 run for speedy evaluation: https://drive.google.com/drive/folders/1o2bQ6M17kvN6b78KYPuAv0oavZ0Mf926?usp=sharing
-### Note: Rename the downloaded zip files to carla_log.zip and drift_log.zip respectively
-      CARLA: unzip carla_log.zip
-      Drift: unzip drift_log.zip
       
 # Step 5: Generate the following results after populating --gpu command line argument with the gpu number (0/1/2/3) on which you are running these experiments
 
