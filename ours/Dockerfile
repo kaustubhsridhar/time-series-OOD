@@ -2,7 +2,7 @@ FROM nvidia/cuda:12.0.1-base-ubuntu18.04
 
 RUN apt-get update
 RUN apt-get install build-essential -y
-RUN apt-get install -y python3.6.13
+RUN apt-get install -y python3.6
 RUN apt-get install -y python3-pip wget unzip build-essential automake curl vim python3-dev default-jdk  git
 
 RUN apt-get update
