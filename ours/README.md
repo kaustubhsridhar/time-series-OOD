@@ -34,15 +34,16 @@ For generating results on GAIT dataset, cd gait and follow instructions in gait/
 # Step 5: Generate the following results after populating --gpu command line argument with the gpu number (0/1/2/3) on which you are running these experiments
 
 ## Generate AUROC and detection delay results for Weather and Night OODs (Table 2)
+
+Table 2 from the paper is <br>
+<img src="images/Table2.png" width="800" />
+
 ### Note: The following results will be generated for just 1 run. In the paper, we ran these experiments 5 times (with different seeds) and reported the mean and standard deviation (std). For AUROC with low std (except for snowy), the results for 1 run are very close to the ones reported in paper. Similar results are for detection delay (except for night with high std). Here, we found that the detection delay for rainy to be 0.05 seconds higher (0.918) than the one reported in paper (0.86). We will rectify it in the final version.
 
       Rainy: python3 check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_rainy/out --save_dir carla_log/rainy --transformation_list speed shuffle reverse periodic identity
       Foggy: python3 check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_foggy/out --save_dir carla_log/foggy --transformation_list speed shuffle reverse periodic identity
       Snowy: python3 check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_snowy/out --save_dir carla_log/snowy --transformation_list speed shuffle reverse periodic identity
       Night: python3 check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_night/out --save_dir carla_log/night --transformation_list speed shuffle reverse periodic identity
-
-Table 2 from the is <br>
-<img src="images/Table2.png" width="800" />
      
 ## Generate AUROC and TNR results for Replay OODs (Figure 9 (left))
       python3 check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_replay/out --save_dir carla_log/replay --printTNR 1 --transformation_list speed shuffle reverse periodic identity
