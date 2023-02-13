@@ -9,9 +9,9 @@ RUN apt-get update
 RUN pip3 install --upgrade pip
 RUN pip3 install -U setuptools --no-cache-dir
 
-COPY ./ /home/time-series-OOD/ours
+COPY ./ /home/time-series-OOD/ours/gait
 
-WORKDIR /home/time-series-OOD/ours
+WORKDIR /home/time-series-OOD/ours/gait
 
 RUN python3 --version
 
