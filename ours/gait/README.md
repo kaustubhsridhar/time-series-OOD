@@ -19,8 +19,8 @@
 ### This step is for seting up the Docker environment: takes ~50-60 minutes.
 
 1. install [Docker](https://docs.docker.com/get-docker/) on your machine 
-2. To build a docker image: `docker build -t codit .` <br>
-3. To run the docker container and open an interactive session with docker: `docker run -i -t --gpus all --name temp_test --rm codit /bin/bash`
+2. To build a docker image: `docker build -t gait .` <br>
+3. To run the docker container and open an interactive session with docker: `docker run -i -t --gpus all --name temp_test --rm gait /bin/bash`
 
 After finishing the experiments, to leave the docker environment, 
 run `exit` <br>
