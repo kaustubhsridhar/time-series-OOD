@@ -42,7 +42,7 @@ For generating results on GAIT dataset, cd gait and follow instructions in gait/
       Night: python3 check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_night/out --save_dir carla_log/night --transformation_list speed shuffle reverse periodic identity
 
 Table 2 from the is <br>
-<img src="images/Table2.png" width="700" />
+<img src="images/Table2.png" width="800" />
      
 ## Generate AUROC and TNR results for Replay OODs (Figure 9 (left))
       python3 check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_replay/out --save_dir carla_log/replay --printTNR 1 --transformation_list speed shuffle reverse periodic identity
