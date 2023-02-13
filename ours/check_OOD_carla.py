@@ -69,7 +69,7 @@ in_channels = 3
 if opt.use_image and opt.use_of:
     in_channels = 6
 net = r3d_regressor(num_classes=len(opt.transformation_list), in_channels=in_channels).to(device)
-net.load_state_dict(torch.load(opt.ckpt))
+net.load_state_dict(torch.load(opt.ckpt, map_location=device))
 net.eval()
 
 transforms = transforms.Compose([
