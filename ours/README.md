@@ -35,7 +35,7 @@ For generating results on GAIT dataset, cd gait and follow instructions in gait/
 
 ## Generate AUROC and detection delay results for Weather and Night OODs (Table 2)
 
-The expected result, i.e. Table 2 from the paper is <br>
+The expected result, i.e., Table 2 from the paper is: <br>
 <img src="images/Table2.png" width="800" />
 
 ### Note: The following results will be generated for just 1 run. In the paper, we ran these experiments 5 times (with different seeds) and reported the mean and standard deviation (std). For AUROC with low std (except for snowy), the results for 1 run are very close to the ones reported in paper. Similar results are for detection delay (except for night with high std). Here, we found that the detection delay for rainy to be 0.05 seconds higher (0.918) than the one reported in paper (0.86). We will rectify it in the final version.
