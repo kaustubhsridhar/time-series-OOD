@@ -47,13 +47,13 @@ The expected result, i.e., Table 2 from the paper is: <br>
      
 ## Generate AUROC and TNR results for Replay OODs (Figure 9 (left))
 
-      python3 check_OOD_carla.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_replay/out --save_dir carla_log/replay --printTNR 1 --transformation_list speed shuffle reverse periodic identity
+      python3 check_OOD_carla.py --gpu 0 --cuda --ckpt saved_models/carla_model.pt --n 20 --out_folder_name out_replay/out --save_dir carla_log/replay --printTNR 1 --transformation_list speed shuffle reverse periodic identity
 
 Expected AUROC and TNR results are as shown in Figure 9 (left) from the paper: <br>
 <img src="images/drift_n_replay.png" width="500" />
 
 ## Generate AUROC and TNR results for Drift OODs (Figure 9 (left))
-      python3 check_OOD_drift.py --gpu $0/1/2/3$ --cuda --ckpt saved_models/drift.pt --n 20 --save_dir drift_log --transformation_list speed shuffle reverse periodic identity
+      python3 check_OOD_drift.py --gpu 0 --cuda --ckpt saved_models/drift.pt --n 20 --save_dir drift_log --transformation_list speed shuffle reverse periodic identity
 
 
 ### (optional) Train VAE model for precition of the applied transformation on the CARLA dataset
