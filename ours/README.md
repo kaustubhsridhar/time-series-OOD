@@ -20,7 +20,7 @@ For generating results on GAIT dataset, cd gait and follow instructions in gait/
       
 ## Step 4: Setting up the environment: Two options here : (1) Docker,or (2) Conda. You can work with either of these two options.
 
-### This step is for seting up the Docker environment: takes ~40-50 minutes.
+### This step is for seting up the Docker environment: takes ~50-60 minutes.
 
 1. install [Docker](https://docs.docker.com/get-docker/) on your machine 
 2. To build a docker image: `docker build -t codit .` <br>
