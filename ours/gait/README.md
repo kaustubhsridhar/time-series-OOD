@@ -23,7 +23,7 @@
 
 ### park is for PD, hunt is for HD
 
-The expected result, i.e. Table 4 in the paper is<br>
+The expected result, i.e., Table 4 in the paper is<br>
 <img src="gait.png" width="500" />
 
 ### Note: The following results will be generated for just 1 run. In the paper, we ran these experiments 5 times (with different seeds) and reported the mean and standard deviation (std). The results with 1 run are similar to those reported in paper. 
