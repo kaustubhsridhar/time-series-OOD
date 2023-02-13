@@ -63,7 +63,7 @@ if torch.cuda.is_available() and not opt.cuda:
 
 ########### model ##############
 net = regressor(num_classes=len(opt.transformation_list), wl=opt.wl).to(device)
-net.load_state_dict(torch.load(opt.ckpt))
+net.load_state_dict(torch.load(opt.ckpt, map_location=device))
 net.eval()
 
 # pdb.set_trace()
