@@ -21,10 +21,10 @@
 
 ## Step 4: Generate CODiT results in Table 4 after populating the command-line arguments: --ckpt=saved_models/gait_$wl$.pt where wl = 16/18/20, --wl=16/18/20 (same as wl in saved_models/gait_$wl$.pt), and --disease\_type=als/park/hunt/all
 
+### park is for PD, hunt is for HD
+
 The expected result, i.e. Table 4 in the paper is<br>
 <img src="gait.png" width="500" />
-
-### park is for PD, hunt is for HD
 
 ### Note: The following results will be generated for just 1 run. In the paper, we ran these experiments 5 times (with different seeds) and reported the mean and standard deviation (std). The results with 1 run are similar to those reported in paper. 
 
