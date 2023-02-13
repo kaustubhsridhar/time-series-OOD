@@ -42,11 +42,11 @@ The expected result, i.e., Table 4 in the paper is<br>
 ### It takes ~12-15 minutes to run for "all" as OOD data, and ~8-10 minutes for "als/park/hunt" as OOD data.
 
     mkdir gait_log
-    python check_OOD_gait.py --save_dir gait_log/ --ckpt saved_models/gait_$wl$.pt  --transformation_list high_pass low_high high_low identity --wl $wl$ --cuda --gpu 0 --n 100 --disease_type $disease_type$
+    python3 check_OOD_gait.py --save_dir gait_log/ --ckpt saved_models/gait_$wl$.pt  --transformation_list high_pass low_high high_low identity --wl $wl$ --cuda --gpu 0 --n 100 --disease_type $disease_type$
     
 ## Generate baseline results in Table 4 with --wl=16/18/20, --disese\_type=als/hunt/park/all
-    python check_OOD_baseline.py --disease_type $disease_type$ --wl $wl$ --root_dir data/gait-in-neurodegenerative-disease-database-1.0.0
+    python3 check_OOD_baseline.py --disease_type $disease_type$ --wl $wl$ --root_dir data/gait-in-neurodegenerative-disease-database-1.0.0
 
 ## (optional) Training VAE model on GAIT dataset on wl=16/18/20
-    python train_gait.py --log saved_models --transformation_list high_pass low_high high_low identity --wl $wl$
+    python3 train_gait.py --log saved_models --transformation_list high_pass low_high high_low identity --wl $wl$
 
