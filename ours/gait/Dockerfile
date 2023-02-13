@@ -15,4 +15,4 @@ WORKDIR /home/time-series-OOD/ours/gait
 
 RUN python3 --version
 
-RUN pip install -r requirements.txt
+RUN pip install -r requirement.txt
