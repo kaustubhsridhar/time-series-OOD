@@ -3,8 +3,8 @@
 ## Step 1: Download gait-in-neurodegenerative-disease-database-1.0.0 folder from https://drive.google.com/drive/folders/1Z-3YnlhcCxI_KlFF6FF7tMp5MSEZURRH?usp=sharing
 ### Note: rename the downloaded folder to gait-in-neurodegenerative-disease-database-1.0.0.zip
     mkdir data
+    mv gait-in-neurodegenerative-disease-database-1.0.0.zip data/.
     cd data
-    mv gait-in-neurodegenerative-disease-database-1.0.0.zip .
     unzip gait-in-neurodegenerative-disease-database-1.0.0.zip
     cd ../
 
