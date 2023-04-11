@@ -2,7 +2,7 @@
 
 For generating results on GAIT dataset, cd gait and follow instructions in gait/README.md
 
-## This code is build on top of
+## This code is built on top of
      1. Video Clip Order Prediction's code - https://github.com/xudejing/video-clip-order-prediction
      2. Cai et al.'s for CARLA dataset - https://github.com/feiyang-cai/out_of_distribution_detector_aebs 
 
