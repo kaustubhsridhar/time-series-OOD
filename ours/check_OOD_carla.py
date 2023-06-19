@@ -356,7 +356,7 @@ if __name__ == "__main__":
         auroc_one_trial = []
         tnr_one_trial = []
         det_delay_one_trial = []
-        #checkOOD() # call this for saving the fisher values of the sliding windows for test iD and OOD traces from scratch. It takes time to run this
+        #checkOOD() # call this for saving the p-values of the sliding windows for test iD and OOD traces from scratch. It takes time to run this
         for i in range(opt.n):
             print("Calculating results for n: {} from the saved fisher-values".format(i+1))
             in_fisher_values_per_win, out_fisher_values_per_win, in_fisher_win_values_trace_wise, out_fisher_win_values_trace_wise = eval_detection_fisher(i+1)
