@@ -6,14 +6,15 @@ For generating results on GAIT dataset, cd gait and follow instructions in gait/
      1. Video Clip Order Prediction's code - https://github.com/xudejing/video-clip-order-prediction
      2. Cai et al.'s for CARLA dataset - https://github.com/feiyang-cai/out_of_distribution_detector_aebs 
 
-## Step 1: Download trained models: https://drive.google.com/drive/folders/1xBIkVB7TpIcRJPfF3hxzybe5KVPdbFrF?usp=sharing 
+## Step 1: Download trained models: https://drive.google.com/file/d/1H65NF7tcxA3XcKyh1C54nSdriM9QyFGu/view?usp=drive_link 
       mkdir saved_models
       mv carla_model.pt and drift.pt to ./saved_models
 
-## Step 2: Download data (zipped folder is ~13 GB, will take sometime to download): https://drive.google.com/file/d/11iJF2UQx4z78hfC8C9SFgapMgl_17SaJ/view?usp=sharing
+## Step 2: Download data (zipped folder is ~13 GB, will take sometime to download): 
+https://drive.google.com/file/d/1PUoOJ_Oza3pkBFpcTCqa_GBjPw5JJjXU/view?usp=drive_link 
      unzip data.zip
       
-## Step 3: Download the two folders (carla_log, and drift_log) containing pre-computed fisher and p-values for 1 run for speedy evaluation: https://drive.google.com/drive/folders/1o2bQ6M17kvN6b78KYPuAv0oavZ0Mf926?usp=sharing
+## Step 3: Download the two folders (carla_log, and drift_log) containing pre-computed fisher and p-values for 1 run for speedy evaluation: https://drive.google.com/file/d/1GXtkM9CTXcPpLlhfcTORjg3xAEwc2XS0/view?usp=drive_link
 ### Note: Rename the downloaded zip files to carla_log.zip and drift_log.zip respectively
       CARLA: unzip carla_log.zip
       Drift: unzip drift_log.zip
